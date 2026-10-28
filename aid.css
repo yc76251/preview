@@ -1,0 +1,56 @@
+/* 門三「異常急救站」：山上的急救站（阿岸 2026-10-26） */
+body[data-world=rescue]{background:linear-gradient(#0000 calc(100% - 120px),#c9473f18 calc(100% - 120px)),repeating-linear-gradient(#eef3f0 0 46px,#e4ece8 46px 48px),#eef3f0;background-attachment:fixed}
+body[data-world=rescue] main{position:relative;z-index:1}
+.rescue{max-width:980px;margin:auto}
+.rescue .page-head{margin-bottom:6px}
+
+.rescue-scene{position:relative;padding:118px 0 0}
+.beacon{position:absolute;left:50%;top:0;width:60px;height:60px;transform:translateX(-50%)}
+.beacon .dome{position:absolute;left:12px;top:14px;width:36px;height:30px;border-radius:18px 18px 4px 4px;background:radial-gradient(circle at 40% 35%,#ffb3a8,#e0443a 60%,#a82a22);border:3px solid #7a1f19;box-shadow:0 0 18px 6px #ff6a5a66}
+.beacon .dome:after{content:'';position:absolute;left:-8px;right:-8px;bottom:-11px;height:9px;border-radius:4px;background:#4b5a5f}
+.beacon .beam{position:absolute;left:-90px;top:-62px;width:240px;height:180px;background:conic-gradient(from 0deg at 50% 49%,#ff5a4a00 0deg,#ff5a4a55 18deg,#ff5a4a00 40deg,#ff5a4a00 180deg,#ff5a4a55 198deg,#ff5a4a00 220deg);border-radius:50%;animation:beacon 2.6s linear infinite;pointer-events:none}
+@keyframes beacon{to{transform:rotate(360deg)}}
+.rescue-window{position:absolute;left:18px;top:10px;width:150px;height:96px;border:8px solid #6f8790;border-radius:8px;background:linear-gradient(#5d7280,#9fb3bf);overflow:hidden;box-shadow:0 4px 0 #4b5a5f}
+.rescue-window .mullion{position:absolute;inset:0;background:linear-gradient(90deg,#0000 calc(50% - 3px),#6f8790 0 calc(50% + 3px),#0000 0)}
+.rain{position:absolute;inset:-100px -20px 0;background-image:repeating-linear-gradient(105deg,#0000 0 9px,#ffffff88 9px 10px,#0000 10px 23px);background-size:100% 40px;animation:rain .7s linear infinite}
+@keyframes rain{to{transform:translate(-10px,40px)}}
+
+.corkboard{position:relative;border:12px solid #8a5a30;border-radius:10px;padding:34px 18px 26px;background:radial-gradient(circle at 20% 30%,#0001 0 1.5px,#0000 2px) 0 0/13px 11px,radial-gradient(circle at 70% 60%,#fff2 0 1.5px,#0000 2px) 0 0/17px 15px,#c99a62;box-shadow:inset 0 0 0 2px #6b4220,0 6px 0 #6b4220,0 10px 18px #3a241233}
+.board-title{position:absolute;left:50%;top:-24px;transform:translateX(-50%);background:#c9473f;color:#fff;font-weight:900;font-size:15px;letter-spacing:4px;padding:5px 18px;border-radius:8px;box-shadow:0 3px 0 #7a1f19}
+.slips{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 22px}
+.sos-slip{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:#fffdf7;border-radius:4px;padding:22px 12px 14px;text-decoration:none;color:#2b2b25;transform:rotate(var(--tilt));box-shadow:2px 5px 0 #6b422044,0 2px 8px #0002;transition:transform .25s;border-top:10px solid var(--n)}
+.sos-slip:nth-child(1){--n:#e2558a}.sos-slip:nth-child(2){--n:#f08a4b}.sos-slip:nth-child(3){--n:#d9a316}.sos-slip:nth-child(4){--n:#4fa34f}.sos-slip:nth-child(5){--n:#1f9aa8}
+.sos-slip:hover,.sos-slip:focus-visible{transform:rotate(0) translateY(-5px) scale(1.03)}
+.sos-slip .pin{position:absolute;top:-17px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff9a8f,#c9473f 60%,#7a1f19);box-shadow:1px 3px 3px #0004}
+.sos-no{position:absolute;left:10px;top:6px;font-weight:900;color:var(--n);font-size:15px}
+.sos-code{font-family:Consolas,'Courier New',monospace;font-weight:900;font-size:21px;color:#a8325f;background:#fff0f5;border:2px dashed #e7a2bd;border-radius:8px;padding:2px 10px;margin-bottom:4px}
+.sos-slip b{font-size:16px;line-height:1.35}
+.sos-slip small{font-size:13px;color:#5b6660}
+.sos-ok{position:absolute;right:-10px;bottom:-12px;font-style:normal;font-weight:900;font-size:13px;color:#2f7a55;border:3px double #2f7a55;border-radius:8px;padding:1px 7px;background:#fff;transform:rotate(-8deg)}
+.sos-slip.solved{background:#f4fbf6}
+.medkit-corner{display:flex;justify-content:center;align-items:flex-end;gap:6px;position:relative}
+.corkboard{z-index:1}.beacon{z-index:0}
+.medkit-corner img{width:96px;height:auto}
+.medkit{position:relative;width:78px;height:56px;border-radius:10px;background:#fff;border:3px solid #c9473f;box-shadow:0 4px 0 #7a1f19}
+.medkit:before{content:'';position:absolute;left:24px;top:-12px;width:26px;height:12px;border:3px solid #c9473f;border-bottom:0;border-radius:6px 6px 0 0}
+.medkit i{position:absolute;inset:12px 25px;background:#c9473f}.medkit i:after{content:'';position:absolute;left:-9px;right:-9px;top:9px;bottom:9px;background:#c9473f}
+.rescue-foot>span,.rescue-foot>p{color:#3b4a40}
+.aid-stamp{border-color:#2f7a55;outline-color:#2f7a55;color:#2f6b46;margin:6px auto 18px}
+
+/* 求救單格子裡的分類盒顏色 */
+.kit-bin.bin-pink{border-top:10px solid #f2a2bf}.kit-bin.bin-orange{border-top:10px solid #f5b26b}
+.kit-bins.bins-3{grid-template-columns:repeat(3,1fr)}
+body[data-world=rescue] .station-nav .back-link{color:#2f4a45}
+
+body.motion-off .beacon .beam,body.motion-off .rain{animation:none}
+
+@media(max-width:700px){
+ .rescue-scene{padding-top:108px}
+ .rescue-window{left:0;width:118px;height:84px}
+ .slips{grid-template-columns:repeat(2,1fr);gap:24px 14px}
+ .sos-code{font-size:15px;padding:2px 6px;white-space:nowrap}
+ .sos-slip{padding:24px 8px 14px}
+ .sos-slip b{font-size:15px}
+ .medkit-corner img{width:80px}.medkit{width:64px;height:48px}
+ .kit-bins.bins-3{grid-template-columns:1fr}
+}

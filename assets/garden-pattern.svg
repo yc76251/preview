@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+<defs>
+ <g id="flower"><ellipse cy="-9" rx="5" ry="8"/><ellipse cy="-9" rx="5" ry="8" transform="rotate(72)"/><ellipse cy="-9" rx="5" ry="8" transform="rotate(144)"/><ellipse cy="-9" rx="5" ry="8" transform="rotate(216)"/><ellipse cy="-9" rx="5" ry="8" transform="rotate(288)"/><circle r="4" fill="#dfbd72"/></g>
+ <g id="leaves" fill="#a7bb95" stroke="#9caf8b" stroke-width="1.5"><path d="M0 35Q9 15 1-12" fill="none"/><path d="M4 18Q-20 16-14-2Q3 0 4 18Z"/><path d="M5 7Q26 3 22-14Q4-12 5 7Z"/><path d="M1-7Q-12-18-5-30Q10-23 1-7Z"/></g>
+ <radialGradient id="glow"><stop stop-color="#e9c679" stop-opacity=".7"/><stop offset="1" stop-color="#f3de9f" stop-opacity="0"/></radialGradient>
+</defs>
+<g opacity=".45"><use href="#flower" x="49" y="56" fill="#e8aab9" transform="rotate(-13 49 56)"/><use href="#flower" x="302" y="274" fill="#e6cc87" transform="rotate(13 302 274)"/><use href="#flower" x="370" y="115" fill="#a8c5bd" transform="translate(93 29) scale(.75)"/><use href="#leaves" x="91" y="296" transform="rotate(-28 91 296)"/><use href="#leaves" x="333" y="45" transform="rotate(24 333 45) scale(.86)"/></g>
+<g fill="url(#glow)"><circle cx="156" cy="97" r="14"/><circle cx="351" cy="359" r="17"/><circle cx="35" cy="224" r="11"/></g>
+<g fill="#d9c58d" opacity=".42"><circle cx="166" cy="221" r="2"/><circle cx="238" cy="62" r="1.6"/><circle cx="249" cy="368" r="2.5"/><path d="m199 302 2-7 2 7 7 2-7 2-2 7-2-7-7-2z"/><path d="m31 359 1.5-5 1.5 5 5 1.5-5 1.5-1.5 5-1.5-5-5-1.5z"/></g>
+</svg>

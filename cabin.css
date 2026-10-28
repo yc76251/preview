@@ -1,0 +1,318 @@
+/* v0.6 阿岸接手：登山口路牌、山路小木屋、木屋裡的站。對比加深、標題縮小。 */
+:root{--ink:#24352f;--muted:#4f5f55;--wood:#c98f55;--wood-dark:#6e4423;--wood-ink:#3a2412}
+body{color:var(--ink)}
+.page-head{margin-bottom:12px}.page-head h1,h1{font-size:clamp(21px,2.3vw,26px);margin:0 0 4px}.page-head p{color:var(--muted)}
+.eyebrow{color:#7a5232;font-weight:700}
+.site-foot{color:#6c6a5d}
+
+/* ===== 登山口 ===== */
+body[data-world=home] main{padding-top:14px}
+.trailhead{position:relative;max-width:1100px;margin:auto;min-height:640px;border-radius:28px;overflow:hidden;isolation:isolate;padding:22px 20px 150px;background:linear-gradient(#a9d6ec,#d5ecf2 45%,#e9f3df 70%)}
+.th-sky{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.th-sun{position:absolute;top:40px;right:12%;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#fff6c9 0 45%,#ffe38a66 46%,transparent 70%);animation:sun-glow 6s ease-in-out infinite alternate}
+.trailhead .cloud{z-index:0;background:#ffffffd9}.trailhead .cloud-one{top:70px;left:8%;right:auto}.trailhead .cloud-two{top:150px;left:auto;right:28%;width:120px;animation-duration:22s}.trailhead .cloud-three{top:40px;left:42%;width:90px;animation-duration:19s;animation-delay:-5s}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:330px}
+.pine{transform-box:fill-box;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite alternate;animation-delay:var(--d)}
+.th-head{text-align:center;position:relative}.th-head h1{font-size:clamp(20px,2.2vw,24px);color:#203a33;margin-top:2px}
+.signpost-big{position:relative;width:min(560px,100%);margin:18px auto 0;padding:10px 0 30px}
+.pole{position:absolute;left:50%;top:-6px;bottom:-140px;width:22px;margin-left:-11px;border-radius:6px 6px 0 0;background:linear-gradient(90deg,#5c3a1e,#8a5a33 45%,#6b4426);box-shadow:inset 0 0 0 1px #3e260f55}
+.plank{position:relative;display:block;width:min(460px,92%);margin:0 auto 20px;padding:0;border:0;background:none;color:var(--wood-ink);filter:drop-shadow(0 7px 0 #5a371b) drop-shadow(0 10px 8px #3b25122e);transition:transform .25s}
+.board{display:flex;flex-direction:column;gap:2px;padding:16px 64px 15px 30px;text-align:left;clip-path:polygon(0 0,calc(100% - 42px) 0,100% 50%,calc(100% - 42px) 100%,0 100%);background:repeating-linear-gradient(178deg,#0000 0 9px,#7a4b2414 9px 11px),linear-gradient(#e2ae74,#c98d54)}
+.plank-left .board{padding:16px 30px 15px 64px;text-align:right;clip-path:polygon(42px 0,100% 0,100% 100%,42px 100%,0 50%)}
+.plank-1{transform:translateX(34px) rotate(-2deg)}.plank-2{transform:translateX(-34px) rotate(2deg)}.plank-3{transform:translateX(26px) rotate(-1deg)}
+.plank-title{font-size:clamp(25px,3.4vw,35px);font-weight:900;letter-spacing:2px;line-height:1.3}
+.plank-sub{font-size:14px;font-weight:600;color:#5a3517}
+.plank:not(:disabled):hover{transform:translateX(44px) rotate(-3deg)}
+.plank:not(:disabled):hover .board{background:repeating-linear-gradient(178deg,#0000 0 9px,#7a4b2414 9px 11px),linear-gradient(#ebba80,#d39a5e)}
+.plank.opening{animation:plank-go .6s ease-in forwards}
+.plank:disabled{cursor:default;opacity:1}.plank:disabled .board{background:repeating-linear-gradient(178deg,#0000 0 9px,#5a4a3a14 9px 11px),linear-gradient(#d8c3a6,#bfa686)}.plank:disabled .plank-sub{color:#5d4a36}
+.closed-tag{position:absolute;top:-10px;right:20%;background:#fff7d6;color:#7b3b2a;font-size:12px;font-weight:800;padding:2px 10px;border:2px solid #b3543a;border-radius:3px;transform:rotate(8deg);letter-spacing:2px}
+.plank-2 .closed-tag{right:auto;left:20%;transform:rotate(-7deg)}
+.adun-home{position:absolute;left:-150px;bottom:-125px;width:165px;animation:bob 3.2s ease-in-out infinite;pointer-events:none}
+.library-box{position:absolute;right:6%;bottom:34px;display:flex;flex-direction:column;align-items:center;padding:10px 18px;background:#fff8e6;color:#3d2a17;border:3px solid #7b5330;border-radius:6px;box-shadow:0 5px 0 #7b5330;transform:rotate(-3deg);z-index:2}
+.library-box b{font-size:17px}.library-box span{font-size:12px;color:#6a4b2d}
+.library-box:hover{transform:rotate(0) translateY(-3px)}
+
+/* ===== 山路 ===== */
+body[data-world=mountain]{background:linear-gradient(#cfe7d4,#eef3dd 420px,#f4f1e0)}
+.trail-map{background:linear-gradient(#b9dcec 0,#cfe8cf 14%,#b6d8a8 55%,#9cc98c)}
+.mountain{background:#7fae8a99}.ridge-two{background:#6fa27d88}
+.trail-trees{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.trail-line path{stroke:#f3e1b4;stroke-width:46}.trail-line path.edge{stroke:#b98d55;stroke-width:58}.trail-line path.dash{stroke:#d9bb82;stroke-width:3;stroke-dasharray:14 16}
+.trail-line{filter:none}
+.cabin{position:relative;display:block;width:76px;height:70px}
+.cabin-roof{position:absolute;left:-4px;right:-4px;top:0;height:32px;background:#9c4a3a;clip-path:polygon(50% 0,100% 100%,0 100%);box-shadow:inset 0 -5px 0 #7a3529}
+.cabin-body{position:absolute;left:6px;right:6px;top:30px;bottom:0;background:repeating-linear-gradient(#c78a52 0 8px,#b57a45 8px 10px);border:2px solid #6e4423;border-top:0;display:flex;justify-content:center;align-items:flex-end}
+.cabin-door{display:grid;place-items:center;width:26px;height:30px;background:#fff6dc;border:2px solid #6e4423;border-bottom:0;border-radius:12px 12px 0 0;font-weight:900;font-size:15px;color:#4b2e15}
+.trail-stop.solved .cabin-door{background:#2f7a55;color:#fff}
+.trail-stop:hover .cabin-door{background:#ffe9a8}
+.signpost{background:#fff8e6;border:2px solid #7b5330;box-shadow:0 4px 0 #7b5330;border-radius:5px}
+.signpost b{color:#2a1d10}.signpost small{color:#5b4630;font-size:12px}
+.adun-here{position:absolute;left:calc(50% + 40px);top:14px;width:74px;animation:bob 3s ease-in-out infinite;pointer-events:none}
+.trail-intro{color:#2f5a44;font-weight:600}
+.trail-finish p{color:#4f5f55}
+
+/* ===== 木屋裡的站 ===== */
+body[data-world=cabin]{background:repeating-linear-gradient(#ead5b4 0 34px,#e2c9a3 34px 37px),#ead5b4;background-attachment:fixed}
+body[data-world=cabin]:before{display:block!important;content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:linear-gradient(115deg,transparent 30%,#fff8de55 42%,transparent 55%);background-size:200% 100%;animation:sunbeam 14s ease-in-out infinite alternate}
+body[data-world=cabin] main{position:relative;z-index:1}
+.station-page{max-width:860px;background:#fffdf6;border:2px solid #b08a5f;border-radius:10px;box-shadow:0 8px 0 #9c7a52,0 18px 30px #5a3a1a22;padding:18px 34px 26px}
+.station-nav{margin-bottom:10px}
+.station-nav .back-link{color:#4b3a24}
+.station-nav>div a{background:#fff;border:2px solid #8f7a5c;color:#3a2a18;font-weight:700}
+.station-nav a[aria-current]{background:#a3405f;border-color:#a3405f;color:#fff}
+.station-nav a.done{background:#2f7a55;border-color:#2f7a55;color:#fff;box-shadow:none}
+.station-page>.page-head{margin-bottom:4px}.station-page>.page-head .eyebrow{font-size:12px;letter-spacing:2px}
+.little-question{border-top:0;padding:8px 0 10px}
+.pencil-label{color:#7a5232;font-weight:700}
+.little-question h2{font-size:21px;color:#1f2e29;margin:4px 0 14px}
+.answer-options button{background:#fff;border:2px solid #a7ae98;color:#1f2e29;font-size:16px;font-weight:600;padding:12px 18px}
+.answer-options button>span{color:#7a5232}
+.answer-options button:hover{background:#fff4d6;border-color:#7b5330}
+.answer-options button.correct{background:#d6efdc;border-color:#2f7a55;color:#173a29}
+.answer-options button.wrong{background:#fbe0d4;border-color:#b3543a}
+.answer-options button:disabled{opacity:.6}.answer-options button.correct:disabled{opacity:1}
+.mini-feedback{color:#2a5a3e;font-size:15px}
+.reveal{margin:8px 0 6px;padding:16px 22px;background:#fff6d8;border:2px dashed #c9a24f;border-radius:6px}
+.reveal.pop{animation:pop-in .45s ease-out}
+.why-note{padding:0}.why-note>span{color:#a3405f}.why-note p{font-size:20px;color:#1f2e29;margin:6px 0 12px}
+.key-sticker{background:#f5d76e;color:#3d3212;font-weight:800;box-shadow:3px 4px 0 #b3963a55}
+.station-figure{margin:16px auto 6px;max-width:460px}
+.station-figure .scene-art{max-height:260px;filter:saturate(1.5) contrast(1.25) brightness(.95)}
+.scene-art g{fill:#24352f}
+.deep-dive summary{color:#3d5a45;font-weight:700}
+.step-footer a{color:#3a2a18}
+.book-note .lesson-body{color:#24352f}
+
+@keyframes sway{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes sun-glow{to{transform:scale(1.08)}}
+@keyframes sunbeam{from{background-position:100% 0}to{background-position:0 0}}
+@keyframes plank-go{to{transform:translateX(120px) rotate(-6deg);opacity:0}}
+@keyframes pop-in{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+
+@media(max-width:900px){.adun-home{left:8px;width:125px;bottom:-120px}}
+@media(max-width:600px){
+ .trailhead{min-height:600px;padding:18px 10px 150px;border-radius:18px}
+ .plank{width:94%}.plank-1,.plank-3{transform:translateX(8px) rotate(-1.5deg)}.plank-2{transform:translateX(-8px) rotate(1.5deg)}
+ .board{padding:12px 50px 12px 20px}.plank-left .board{padding:12px 20px 12px 50px}
+ .plank-title{font-size:24px;letter-spacing:1px}.plank-sub{font-size:13px}
+ .adun-home{left:4px;bottom:-128px;width:105px}
+ .library-box{right:12px;bottom:22px}
+ .cabin{width:58px;height:54px}.cabin-roof{height:25px}.cabin-body{top:23px}.cabin-door{width:21px;height:24px;font-size:12px}
+ .adun-here{width:54px;left:calc(50% + 18px);top:-30px}
+ .station-page{padding:14px 16px 20px;border-radius:8px}
+ .little-question h2{font-size:19px}.answer-options button{font-size:15px}
+ .why-note p{font-size:18px}
+}
+/* 路牌按下去時，按鈕本身的方形底色不要露出來（箭頭尖那一角） */
+.plank,.plank:hover,.plank:focus,.plank:active,.plank:disabled{background:transparent!important;border:0!important;box-shadow:none!important;outline:none}
+.plank:focus-visible .plank-title{text-decoration:underline;text-underline-offset:6px}
+
+/* 阿盾的五個姿勢 */
+.little-question{position:relative}
+.adun-think{position:absolute;right:-6px;top:-34px;width:96px;animation:bob 3.4s ease-in-out infinite;pointer-events:none}
+.little-question h2{padding-right:96px}
+.reveal{position:relative;padding-right:120px}
+.adun-cheer{position:absolute;right:8px;bottom:6px;width:104px;animation:bob 1.6s ease-in-out infinite;pointer-events:none}
+.adun-celebrate{display:block;width:150px;margin:0 auto -10px;animation:bob 1.4s ease-in-out infinite}
+.adun-read{width:150px;flex-shrink:0}
+#motionToggle[aria-pressed=false]{opacity:.7}
+/* 首頁大標：掛在步道口的木頭招牌 */
+.title-sign{position:relative;display:inline-block;margin-top:26px;padding:10px 34px 12px;border-radius:10px;background:repeating-linear-gradient(178deg,#0000 0 9px,#7a4b2414 9px 11px),linear-gradient(#c98d54,#a96d3a);box-shadow:0 6px 0 #5a371b,0 10px 14px #3b251233;transform:rotate(-1deg)}
+.title-sign h1{margin:0;font-size:clamp(26px,3.4vw,38px);font-weight:900;letter-spacing:4px;color:#fff6e4;text-shadow:0 2px 0 #5a371b,0 3px 6px #3b251255}
+.rope{position:absolute;top:-28px;width:3px;height:30px;background:#7b5a3a}.rope-l{left:22%}.rope-r{right:22%}
+.th-sub{margin:14px auto 0;font-size:15px;font-weight:700;color:#2f4a3e;background:#fffbf5d9;display:inline-block;padding:4px 14px;border-radius:14px}
+.th-head{display:flex;flex-direction:column;align-items:center}
+/* 阿盾：滑鼠移過去或點一下，冒出泡泡 */
+.adun-guide{position:absolute;left:-150px;bottom:-125px;width:165px;outline:none;cursor:pointer;z-index:5}
+.adun-guide .adun-home{position:static;width:100%;pointer-events:auto}
+.guide-bubble{position:absolute;left:70%;top:-14px;width:max-content;max-width:210px;background:#fff;border:2px solid #7b5330;border-radius:16px;padding:7px 12px;font-size:14px;line-height:1.5;font-weight:700;color:#2a1d10;box-shadow:0 4px 0 #7b533040;opacity:0;transform:translateY(6px) scale(.95);transition:opacity .2s,transform .2s;pointer-events:none}
+.guide-bubble:after{content:'';position:absolute;left:18px;bottom:-12px;border:6px solid transparent;border-top:10px solid #7b5330}
+.adun-guide:hover .guide-bubble,.adun-guide:focus-visible .guide-bubble,.adun-guide.talk .guide-bubble{opacity:1;transform:none}
+/* 小小圖書館：小木屋 */
+.library-box{padding-top:16px;border-radius:0 0 6px 6px}
+.lib-roof{position:absolute;left:-14px;right:-14px;top:-30px;height:34px;background:#9c4a3a;clip-path:polygon(50% 0,100% 100%,0 100%);z-index:-1}
+.library-box img{position:relative;z-index:1}
+/* 右邊：登山補給手冊 */
+@media(min-width:1280px){
+ .travel-links{background:#fffbf5;border:3px solid #8a5a33;box-shadow:inset 0 0 0 3px #fffbf5,inset 0 0 0 4px #c9a979,0 6px 0 #8a5a3355;border-radius:12px;padding:30px 8px 10px;transform:none}
+ .travel-links:before{content:'登山補給手冊';position:absolute;top:6px;left:0;right:0;text-align:center;font-size:11px;font-weight:800;letter-spacing:2px;color:#7a5232}
+ .travel-links:after{content:'';position:absolute;top:-12px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#6b4426;box-shadow:inset 0 2px 0 #a7774a}
+}
+@media(max-width:900px){.adun-guide{left:8px;width:125px;bottom:-120px}}
+.th-sub{text-wrap:balance}.m-br{display:none}
+@media(max-width:600px){.m-br{display:inline}}
+@media(max-width:600px){.adun-guide{left:4px;bottom:-128px;width:105px}.guide-bubble{left:10px;top:-62px;max-width:150px;font-size:13px;line-height:1.5;padding:7px 12px 7px}.title-sign{padding:8px 18px}.title-sign h1{letter-spacing:2px}.th-sub{font-size:13px;border-radius:10px}.library-box{transform:scale(.82) rotate(-3deg);transform-origin:100% 100%;right:8px;bottom:14px}}
+/* 阿盾的對話泡泡（答錯時的提示） */
+.adun-bubble{position:absolute;right:104px;top:-30px;max-width:300px;background:#fff;border:2px solid #7b5330;border-radius:16px;padding:8px 14px;font-size:14px;line-height:1.6;color:#2a1d10;box-shadow:0 4px 0 #7b533040;z-index:3}
+.adun-bubble:after{content:'';position:absolute;right:-12px;top:22px;border:7px solid transparent;border-left:12px solid #7b5330}
+.adun-bubble.say{animation:pop-in .35s ease-out}
+/* 終點慶祝：阿盾和小麥 */
+.party{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:6px;overflow:hidden;padding-top:10px}
+.celebrate-duo{position:relative;z-index:1;width:min(340px,80%);animation:bob 1.6s ease-in-out infinite}
+.petals{position:absolute;inset:0;pointer-events:none}
+.petals i{position:absolute;top:-20px;left:var(--x);width:12px;height:9px;border-radius:60% 0 60% 0;background:var(--c);opacity:.9;animation:petal-fall var(--t) linear infinite;animation-delay:var(--d)}
+@keyframes petal-fall{from{transform:translateY(0) rotate(0)}to{transform:translateY(420px) rotate(320deg) translateX(30px);opacity:0}}
+.party .adun-celebrate{margin:0}
+.mai-peek{width:150px;animation:peek 2.6s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes peek{0%,100%{transform:translateY(6px)}50%{transform:translateY(-4px) rotate(-2deg)}}
+.done-card{text-align:center}.done-card .adun-celebrate{width:120px;margin:0 auto}
+/* 多練一次：放在圖旁邊，不藏在「再看仔細一點」 */
+.station-media{display:grid;grid-template-columns:1.3fr 1fr;align-items:center;gap:18px}
+.practice-door{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.practice-chip{display:inline-block;background:#2f6b4c;color:#fff;font-weight:700;font-size:15px;padding:10px 18px;border-radius:24px;box-shadow:0 4px 0 #1f4a34;text-decoration:none}
+.practice-chip:hover{background:#28603f;transform:translateY(-2px)}
+@media(max-width:600px){.station-media{grid-template-columns:1fr}.adun-bubble{position:static;display:block;margin:0 0 10px;max-width:none}.adun-bubble:after{display:none}.mai-peek{width:110px}}
+.library-box img{width:120px;margin:-58px 0 0;filter:drop-shadow(0 4px 3px #3b25122e)}
+@media(max-width:600px){.library-box img{width:86px;margin-top:-44px}}
+
+/* 寬螢幕：上方工具列拆到左右兩邊，畫面多留給內容 */
+@media(min-width:1280px){
+ .travel-bar{position:static;min-height:0;padding:0;border:0;background:none}
+ .mini-brand{position:fixed;left:22px;top:18px;flex-direction:column;align-items:center;text-align:center;width:120px;z-index:30}
+ .mini-brand img{width:56px;height:62px}.mini-brand span{font-size:14px}
+ .travel-links{position:fixed;right:18px;top:18px;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;width:130px;z-index:30;background:#fffdf6e6;border:2px solid #d8c9a8;border-radius:14px;padding:30px 8px 10px}
+ .travel-links>a,.travel-links>button{text-align:left;font-size:13px}
+ .passport-tabs{flex-direction:column;align-items:center;margin:4px 0;padding:6px 0;border-inline:0;border-block:1px solid #ded8c7}
+ main{max-width:min(1220px,calc(100vw - 340px));padding-top:18px}
+}
+@media(max-width:600px){.adun-think{width:70px;top:-26px}.little-question h2{padding-right:66px}.reveal{padding-right:22px;padding-bottom:90px}.adun-cheer{width:84px}}
+
+/* ===== 營地：綜合測驗、DOPS 口試卡（v0.7） ===== */
+body[data-world=camp]{background:linear-gradient(#f3ead8,#efe3cb);}
+.exam-page,.dops-page{max-width:860px;margin:auto;background:#fffdf6;border:2px solid #b08a5f;border-radius:10px;box-shadow:0 8px 0 #9c7a52;padding:20px 30px 28px}
+.exam-start{display:flex;align-items:center;gap:18px;margin:6px 0 18px}
+.bank-sticker{display:grid;place-items:center;width:112px;height:112px;border-radius:50%;background:#f5d76e;box-shadow:3px 5px 0 #b3963a66;transform:rotate(-6deg);color:#3d3212}
+.bank-sticker b{font-size:40px;line-height:1}.bank-sticker span{font-size:13px;margin-top:-24px}
+.bank-tags{display:flex;gap:8px;flex-wrap:wrap}.bank-tags span{background:#eef4e6;border:2px solid #9bb68a;border-radius:20px;padding:4px 12px;font-weight:700;font-size:14px}
+.ticket-row{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.ticket{position:relative;background:#fff;border:2px dashed #b08a5f;border-radius:14px;padding:16px 18px}
+.ticket:before,.ticket:after{content:'';position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:#fffdf6;border:2px dashed #b08a5f}
+.ticket:before{left:-11px;clip-path:inset(0 0 0 50%)}.ticket:after{right:-11px;clip-path:inset(0 50% 0 0)}
+.ticket h2{margin:0 0 4px;font-size:20px}.ticket p{font-size:14px;color:#4f5f55}
+.ticket-sizes{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.exam-name{display:block;font-size:13px;color:#4f5f55}.exam-name input{display:block;width:100%;margin-top:4px;padding:8px 10px;border:2px solid #c9b48f;border-radius:8px;font:inherit}
+.exam-best{margin-top:14px;font-weight:700;color:#7a5232}
+.exam-purpose{margin:0;font-size:14px;color:#4f5f55}
+.exam-scopes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.exam-scopes button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:76px;padding:10px 8px;border:2px solid #d4c3a4;background:#fff;border-radius:14px}
+.exam-scopes button strong{font-size:16px}.exam-scopes button span{font-size:13px;color:#5b665a}
+.exam-scopes button[aria-pressed="true"]{background:#ffe8f0;border-color:#b73168;box-shadow:0 3px 0 #e8b6ca;color:#8e2450}
+.exam-scope-note{margin:12px 0 18px;font-size:14px;color:#4f5f55}
+.exam-record-note{font-size:12px;color:#5b665a;margin-bottom:0}
+.exam-result-scope{font-weight:700;color:#7a5232;margin-bottom:6px}
+.paper-scope{font-weight:700;font-size:13px;padding-right:90px;margin-bottom:6px}
+@media(max-width:480px){.exam-scopes{gap:6px}.exam-scopes button{min-height:78px;padding:8px 3px}.exam-scopes button strong{font-size:14px}}
+@media(max-width:360px){.exam-scopes{grid-template-columns:1fr}.exam-scopes button{flex-direction:row;justify-content:space-between;min-height:44px;padding:8px 12px}}
+.exam-bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:14px;margin-bottom:10px}
+.exam-chip{background:#f5d76e;padding:2px 10px;border-radius:12px;font-weight:700}
+.streak.hot{color:#b3543a;font-weight:800;animation:pop-in .4s ease-out}
+.q-type{font-size:13px;font-weight:800;color:#7a5232}
+.exam-q h2{padding-right:0}
+.exam-q #examNext{margin-top:12px;float:right}
+.pick-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.pick-item{display:flex;gap:10px;align-items:center;background:#fff;border:2px solid #a7ae98;border-radius:8px;padding:10px 12px;font-weight:600;cursor:pointer}
+.pick-item input{width:18px;height:18px;accent-color:#2f7a55}
+.pick-item.pick-right{background:#d6efdc;border-color:#2f7a55}.pick-item.pick-wrong{background:#fbe0d4;border-color:#b3543a}
+.wrong-pop{text-align:center}.bubble-ico{font-size:40px}.pop-q{font-weight:700}
+.pop-mine,.pop-right{padding:8px 12px;border-radius:8px;margin:6px 0;text-align:left}.pop-mine{background:#fbe0d4;text-decoration:line-through}.pop-right{background:#d6efdc}
+.pop-mine small,.pop-right small{display:block;text-decoration:none;font-size:11px;color:#5d4a36}
+.exam-end{text-align:center}.exam-end .adun-celebrate{width:130px;margin:0 auto}.stars{font-size:34px;margin:0}.score-line{font-size:18px;font-weight:800}
+.wrong-list{text-align:left;background:#fff6d8;border:2px dashed #c9a24f;border-radius:8px;padding:12px 18px;margin:14px 0}.wrong-list h2{font-size:17px;margin:0 0 6px}.wrong-list li{margin-bottom:8px;font-size:14px}
+.paper{position:relative;background:#fffef9;border-left:3px double #f1b9c4;padding:22px 20px 16px;border-radius:4px;color:#22302b}
+.score-stamp{position:absolute;right:14px;top:12px;width:88px;height:88px;border:4px double #c0392b;border-radius:50%;color:#c0392b;display:grid;place-items:center;transform:rotate(-10deg);text-align:center;line-height:1.1}
+.score-stamp b{font-size:30px}.score-stamp small{font-size:12px;margin-top:-18px}
+.paper-brand{font-size:12px;letter-spacing:2px;margin:0;color:#7a5232}.paper h2{margin:2px 0 6px}.paper-meta{font-size:13px;padding-right:90px}
+.paper-list{list-style:none;padding:0;margin:10px 0}.paper-list li{display:grid;grid-template-columns:26px 1fr;gap:2px 6px;font-size:13.5px;padding:3px 0}
+.paper-list .mark{grid-row:span 3;font-size:20px;font-weight:900}.paper-list .ok .mark{color:#2f7a55}.paper-list .ng .mark{color:#c0392b}
+.paper-list .pa{color:#3d5a45}.paper-list s{color:#b3543a;margin-right:6px}.paper-list .pr{font-size:12.5px;color:#7a5232}
+.paper-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;font-size:12px;border-top:1px solid #c9d6e6;padding-top:8px}.paper-foot p{margin:0}
+.paper-qr{width:92px}.paper-qr svg{width:100%;height:auto}
+.dops-how{background:#fff6d8;border-radius:20px;padding:6px 14px;font-weight:700;display:inline-block}
+.dops-secs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+.dops-secs a{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid #b08a5f;border-radius:20px;padding:4px 12px 4px 4px;color:#3a2a18;font-size:14px;font-weight:700}
+.dops-secs a b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#2f6b4c;color:#fff;font-size:13px}.dops-secs small{color:#7a5232;font-weight:400}
+.dops-card{background:#fff;border:2px solid #c9b48f;border-radius:12px;padding:14px 18px;margin-bottom:14px;scroll-margin-top:20px}
+.dops-card.known{border-color:#2f7a55;background:#f4fbf5}
+.dops-card.flash{animation:pop-in .5s ease-out}
+.dops-card header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:13px}
+.sec-no{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#2f6b4c;color:#fff;font-weight:800}.sec-name{font-weight:800;color:#2f6b4c}.dops-card header small{flex-basis:100%;color:#5d4a36;font-size:12.5px}
+.dops-card h2{font-size:19px;margin:8px 0 10px}
+.dops-hint,.dops-ans{margin:6px 0;border-radius:8px;padding:6px 12px}.dops-hint{background:#fff6d8}.dops-ans{background:#e4f3e7}
+.dops-hint summary,.dops-ans summary{font-weight:800;cursor:pointer}
+.hint-opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}.hint-opts button{background:#fff;border:2px solid #c9a24f;border-radius:18px;padding:5px 12px}
+.hint-opts button.right{background:#d6efdc;border-color:#2f7a55}.hint-opts button.chosen{background:#fbe0d4;border-color:#b3543a}
+.dops-a{font-size:16px}
+.dops-known{margin-top:8px;background:transparent;border:2px solid #2f6b4c;color:#2f6b4c;border-radius:18px;padding:5px 14px;font-weight:700}
+.dops-known[aria-pressed=true]{background:#2f6b4c;color:#fff}
+.fox-editor{background:none;border:0;padding:0;margin-right:6px;vertical-align:middle;cursor:pointer}.fox-editor img{width:30px;height:auto;opacity:.75;transition:opacity .2s,transform .2s}.fox-editor:hover img{opacity:1;transform:rotate(-8deg)}
+@media(max-width:600px){.exam-page,.dops-page{padding:14px 14px 20px}.ticket-row{grid-template-columns:1fr}.pick-grid{grid-template-columns:1fr}.bank-sticker{width:92px;height:92px}.bank-sticker b{font-size:32px}}
+.order-list li[data-drag]{cursor:grab;user-select:none;transition:box-shadow .15s}.order-list li.dragging{cursor:grabbing;position:relative;z-index:5;box-shadow:0 10px 20px #3b251233;background:#fff8e1;transition:none}.order-list li.drop-target{outline:3px dashed #2f6b4c;outline-offset:2px}.drag-handle{touch-action:none;white-space:nowrap;cursor:grab}
+
+/* ===== v0.7.1：多一點粉紅、試煉場、阿盾歡呼 ===== */
+:root{--pink-btn:#d9467f;--pink-btn-dark:#a8325f;--pink-soft:#ffe3ee}
+button.primary,.button.primary{background:var(--pink-btn);border-color:var(--pink-btn);box-shadow:0 4px 0 var(--pink-btn-dark)}
+button.primary:hover,.button.primary:hover{background:#c73a71}
+.practice-chip{background:var(--pink-btn);box-shadow:0 4px 0 var(--pink-btn-dark)}.practice-chip:hover{background:#c73a71}
+.answer-options button:hover{background:var(--pink-soft);border-color:var(--pink-btn)}
+.oral-modes button[aria-pressed=true],.dops-known[aria-pressed=true]{background:var(--pink-btn);border-color:var(--pink-btn);color:#fff;font-weight:700}
+.oral-modes button[aria-pressed=false]{background:#fff}
+.dops-known{border-color:var(--pink-btn);color:var(--pink-btn)}
+.dops-secs a b,.sec-no{background:var(--pink-btn)}.sec-name{color:#a8325f}
+.screen-buttons button:hover{background:var(--pink-soft)}
+.cheer-box{display:flex;align-items:center;gap:12px}.adun-mini-cheer{width:72px;flex-shrink:0;animation:bob 1.4s ease-in-out infinite}
+.practice-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.sign-tag{position:absolute;right:-14px;bottom:-16px;background:var(--pink-btn);color:#fff;font-size:12px;font-weight:800;padding:2px 10px;border-radius:12px;transform:rotate(4deg);box-shadow:0 2px 0 var(--pink-btn-dark);letter-spacing:1px}
+.mini-brand span{font-size:13px}.mini-brand small{font-size:10px}
+.panel-group{display:flex;flex-wrap:wrap;align-items:center;gap:2px;border:2px dashed #d9a0b8;border-radius:10px;padding:4px 6px;background:#fff6fa}
+.panel-group .group-label{font-size:11px;font-weight:800;color:#a8325f;letter-spacing:2px;padding:0 4px}
+.panel-group a{padding:6px 9px;font-size:12px;border-radius:20px;white-space:nowrap}.panel-group a:hover{background:var(--pink-soft)}
+@media(min-width:1280px){.panel-group{flex-direction:column;align-items:stretch;margin:4px 0}.panel-group a{font-size:13px}.mini-brand img{width:72px;height:auto}}
+@media(min-width:1280px){.travel-links{width:152px}.panel-group{min-width:0}.panel-group a{white-space:normal}main{max-width:min(1220px,calc(100vw - 370px))}}
+
+/* ===== v0.7.2：站號糖果色、站內練習、照片、畫面導航粉紅 ===== */
+.station-nav>div a:nth-child(1){--c:#e2558a}.station-nav>div a:nth-child(2){--c:#f08a4b}.station-nav>div a:nth-child(3){--c:#d9a316}.station-nav>div a:nth-child(4){--c:#4fa34f}
+.station-nav>div a:nth-child(5){--c:#1f9aa8}.station-nav>div a:nth-child(6){--c:#4a7fd4}.station-nav>div a:nth-child(7){--c:#8a63c9}.station-nav>div a:nth-child(8){--c:#c94f9b}
+.station-nav>div a{background:#fff;border:2px solid var(--c);color:var(--c);font-weight:800}
+.station-nav>div a.done{background:var(--c);border-color:var(--c);color:#fff;box-shadow:none}
+.station-nav>div a[aria-current]{background:var(--c);border-color:var(--c);color:#fff;transform:scale(1.18);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--c)}
+.station-figure.has-photo{max-width:620px}
+.station-photo{display:block;width:100%;max-height:420px;object-fit:contain;border-radius:10px;border:3px solid #fff;box-shadow:0 6px 16px #3b251233;cursor:zoom-in;background:#fff}
+.station-practice{margin:22px 0 8px;padding:16px 20px;background:#fff5f9;border:2px dashed #e58aae;border-radius:14px}
+.practice-title{font-size:18px;color:#a8325f;margin:0 0 4px}
+.station-practice .exercise{background:transparent;padding:8px 0 0;margin:0}
+.station-practice .exercise>h2,.station-practice .exercise .practice-label{font-size:16px}
+.screen-mock{background:#fff5f9!important;border-color:#e58aae!important;box-shadow:0 8px 0 #e58aae55!important}
+.screen-buttons button{border-color:#efb7cc;background:#fff;box-shadow:0 4px 0 #f3c6d7}
+.screen-breadcrumb{color:#a8325f;font-weight:700}
+@media(max-width:600px){.station-practice{padding:12px}.station-nav>div a[aria-current]{transform:scale(1.1)}}
+.src-tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}.src-tag{font-size:12px;font-weight:700;padding:2px 10px;border-radius:12px;border:1.5px solid}.src-pi{background:#e4f5ee;border-color:#3fb79a;color:#1f6b55}.src-rule{background:#ffe3ee;border-color:#d9467f;color:#a8325f}.src-work{background:#fff4c2;border-color:#d9a316;color:#7a5a07}
+
+/* DOPS 卡：答對／還不熟 兩個按鈕（2026-10-26） */
+.dops-marks{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.dops-marks .dops-known{margin-top:0}
+.dops-unsure[aria-pressed=true]{background:#fff0f5;color:#a8325f;border-color:#e7a2bd;font-weight:700}
+
+/* logo 下面：進度存在哪裡（2026-10-26） */
+.save-spot{display:flex;align-items:center;gap:4px;flex-shrink:0;font-size:11px;color:#6b5a50}
+.save-label{font-weight:700;white-space:nowrap}
+.save-btns{display:inline-flex;border:1.5px solid var(--pink-btn);border-radius:14px;overflow:hidden;background:#fff}
+.save-btns button{border:0;background:transparent;color:var(--pink-btn-dark);font-size:11px;font-weight:700;padding:3px 8px;min-height:24px;cursor:pointer;white-space:nowrap}
+.save-btns button[aria-pressed=true]{background:var(--pink-btn);color:#fff}
+.save-help{width:22px;height:22px;min-height:22px;padding:0;border-radius:50%;border:1.5px solid var(--pink-btn);background:#fff;color:var(--pink-btn-dark);font-weight:900;font-size:12px;line-height:1;cursor:pointer}
+.save-help:hover,.save-btns button:hover{background:var(--pink-soft)}
+.save-btns button[aria-pressed=true]:hover{background:var(--pink-btn)}
+@media(min-width:1280px){.save-spot{position:fixed;left:16px;top:150px;width:132px;flex-direction:column;z-index:30;gap:5px}.save-btns{flex-direction:column;width:100%;border-radius:12px}.save-btns button{padding:5px 8px;font-size:12px}}
+@media(max-width:600px){.travel-bar{flex-wrap:wrap}.save-spot{order:5;width:100%;justify-content:center;padding-top:2px}.save-btns button{padding:3px 8px}}
+.key-btn{border:1.5px solid var(--pink-btn);background:#fff;color:var(--pink-btn-dark);font-weight:800;font-size:11px;border-radius:14px;padding:3px 9px;min-height:24px;cursor:pointer;white-space:nowrap}
+.key-btn:hover{background:var(--pink-soft)}
+.pcode{font-family:Consolas,'Courier New',monospace;font-size:22px;font-weight:900;letter-spacing:2px;text-align:center;background:#fff0f5;border:2px dashed #e7a2bd;border-radius:12px;padding:10px 8px;margin:10px 0;color:#a8325f;word-break:break-all}
+.pcode-read input{width:100%;font:inherit;font-family:Consolas,'Courier New',monospace;font-size:18px;letter-spacing:1px;padding:8px 10px;border:2px solid #c9b7a6;border-radius:10px;text-transform:uppercase}
+@media(min-width:1280px){.key-btn{width:100%;font-size:12px;padding:6px 8px}}
+
+/* 三個章的字太淡太小（阿澈 2026-10-27 提醒）：字大一點、顏色深一點、框實線 */
+.passport-tabs button{width:64px;height:38px;font-size:12px;font-weight:700;color:#5a4a3a;border:1.5px solid #a8957c;background:#fffdf7;line-height:1.15}
+.passport-tabs button:hover{background:var(--pink-soft);border-color:var(--pink-btn)}
+.passport-tabs .earned{color:#a43e60;border:2px double #aa4865;background:#fbe9ed}
+@media(max-width:600px){.passport-tabs button{width:56px;height:34px;font-size:11px}}
+@media(min-width:1280px){.passport-tabs{gap:6px}.passport-tabs button{width:86px;height:34px;border-radius:18px;transform:rotate(-3deg)}}
