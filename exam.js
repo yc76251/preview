@@ -52,13 +52,15 @@ function feedbackHTML(q,it){return `<b>${it.ok?'✓ 答對了。':'這題答錯�
 function answerExam(choice){
  const it=exam.items[exam.pos],q=BANK()[it.i];if(it.ok!==null)return;
  it.choice=choice;it.ok=rightAnswer(q,choice);exam.streak=it.ok?exam.streak+1:0;render();
- if(!it.ok){const pos=exam.pos;setTimeout(()=>{if(!exam||exam.pos!==pos||currentRoute()!=='exam')return;modal(`<div class="wrong-pop"><div class="bubble-ico">🫧</div><h2>這題答錯囉</h2><p class="pop-q">${q.q}</p><p class="pop-mine"><small>你選的</small>${choiceText(q,choice)}</p><p class="pop-right"><small>正確答案</small>${answerText(q)}</p><p>💡 ${q.why}</p>${q.go?`<a class="text-link" href="#${q.go}" target="_blank" rel="noopener">想複習 ↗</a>`:''}<button class="primary" id="popNext">${exam.pos===exam.items.length-1?'看結果 →':'下一題 →'}</button></div>`);$('#popNext').onclick=()=>{$('#modal').close();nextExam();};},350);}
+ if(!it.ok){const pos=exam.pos;setTimeout(()=>{if(!exam||exam.pos!==pos||currentRoute()!=='exam')return;modal(`<div class="wrong-pop"><div class="bubble-ico">🫧</div><h2>這題答錯囉</h2><p class="pop-q">${q.q}</p><p class="pop-mine"><small>你選的</small>${choiceText(q,choice)}</p><p class="pop-right"><small>正確答案</small>${answerText(q)}</p><p>💡 ${q.why}</p>${q.go?`<a class="text-link" href="#${q.go}" target="_blank" rel="noopener">想複習 ↗</a>`:''}<div class="dialog-actions"><button id="popReview">回看題目與選項</button><button class="primary" id="popNext">${exam.pos===exam.items.length-1?'看結果 →':'下一題 →'}</button></div></div>`);$('#popReview').onclick=()=>{$('#modal').close();focusExamContent();};$('#popNext').onclick=()=>{$('#modal').close();nextExam();};},350);}
+}
+// 回看同題與換下一題共用定位；只移動閱讀位置，不改答案或分數。
+function focusExamContent(){
+ const target=$('.exam-q h2')||$('.exam-end h1');
+ if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
 }
 function nextExam(){
- exam.pos++;if(exam.pos>=exam.items.length)finishExam();render();
- // 新題從題幹開始讀；不回到網站工具列，也不沿用上一題的捲動位置。
- const target=exam.pos<exam.items.length?$('.exam-q h2'):$('.exam-end h1');
- if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
+ exam.pos++;if(exam.pos>=exam.items.length)finishExam();render();focusExamContent();
 }
 function finishExam(){
  const st=examStats(),total=exam.items.length,score=Math.round(st.right/total*100);exam.score=score;
