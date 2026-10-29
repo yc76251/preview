@@ -210,6 +210,7 @@ body[data-world=camp]{background:linear-gradient(#f3ead8,#efe3cb);}
 .streak.hot{color:#b3543a;font-weight:800;animation:pop-in .4s ease-out}
 .q-type{font-size:13px;font-weight:800;color:#7a5232}
 .exam-q h2{padding-right:0}
+.exam-q h2,.exam-end h1{scroll-margin-top:12px}
 .exam-q #examNext{margin-top:12px;float:right}
 .pick-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 .pick-item{display:flex;gap:10px;align-items:center;background:#fff;border:2px solid #a7ae98;border-radius:8px;padding:10px 12px;font-weight:600;cursor:pointer}

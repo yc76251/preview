@@ -1,5 +1,5 @@
 /* 學習內容；來源對照與教師備註留存於本機維護文件。 */
-const APP_VERSION = '0.10.0';
+const APP_VERSION = '0.10.1';
 const TOPICS = [
   {
     "id": "knowledge",

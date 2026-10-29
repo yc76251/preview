@@ -46,7 +46,7 @@ function examPage(){
  const opts=isPick(q)?`<div class="pick-grid">${it.order.map(k=>`<label class="pick-item ${answered?(q.ans.includes(k)?'pick-right':(it.choice.includes(k)?'pick-wrong':'')):''}"><input type="checkbox" value="${k}" ${answered?'disabled':''} ${answered&&it.choice.includes(k)?'checked':''}><span>${q.opts[k]}</span></label>`).join('')}</div>${answered?'':'<button class="primary" id="pickCheck">勾好了，對答案</button>'}`
   :`<div class="answer-options exam-options">${it.order.map((k,pos)=>`<button data-exam-pick="${k}" ${answered?'disabled':''} class="${answered&&k===q.ans?'correct':answered&&k===it.choice?'wrong':''}"><span>${'ABCD'[pos]}</span>${q.opts[k]}</button>`).join('')}</div>`;
  return `<section class="exam-page"><div class="exam-bar"><span class="exam-chip">${scopeInfo(exam.scope).name} · ${exam.mode==='exam'?'📝 考試':'📚 練習全部'}</span><span>第 ${exam.pos+1} / ${exam.items.length} 題</span><span>答對 ${st.right}</span><span class="streak ${exam.streak>=5?'hot':''}">連對 ${exam.streak}${exam.streak>=5?' 🔥':''}</span><button class="quiet-button" id="examQuit">↩ 換範圍</button></div>
- <div class="little-question exam-q"><span class="q-type">${scopeInfo(questionScope(q)).icon} ${questionType(q)}</span><h2>${q.q}</h2>${opts}<div class="mini-feedback" id="examFeedback" role="status">${answered?feedbackHTML(q,it):''}</div>${answered?`<button class="primary" id="examNext">${exam.pos===exam.items.length-1?'看結果 →':'下一題 →'}</button>`:''}</div></section>`;
+ <div class="little-question exam-q"><span class="q-type">${scopeInfo(questionScope(q)).icon} ${questionType(q)}</span><h2 tabindex="-1">${q.q}</h2>${opts}<div class="mini-feedback" id="examFeedback" role="status">${answered?feedbackHTML(q,it):''}</div>${answered?`<button class="primary" id="examNext">${exam.pos===exam.items.length-1?'看結果 →':'下一題 →'}</button>`:''}</div></section>`;
 }
 function feedbackHTML(q,it){return `<b>${it.ok?'✓ 答對了。':'這題答錯囉。'}</b> 💡 ${q.why}${q.go?` <a class="text-link" href="#${q.go}" target="_blank" rel="noopener">想複習 ↗</a>`:''}`;}
 function answerExam(choice){
@@ -54,7 +54,12 @@ function answerExam(choice){
  it.choice=choice;it.ok=rightAnswer(q,choice);exam.streak=it.ok?exam.streak+1:0;render();
  if(!it.ok){const pos=exam.pos;setTimeout(()=>{if(!exam||exam.pos!==pos||currentRoute()!=='exam')return;modal(`<div class="wrong-pop"><div class="bubble-ico">🫧</div><h2>這題答錯囉</h2><p class="pop-q">${q.q}</p><p class="pop-mine"><small>你選的</small>${choiceText(q,choice)}</p><p class="pop-right"><small>正確答案</small>${answerText(q)}</p><p>💡 ${q.why}</p>${q.go?`<a class="text-link" href="#${q.go}" target="_blank" rel="noopener">想複習 ↗</a>`:''}<button class="primary" id="popNext">${exam.pos===exam.items.length-1?'看結果 →':'下一題 →'}</button></div>`);$('#popNext').onclick=()=>{$('#modal').close();nextExam();};},350);}
 }
-function nextExam(){exam.pos++;if(exam.pos>=exam.items.length)finishExam();render();window.scrollTo({top:0});}
+function nextExam(){
+ exam.pos++;if(exam.pos>=exam.items.length)finishExam();render();
+ // 新題從題幹開始讀；不回到網站工具列，也不沿用上一題的捲動位置。
+ const target=exam.pos<exam.items.length?$('.exam-q h2'):$('.exam-end h1');
+ if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
+}
 function finishExam(){
  const st=examStats(),total=exam.items.length,score=Math.round(st.right/total*100);exam.score=score;
  if(exam.mode==='exam'&&(exam.scope||'mixed')==='mixed'&&(!state.examBest||score>=state.examBest.score)){state.examBest={score,right:st.right,total,at:new Date().toISOString().slice(0,10)};save();}
@@ -62,7 +67,7 @@ function finishExam(){
 }
 function examEnd(){
  const bank=BANK(),st=examStats(),total=exam.items.length,score=Math.round(st.right/total*100),stars=score>=90?'⭐⭐⭐':score>=70?'⭐⭐':score>=50?'⭐':'🌱',wrong=exam.items.filter(x=>!x.ok);
- return `<section class="exam-page"><div class="exam-end"><img class="adun adun-celebrate" src="assets/adun-cheer.png" alt=""><h1>${exam.mode==='exam'?'這一回合結束！':'全部練完了！'}</h1><p class="exam-result-scope">${scopeInfo(exam.scope).icon} ${scopeInfo(exam.scope).name}</p><p class="stars">${stars}</p><p class="score-line">答對 ${st.right} / ${total} 題　·　${score} 分</p>
+ return `<section class="exam-page"><div class="exam-end"><img class="adun adun-celebrate" src="assets/adun-cheer.png" alt=""><h1 tabindex="-1">${exam.mode==='exam'?'這一回合結束！':'全部練完了！'}</h1><p class="exam-result-scope">${scopeInfo(exam.scope).icon} ${scopeInfo(exam.scope).name}</p><p class="stars">${stars}</p><p class="score-line">答對 ${st.right} / ${total} 題　·　${score} 分</p>
  ${wrong.length?`<div class="wrong-list"><h2>再看一次答錯的</h2><ol>${wrong.map(x=>{const q=bank[x.i];return `<li><b>${q.q}</b><br>正確答案：${answerText(q)}${q.go?` <a class="text-link" href="#${q.go}" target="_blank" rel="noopener">想複習 ↗</a>`:''}</li>`;}).join('')}</ol></div>`:'<p>全部答對，太厲害了！</p>'}
  <div class="dialog-actions">${exam.mode==='exam'?'<button id="openPaper">📄 看考卷</button>':''}<button class="primary" id="examAgain">${exam.mode==='exam'?`再考一次（${total} 題）→`:'再練一次全部 →'}</button><button id="examQuit2">↩ 換範圍</button></div></div></section>`;
 }
