@@ -966,7 +966,7 @@ body[data-scene] .machine svg{filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
 (function(){
   var CFG = window.MYCO_CONFIG || {}, STAGES = window.MYCO_STAGES || [], CARDS = window.MYCO_CARDS || [];
   var MARK_KEY = "myco_why_marks", MODE_KEY = "myco_device_mode", ID_KEY = "myco_why_id";
-  var PAGE_VERSION = "v29.1_20261031";
+  var PAGE_VERSION = "v29.2_20261031";
   var stageById = {}, stageIdx = {}; STAGES.forEach(function(s, i){ stageById[s.id] = s; stageIdx[s.id] = i; });
   function stopLabel(s){ return /^\d+$/.test(s.no||"") ? "第 "+s.no+" 步" : (s.no||""); }
 

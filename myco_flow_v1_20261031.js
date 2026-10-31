@@ -2,7 +2,8 @@
    🧫 細胞品管任務（闖關）資料＋程式  v1_20261031（v29.1 修改第1、3關與無效結局）  —— 阿澈
    ---------------------------------------------------------------------
    【只想改題目？只要改下面兩段資料就好】
-   1. STAGES：每一關。opts 裡 ok:true 的是正確答案；
+   1. STAGES：每一關。note（可省略）是題目下方的小字附註，放專有名詞說明，讓選項保持一樣短。
+      opts 裡 ok:true 的是正確答案；
       每個選項都有 why（學生按了之後看到的說明）。
       出錯誤選項的原則：一次只錯一個地方，而且是學生真的會搞混的。
    2. RESULTS：最後一關的判讀情境，每次隨機抽一個。
@@ -22,14 +23,14 @@ STAGES: [
   ]},
   {q:"細胞繼代、換液後，什麼時候採檢體最適合？",
    opts:[
-    {t:"培養 3–6 天，細胞長到約 80–90% 滿", ok:true, why:"黴漿菌跟著細胞一起增殖，培養 3–6 天菌量才累積到測得到的量。"},
+    {t:"培養 3–6 天", ok:true, why:"這時細胞大約長到 80–90% 滿。黴漿菌跟著細胞一起增殖，培養 3–6 天菌量才累積到測得到的量。"},
     {t:"剛換完液馬上採", why:"迷思：剛換液最乾淨？剛好相反，這時菌量被新培養液稀釋得最低，容易偽陰性。"},
     {t:"換液後隔天就採", why:"才 1 天，菌量還沒累積起來，容易測不到（偽陰性）。"}
   ]},
   {q:"要怎麼準備檢體？",
    opts:[
-    {t:"把細胞刮下來，混進培養液做成細胞懸浮液", ok:true, why:"黴漿菌跟著細胞增殖，也會釋放到培養液，把細胞刮進培養液一起取，才不會漏掉。"},
-    {t:"先用 PBS 把細胞洗乾淨，再刮下來", why:"一洗就把培養液裡的黴漿菌洗掉了，菌量少時可能偽陰性。"},
+    {t:"刮下細胞，混進培養液", ok:true, why:"黴漿菌跟著細胞增殖，也會釋放到培養液，把細胞刮進培養液一起取，才不會漏掉。"},
+    {t:"先用 PBS 洗過，再刮下細胞", why:"一洗就把培養液裡的黴漿菌洗掉了，菌量少時可能偽陰性。"},
     {t:"離心後只取細胞沉澱", why:"細胞沉澱不能直接拿來測，細胞碎片會干擾 PCR。"}
   ]},
   {q:"取多少細胞懸浮液到滅菌離心管？",
@@ -46,9 +47,9 @@ STAGES: [
     {t:"55°C，5 分鐘", why:"55°C 是 PCR 循環裡讓引子和探針黏上去（讀螢光）的溫度。"},
     {t:"60°C，5 分鐘", why:"60°C 是 PCR 循環裡的延伸溫度，不是前處理。"}
   ]},
-  {q:"加熱後要怎麼處理？",
+  {q:"加熱後要怎麼處理？", note:"高速離心：例如 10,000 × g",
    opts:[
-    {t:"高速離心 30 秒（例如 10,000 × g），取上清液", ok:true, why:"離心讓細胞碎片沉下去，DNA 留在上清液，只取上清液做 PCR。"},
+    {t:"高速離心 30 秒，取上清液", ok:true, why:"離心讓細胞碎片沉下去，DNA 留在上清液，只取上清液做 PCR。"},
     {t:"高速離心 30 秒，取沉澱", why:"DNA 溶在液體裡，沉下去的是會抑制聚合酶的細胞碎片。"},
     {t:"不用離心，搖勻直接取", why:"細胞碎片會一起被吸進去，干擾 PCR。"}
   ]},
@@ -59,16 +60,16 @@ STAGES: [
     {t:"8 µL", why:"8 µL 是配反應液時每份 PCR grade water 的量；檢體超過 2 µL 也不適用這個流程。"},
     {t:"23 µL", why:"23 µL 是反應液的量，檢體只加 2 µL。"}
   ]},
-  {q:"檢體、陰性品管（NC）、陽性品管（PC），加樣順序是？",
+  {q:"檢體、陰性品管（NC）、陽性品管（PC），加樣順序是？", note:"NC 加的是 2 µL PCR grade water",
    opts:[
-    {t:"先加檢體和 NC（2 µL PCR grade water），最後才加 PC", ok:true, why:"PC 的 DNA 濃度很高，最後才開、才加，避免污染其他管。"},
+    {t:"先加檢體和 NC，最後才加 PC", ok:true, why:"PC 的 DNA 濃度很高，最後才開、才加，避免污染其他管。"},
     {t:"先加 PC，再加檢體和 NC", why:"PC 濃度很高，先開先加，很容易污染接下來的檢體和 NC。"},
-    {t:"NC 管什麼都不加，空著上機", why:"NC 要加 2 µL PCR grade water，跟檢體管的體積一樣。"}
+    {t:"NC 管不加東西，直接上機", why:"NC 要加 2 µL PCR grade water，跟檢體管的體積一樣。"}
   ]},
-  {q:"加樣完成後，下一步是？",
+  {q:"加樣完成後，下一步是？", note:"短暫離心＝spin down；PCR 儀＝CFX96",
    opts:[
-    {t:"短暫離心（spin down）後放進 CFX96", ok:true, why:"spin down 把管壁上的液滴集中到管底，再上機跑 PCR。"},
-    {t:"再 95°C 加熱 5 分鐘後上機", why:"95°C 5 分鐘是檢體前處理，已經做過了。"},
+    {t:"短暫離心後上機", ok:true, why:"spin down 把管壁上的液滴集中到管底，再上機跑 PCR。"},
+    {t:"95°C 加熱 5 分鐘後上機", why:"95°C 5 分鐘是檢體前處理，已經做過了。"},
     {t:"不用離心，直接上機", why:"管壁上的液滴沒集中，反應體積會不準。"}
   ]},
   {q:"PCR 跑完了，判讀檢體之前，要先確認什麼？",
@@ -133,7 +134,7 @@ ENDINGS: {
     tried=false;
     if(step<S.length){
       var d=S[step];
-      root.innerHTML='<span class="qztype">🧫 細胞品管任務 '+(step+1)+' / '+total()+'</span><h2>'+esc(d.q)+'</h2><div class="qzopts">'+
+      root.innerHTML='<span class="qztype">🧫 細胞品管任務 '+(step+1)+' / '+total()+'</span><h2>'+esc(d.q)+'</h2>'+(d.note?'<p style="margin:-4px 0 0;font-size:13px;opacity:.75">📝 '+esc(d.note)+'</p>':'')+'<div class="qzopts">'+
         shuffle(d.opts).map(function(o){return '<button type="button" class="btn flow-opt" data-i="'+d.opts.indexOf(o)+'">'+esc(o.t)+'</button>'}).join("")+
         '</div><div class="fb" id="flowFeedback" hidden></div><button class="btn key" id="flowNext" type="button" hidden>下一關 →</button>';
       bind(root.querySelectorAll(".flow-opt"),function(b){var o=d.opts[+b.dataset.i];return {ok:!!o.ok,why:o.why}},function(){document.getElementById("flowNext").hidden=false});
