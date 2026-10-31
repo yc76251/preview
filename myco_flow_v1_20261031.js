@@ -132,6 +132,7 @@ ENDINGS: {
 
   function draw(){
     tried=false;
+    document.body.style.setProperty("--thaw", Math.min(step/total(),1)); /* 背景霜隨進度融化 */
     if(step<S.length){
       var d=S[step];
       root.innerHTML='<span class="qztype">🧫 細胞品管任務 '+(step+1)+' / '+total()+'</span><h2>'+esc(d.q)+'</h2>'+(d.note?'<p style="margin:-4px 0 0;font-size:13px;opacity:.75">📝 '+esc(d.note)+'</p>':'')+'<div class="qzopts">'+
