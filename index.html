@@ -843,7 +843,6 @@ body[data-scene] .machine svg{filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
   </section>
 
   <section id="flowView" role="tabpanel" aria-labelledby="tabFlow" hidden>
-    <div class="qzcard"><strong>🔎 此流程關卡為候選版，待獨立查核後供教學使用。</strong></div>
     <div class="qzcard" id="flowCard" aria-live="polite"></div>
   </section>
   <footer>
@@ -967,7 +966,7 @@ body[data-scene] .machine svg{filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
 (function(){
   var CFG = window.MYCO_CONFIG || {}, STAGES = window.MYCO_STAGES || [], CARDS = window.MYCO_CARDS || [];
   var MARK_KEY = "myco_why_marks", MODE_KEY = "myco_device_mode", ID_KEY = "myco_why_id";
-  var PAGE_VERSION = "v28_20261031";
+  var PAGE_VERSION = "v29_20261031";
   var stageById = {}, stageIdx = {}; STAGES.forEach(function(s, i){ stageById[s.id] = s; stageIdx[s.id] = i; });
   function stopLabel(s){ return /^\d+$/.test(s.no||"") ? "第 "+s.no+" 步" : (s.no||""); }
 
@@ -1829,40 +1828,7 @@ body[data-scene] .machine svg{filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
   document.getElementById('qrBtn').addEventListener('click',function(){setOpen(false);});
 })();
 </script>
-<script>
-(function(){
-  "use strict";
-  var root=document.getElementById("flowCard"), step=0, answered=false, result="";
-  var stages=[
-    {q:"學姊解凍了一支細胞，要做什麼品管？",opts:["黴漿菌 PCR 檢測","細胞存活率確認","細菌與黴菌無菌培養","病毒污染 PCR 篩檢"],correct:0,why:"這個任務要確認細胞是否受到黴漿菌污染。"},
-    {q:"細胞培養管換液後培養 3–6 天，要怎麼準備檢體？",opts:["把細胞刮下，混入培養液","只取新鮮培養液","用無菌水沖洗後取水","直接把細胞培養管放上 PCR 儀"],correct:0,why:"刮下細胞，製成細胞懸浮液。"},
-    {q:"取多少細胞懸浮液到滅菌離心管？",opts:["100 µL，並蓋緊","10 µL，並蓋緊","1000 µL，不必蓋緊","2 µL，直接加反應液"],correct:0,why:"取 100 µL 細胞懸浮液，放入滅菌離心管並蓋緊。"},
-    {q:"接著如何加熱？",opts:["95°C，5 分鐘","95°C，3 分鐘","60°C，5 分鐘","55°C，30 秒"],correct:0,why:"95°C 加熱 5 分鐘。"},
-    {q:"加熱後如何處理？",opts:["高速離心 30 秒，取上清","高速離心 5 分鐘，取沉澱","低速離心 30 秒，取沉澱","不離心，直接取細胞碎片"],correct:0,why:"高速離心 30 秒（例如 10,000 × g），取上清進行檢測。"},
-    {q:"配好每管 23 µL PCR 反應液後，檢體管要加入什麼？",opts:["2 µL 處理後上清","2 µL 陽性品管 DNA","8 µL 處理後上清","23 µL 處理後上清"],correct:0,why:"每管反應液 23 µL，加 2 µL 處理後檢體；另設陽性與陰性品管。"},
-    {q:"加樣完成後，下一步是？",opts:["先短暫離心，再放入 PCR 儀","立即判讀結果","先加熱 95°C 5 分鐘再加樣","倒掉上清後取沉澱上機"],correct:0,why:"短暫離心後上機，依設定程式執行 PCR。"},
-    {q:"PCR 完成了，判讀細胞結果之前先確認什麼？",opts:["陽性與陰性品管結果符合預期","只要陽性品管有訊號即可","只要陰性品管無訊號即可","只看檢體有沒有訊號"],correct:0,why:"陽性品管與陰性品管都符合預期，才能接受這次結果。"}
-  ];
-  function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  function draw(){
-    answered=false;
-    if(step<stages.length){
-      var d=stages[step], order=[0,1,2,3].sort(function(){return Math.random()-.5});
-      root.innerHTML='<span class="qztype">🧫 細胞品管任務 '+(step+1)+' / '+(stages.length+1)+'</span><h2>'+esc(d.q)+'</h2><div class="qzopts">'+order.map(function(i){return '<button type="button" class="btn flow-opt" data-i="'+i+'">'+esc(d.opts[i])+'</button>'}).join("")+'</div><div class="fb" id="flowFeedback" hidden></div><button class="btn key" id="flowNext" type="button" hidden>下一關 →</button>';
-      root.querySelectorAll(".flow-opt").forEach(function(b){b.onclick=function(){if(answered)return;var i=+b.dataset.i, fb=document.getElementById("flowFeedback");fb.hidden=false;if(i!==d.correct){fb.textContent="再想想看，哪個選項最符合這一步？";return}answered=true;fb.textContent="答對了！"+d.why;document.getElementById("flowNext").hidden=false;};});
-      document.getElementById("flowNext").onclick=function(){step++;draw();root.scrollIntoView({behavior:"smooth",block:"start"})};
-    }else if(step===stages.length){
-      result=Math.random()<.5?"positive":"negative";
-      var sample=result==="positive"?"檢體 FAM Ct 32；內部品管 HEX Ct 30":"檢體 FAM 無擴增；內部品管 HEX Ct 30";
-      root.innerHTML='<span class="qztype">📈 最後一關</span><h2>品管正常，這支細胞的結果是？</h2><p>陽性品管：符合預期；陰性品管：符合預期。</p><p>'+sample+'</p><p>依 Venor GeM qEP 判讀：Ct &lt; 40 為陽性。</p><div class="qzopts"><button class="btn flow-result" data-value="positive">陽性</button><button class="btn flow-result" data-value="negative">陰性</button></div><div class="fb" id="flowFeedback" hidden></div>';
-      root.querySelectorAll(".flow-result").forEach(function(b){b.onclick=function(){var fb=document.getElementById("flowFeedback");fb.hidden=false;if(b.dataset.value!==result){fb.textContent="再看一次檢體 FAM 與內部品管的結果喔！";return}step++;draw()}});
-    }else{
-      var ending=result==="positive"?"啊！污染了，這個細胞不能用，趕快通知學姊解凍新的細胞！":"太好了！檢測通過，通知學姊可以開始養給病毒培養工作站使用了！";
-      root.innerHTML='<span class="qztype">🎉 任務完成</span><h2>'+esc(ending)+'</h2><p>記得填寫黴漿菌檢測結果紀錄表。</p><button class="btn key" type="button" id="flowRestart">再玩一次 →</button>';document.getElementById("flowRestart").onclick=function(){step=0;draw()};
-    }
-  }
-  draw();
-})();
-</script>
+<!-- 細胞品管任務：題目與程式在獨立檔，改題目只要改那個檔 -->
+<script src="myco_flow_v1_20261031.js"></script>
 </body>
 </html>
