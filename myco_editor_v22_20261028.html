@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>翻卡維護小幫手</title>
+<style>
+:root{--bg:#FFFBFD;--surface:#FFFFFF;--soft:#FDECF3;--pink:#E2558A;--pink-ink:#C23F72;--mint:#3FB79A;--peach:#F59E6B;--fg:#3A2E35;--muted:#7A6670;--line:#F3D3E1;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#231A20;--surface:#2E232A;--soft:#3A2A33;--pink:#F07BA6;--pink-ink:#F79BBE;--mint:#5FD0B3;--peach:#F7B38A;--fg:#F6E9EF;--muted:#C9B3BE;--line:#4A3540;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#231A20;--surface:#2E232A;--soft:#3A2A33;--pink:#F07BA6;--pink-ink:#F79BBE;--mint:#5FD0B3;--peach:#F7B38A;--fg:#F6E9EF;--muted:#C9B3BE;--line:#4A3540;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px 60px}
+h1{color:var(--pink);font-size:28px;margin:0 0 6px}
+.note{background:var(--soft);border-radius:14px;padding:12px 16px;margin:0 0 18px}
+.note ol{margin:6px 0 0;padding-left:20px}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px;margin:0 0 14px;display:grid;gap:8px}
+.row{display:grid;grid-template-columns:110px 1fr;gap:8px;align-items:start}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+label{font-size:13px;color:var(--muted);padding-top:6px}
+input,textarea,select{font:inherit;width:100%;border:1px solid var(--line);border-radius:10px;padding:6px 10px;background:var(--bg);color:var(--fg);min-width:0}
+textarea{min-height:60px;resize:vertical}
+.head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.head b{color:var(--pink-ink)}
+.btn{font:inherit;font-size:14px;border:none;border-radius:10px;padding:6px 12px;cursor:pointer;background:var(--soft);color:var(--pink-ink)}
+.btn.main{background:var(--pink);color:#fff;font-weight:700}
+.btn.del{color:var(--peach)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+#out{min-height:240px;font-family:Consolas,monospace;font-size:12px}
+.small{font-size:13px;color:var(--muted)}
+:focus-visible{outline:3px solid #F2C12E;outline-offset:2px}
+a{color:var(--pink-ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>✏️ 翻卡維護小幫手</h1>
+  <p class="small">這個頁面只會「產生新版資料檔的文字」，不會改到網路上的題庫；只有把產生的文字存成檔案、重新上傳，題庫才會改變。</p>
+  <p class="small"><a href="index.html">← 回到翻卡教材</a></p>
+  <div class="note">
+    <b>怎麼用：</b>
+    <ol>
+      <li>在下面直接改卡片內容，或按「＋ 新增一張卡」。</li>
+      <li>改好後按最下面的「產生新版資料檔」，再按「複製」。</li>
+      <li>用記事本打開資料檔（例如 <code>myco_cards_v15_20261028.js</code>），全選、貼上，<b>另存成新版本檔名</b>（例如 <code>_v16_日期.js</code>）。</li>
+      <li>翻卡網頁裡 <code>&lt;script src="…"&gt;</code> 那一行的檔名，也改成新版本的檔名。</li>
+    </ol>
+    <p class="small">新卡片請加在最後面（進度碼照順序記，插在中間會讓舊代碼對錯卡）。表格欄位：一行一列，每一格用「｜」（全形直線）分開，第一行是標題列。標籤用逗號分開，可用：SOP、原理、說明書、延伸、待核對。</p>
+  </div>
+  <div class="card">
+    <div class="head"><b>⚙️ 網站設定</b></div>
+    <div class="row"><label for="cfg_version">題庫版次</label><input id="cfg_version" data-cfg="version" placeholder="例如 v12_20261022"></div>
+    <div class="row"><label for="cfg_handout">整份講義網址</label><input id="cfg_handout" data-cfg="handoutUrl" placeholder="https://…（可空白）"></div>
+    <p class="small">講義網址要用 https:// 開頭。Notion 頁面記得先按右上角「Share（分享）」→「Publish（發布到網路）」，學生才不用登入就能看。每張卡也可以在下面填自己的講義網址。</p>
+  </div>
+  <div class="bar"><button class="btn" id="add" type="button">＋ 新增一張卡</button></div>
+  <div id="list"></div>
+  <h2 style="color:var(--pink);font-size:22px;margin:28px 0 6px">📝 綜合測驗題</h2>
+  <p class="small">每題四個選項，在正確答案前面的圓圈打勾。原理題請填對應的翻卡編號（1–21），錯題回顧才能連到那張卡；數字題不用填。網頁上會自動打亂選項順序。</p>
+  <div class="bar"><button class="btn" id="qadd" type="button">＋ 新增一題</button><span class="small" id="qcount"></span></div>
+  <div id="qlist"></div>
+  <div class="bar"><button class="btn main" id="gen" type="button">產生新版資料檔</button><button class="btn" id="copy" type="button">複製</button><span class="small" id="msg"></span></div>
+  <textarea id="out" readonly aria-label="產生的新版資料檔內容"></textarea>
+</div>
+<script src="myco_cards_v15_20261028.js"></script>
+<script>
+(function(){
+  var CFG = JSON.parse(JSON.stringify(window.MYCO_CONFIG||{}));
+  var STAGES = JSON.parse(JSON.stringify(window.MYCO_STAGES||[]));
+  var cards = JSON.parse(JSON.stringify(window.MYCO_CARDS||[]));
+  var quiz = JSON.parse(JSON.stringify(window.MYCO_QUIZ||[]));
+  var FIELDS = [["q","問題（正面）",1],["sop","SOP 這一步",1],["a","一句話答案",1],["why","詳細說明",3],["exam","考點延伸（可空白）",2],["trap","常見迷思（可空白）",2],["alt","也可以這樣做（可空白）",2],["noteUrl","講義網址（可空白）",1]];
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  function render(){
+    document.getElementById("list").innerHTML = cards.map(function(c,i){
+      var opts = STAGES.map(function(s){ return '<option value="'+s.id+'"'+(s.id===c.stage?" selected":"")+'>'+esc(s.name)+'</option>'; }).join("");
+      var f = FIELDS.map(function(x){
+        var tag = x[2]>1? '<textarea id="'+c.id+'_'+x[0]+'" data-i="'+i+'" data-k="'+x[0]+'" rows="'+x[2]+'">'+esc(c[x[0]])+'</textarea>'
+                        : '<input id="'+c.id+'_'+x[0]+'" data-i="'+i+'" data-k="'+x[0]+'" value="'+esc(c[x[0]])+'">';
+        return '<div class="row"><label for="'+c.id+'_'+x[0]+'">'+x[1]+'</label>'+tag+'</div>'; }).join("");
+      var tbl = (c.table||[]).map(function(r){return r.join("｜");}).join("\n");
+      return '<div class="card"><div class="head"><b>#'+(i+1)+'　'+esc(c.id)+'</b><span>'+
+        '<button class="btn" type="button" data-up="'+i+'">↑</button> <button class="btn" type="button" data-down="'+i+'">↓</button> '+
+        '<button class="btn del" type="button" data-del="'+i+'">刪除這張</button></span></div>'+
+        '<div class="row"><label for="'+c.id+'_stage">關卡</label><select id="'+c.id+'_stage" data-i="'+i+'" data-k="stage">'+opts+'</select></div>'+ f +
+        '<div class="row"><label for="'+c.id+'_table">判讀表格（可空白）</label><textarea id="'+c.id+'_table" data-i="'+i+'" data-k="table" rows="3">'+esc(tbl)+'</textarea></div>'+
+        '<div class="row"><label for="'+c.id+'_tags">標籤</label><input id="'+c.id+'_tags" data-i="'+i+'" data-k="tags" value="'+esc((c.tags||[]).join(", "))+'"></div>'+
+      '</div>'; }).join("");
+  }
+  document.getElementById("list").addEventListener("input", function(e){
+    var t = e.target, i = +t.getAttribute("data-i"), k = t.getAttribute("data-k"); if(isNaN(i)||!k) return;
+    if(k==="table"){ var v=t.value.trim(); cards[i].table = v? v.split("\n").map(function(r){return r.split("｜").map(function(x){return x.trim();});}) : undefined; }
+    else if(k==="tags"){ cards[i].tags = t.value.split(/[,，]/).map(function(x){return x.trim();}).filter(Boolean); }
+    else { cards[i][k] = t.value; }
+  });
+  document.getElementById("list").addEventListener("click", function(e){
+    var b = e.target;
+    if(b.hasAttribute("data-del")){ var d=+b.getAttribute("data-del");
+      if(b.getAttribute("data-sure")){ cards.splice(d,1); render(); } else { b.setAttribute("data-sure","1"); b.textContent="再按一次確認刪除"; } }
+    if(b.hasAttribute("data-up")){ var u=+b.getAttribute("data-up"); if(u>0){ var t=cards[u]; cards[u]=cards[u-1]; cards[u-1]=t; render(); } }
+    if(b.hasAttribute("data-down")){ var w=+b.getAttribute("data-down"); if(w<cards.length-1){ var t2=cards[w]; cards[w]=cards[w+1]; cards[w+1]=t2; render(); } }
+  });
+  document.getElementById("add").addEventListener("click", function(){
+    var n = 1; while(cards.some(function(c){return c.id==="c"+String(n).padStart(2,"0");})) n++;
+    cards.push({id:"c"+String(n).padStart(2,"0"), stage:(STAGES[0]||{}).id||"", q:"新問題？", sop:"", a:"", why:"", tags:["原理"]});
+    render(); window.scrollTo(0, document.body.scrollHeight);
+  });
+  document.getElementById("gen").addEventListener("click", function(){
+    var clean = cards.map(function(c){ var o={}; Object.keys(c).forEach(function(k){ var v=c[k]; if(v===undefined||v==="") return; if(Array.isArray(v)&&!v.length) return; o[k]=v; }); return o; });
+    var txt = "/* 黴漿菌為什麼？翻卡教材 — 卡片資料檔（由維護小幫手產生）\n   產生時間："+new Date().toLocaleString("zh-TW")+"\n   請另存成新版本檔名，例如 myco_cards_v15_日期.js */\n\n"+
+      "window.MYCO_CONFIG = "+JSON.stringify(CFG,null,2)+";\n\nwindow.MYCO_STAGES = "+JSON.stringify(STAGES,null,2)+";\n\nwindow.MYCO_CARDS = "+JSON.stringify(clean,null,2)+";\n\n/* 綜合測驗題庫 */\nwindow.MYCO_QUIZ = "+JSON.stringify(quiz,null,2)+";\n";
+    document.getElementById("out").value = txt; document.getElementById("msg").textContent = "已產生，共 "+clean.length+" 張卡。";
+  });
+  document.getElementById("copy").addEventListener("click", function(){
+    var out = document.getElementById("out"), msg = document.getElementById("msg");
+    if(!out.value){ msg.textContent = "請先按「產生新版資料檔」。"; return; }
+    try{ navigator.clipboard.writeText(out.value).then(function(){ msg.textContent="已複製 ✓"; }, function(){ out.select(); msg.textContent="已幫妳全選，請按 Ctrl+C 複製。"; }); }
+    catch(e){ out.select(); msg.textContent="已幫妳全選，請按 Ctrl+C 複製。"; }
+  });
+  /* ---------- 綜合測驗題 ---------- */
+  function qrender(){
+    document.getElementById("qcount").textContent = "共 "+quiz.length+" 題（數字 "+quiz.filter(function(x){return x.type!=="原理";}).length+"、原理 "+quiz.filter(function(x){return x.type==="原理";}).length+"）";
+    document.getElementById("qlist").innerHTML = quiz.map(function(x,i){
+      var id = "q"+i;
+      var opts = [0,1,2,3].map(function(k){
+        return '<div class="row"><label for="'+id+'_o'+k+'"><input type="radio" name="'+id+'_ans" data-qi="'+i+'" data-qk="ans" value="'+k+'"'+(x.ans===k?" checked":"")+' style="width:auto"> 選項 '+"ABCD".charAt(k)+(x.ans===k?"（正確）":"")+'</label><input id="'+id+'_o'+k+'" data-qi="'+i+'" data-qk="opt" data-o="'+k+'" value="'+esc((x.opts||[])[k])+'"></div>';
+      }).join("");
+      return '<div class="card"><div class="head"><b>題 '+(i+1)+'</b><span>'+
+        '<button class="btn" type="button" data-qup="'+i+'">↑</button> <button class="btn" type="button" data-qdown="'+i+'">↓</button> '+
+        '<button class="btn del" type="button" data-qdel="'+i+'">刪除這題</button></span></div>'+
+        '<div class="row"><label for="'+id+'_t">類型</label><select id="'+id+'_t" data-qi="'+i+'" data-qk="type"><option value="數字"'+(x.type!=="原理"?" selected":"")+'>🔢 數字題</option><option value="原理"'+(x.type==="原理"?" selected":"")+'>🃏 原理題</option></select></div>'+
+        '<div class="row"><label for="'+id+'_c">翻卡編號</label><input id="'+id+'_c" type="number" min="1" data-qi="'+i+'" data-qk="card" value="'+(x.card||"")+'" placeholder="原理題才填，例如 3"></div>'+
+        '<div class="row"><label for="'+id+'_q">題目</label><textarea id="'+id+'_q" rows="2" data-qi="'+i+'" data-qk="q">'+esc(x.q)+'</textarea></div>'+ opts +
+        '<div class="row"><label for="'+id+'_w">為什麼</label><textarea id="'+id+'_w" rows="2" data-qi="'+i+'" data-qk="why">'+esc(x.why)+'</textarea></div>'+
+      '</div>';
+    }).join("");
+  }
+  var ql = document.getElementById("qlist");
+  ql.addEventListener("input", function(e){
+    var t = e.target, i = +t.getAttribute("data-qi"), k = t.getAttribute("data-qk"); if(isNaN(i)||!k) return;
+    var x = quiz[i];
+    if(k==="opt"){ x.opts = x.opts || ["","","",""]; x.opts[+t.getAttribute("data-o")] = t.value; }
+    else if(k==="card"){ var n = parseInt(t.value,10); if(n>0) x.card = n; else delete x.card; }
+    else if(k==="q" || k==="why"){ x[k] = t.value; }
+  });
+  ql.addEventListener("change", function(e){
+    var t = e.target, i = +t.getAttribute("data-qi"), k = t.getAttribute("data-qk"); if(isNaN(i)||!k) return;
+    if(k==="ans"){ quiz[i].ans = +t.value; qrender(); }
+    if(k==="type"){ quiz[i].type = t.value; if(t.value!=="原理") delete quiz[i].card; qrender(); }
+  });
+  ql.addEventListener("click", function(e){
+    var b = e.target;
+    if(b.hasAttribute("data-qdel")){ var d=+b.getAttribute("data-qdel");
+      if(b.getAttribute("data-sure")){ quiz.splice(d,1); qrender(); } else { b.setAttribute("data-sure","1"); b.textContent="再按一次確認刪除"; } }
+    if(b.hasAttribute("data-qup")){ var u=+b.getAttribute("data-qup"); if(u>0){ var t=quiz[u]; quiz[u]=quiz[u-1]; quiz[u-1]=t; qrender(); } }
+    if(b.hasAttribute("data-qdown")){ var w=+b.getAttribute("data-qdown"); if(w<quiz.length-1){ var t2=quiz[w]; quiz[w]=quiz[w+1]; quiz[w+1]=t2; qrender(); } }
+  });
+  document.getElementById("qadd").addEventListener("click", function(){
+    quiz.push({type:"原理", q:"新題目？", opts:["正確答案","錯誤選項","錯誤選項","錯誤選項"], ans:0, why:""});
+    qrender(); var last = ql.lastElementChild; if(last) last.scrollIntoView({behavior:"smooth"});
+  });
+
+  ["version","handoutUrl"].forEach(function(k){
+    var el = document.querySelector('[data-cfg="'+k+'"]'); el.value = CFG[k] || "";
+    el.addEventListener("input", function(){ var v = el.value.trim(); if(v) CFG[k] = v; else delete CFG[k]; });
+  });
+  render(); qrender();
+})();
+</script>
+</body>
+</html>

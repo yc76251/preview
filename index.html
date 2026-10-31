@@ -1,19 +1,1868 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#fbf8ef"><meta name="description" content="BD MAX 探索小徑：拿好地圖，繫好鞋帶，選一條適合你的步道出發吧！">
-<title>BD MAX 探索小徑・EVP｜PinkDuckLab</title><link rel="icon" href="assets/icon.png">
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="world.css"><link rel="stylesheet" href="cabin.css?v=0.10.2"><link rel="stylesheet" href="kit.css"><link rel="stylesheet" href="aid.css">
-<script defer src="qr.js"></script><script defer src="content.js?v=0.10.2"></script><script defer src="activities.js"></script><script defer src="world.js"></script><script defer src="exercise-helpers.js"></script><script defer src="evp-bank.js"></script><script defer src="exam.js?v=0.10.2"></script><script defer src="kit.js"></script><script defer src="aid.js"></script><script defer src="app.js"></script><script defer src="progress-code.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="PinkDuckLab 細胞培養黴漿菌 real-time PCR 教材：翻卡練習、判讀練習機、綜合測驗與通關證書">
+<style>html,body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>
+<title>黴漿菌為什麼？</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* 版面概念：實驗記錄本的方格紙＋一排彩色 PCR 管當關卡選單；每一關一個糖果色，粉紅只留給品牌和重點 */
+:root{
+  --paper:#FBF8F6; --grid:#F0E7EA; --surface:#FFFFFF; --line:#EADDE2; --rack:#EFE4E8;
+  --ink:#3A2E35; --muted:#7A6670; --glass:#FFFFFF;
+  --brand:#E2558A; --brand-ink:#C23F72; --brand-soft:#FDECF3;
+  --peach:#F59E6B; --peach-soft:#FEEFE5; --peach-ink:#B5602E;
+  --lemon:#F2C12E; --lemon-soft:#FFF7D9; --lemon-ink:#8F6B00;
+  --mint:#3FB79A;  --mint-soft:#E3F6F0;  --mint-ink:#1F7F68;
+  --rose:#E2558A;  --rose-soft:#FDECF3;  --rose-ink:#C23F72;
+  --lav:#A98BD9;   --lav-soft:#F1ECFA;   --lav-ink:#6E4FA8;
+  --lime:#8CC63F;  --lime-soft:#EEF7E0;  --lime-ink:#4F7D16;
+  --berry:#C2407A; --berry-soft:#F9E3EE; --berry-ink:#9A2C5E;
+  --shadow:0 1px 0 rgba(58,46,53,.06), 0 10px 28px -12px rgba(58,46,53,.18);
+  --f-display:"Huninn","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  --f-body:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#1F1A1D; --grid:#2A2327; --surface:#2A2226; --line:#3D3238; --rack:#362C31;
+  --ink:#F4E9EE; --muted:#C2AFB8; --glass:#2F272B;
+  --brand:#F07BA6; --brand-ink:#F79BBE; --brand-soft:#3A2731;
+  --peach:#F7B38A; --peach-soft:#3B2C23; --peach-ink:#F7C3A3;
+  --lemon:#F5D35E; --lemon-soft:#38321E; --lemon-ink:#F5DA7E;
+  --mint:#5FD0B3;  --mint-soft:#1E3530;  --mint-ink:#86DEC7;
+  --rose:#F07BA6;  --rose-soft:#3A2731;  --rose-ink:#F79BBE;
+  --lav:#C3ABEA;   --lav-soft:#30293E;   --lav-ink:#D2C0F0;
+  --lime:#AEDB6E;  --lime-soft:#2B3520;  --lime-ink:#C3E594;
+  --berry:#E070A2; --berry-soft:#3A2330; --berry-ink:#EE9CC1;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 10px 28px -12px rgba(0,0,0,.6);
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --paper:#1F1A1D; --grid:#2A2327; --surface:#2A2226; --line:#3D3238; --rack:#362C31;
+  --ink:#F4E9EE; --muted:#C2AFB8; --glass:#2F272B;
+  --brand:#F07BA6; --brand-ink:#F79BBE; --brand-soft:#3A2731;
+  --peach:#F7B38A; --peach-soft:#3B2C23; --peach-ink:#F7C3A3;
+  --lemon:#F5D35E; --lemon-soft:#38321E; --lemon-ink:#F5DA7E;
+  --mint:#5FD0B3;  --mint-soft:#1E3530;  --mint-ink:#86DEC7;
+  --rose:#F07BA6;  --rose-soft:#3A2731;  --rose-ink:#F79BBE;
+  --lav:#C3ABEA;   --lav-soft:#30293E;   --lav-ink:#D2C0F0;
+  --lime:#AEDB6E;  --lime-soft:#2B3520;  --lime-ink:#C3E594;
+  --berry:#E070A2; --berry-soft:#3A2330; --berry-ink:#EE9CC1;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 10px 28px -12px rgba(0,0,0,.6);
+  color-scheme:dark;}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background-color:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;background-attachment:fixed}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:64px 110px}
+:focus-visible{outline:3px solid var(--lemon);outline-offset:2px}
+
+/* 標題區 */
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:center;margin-bottom:8px}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:700;margin:0 0 6px}
+.eyebrow b{color:var(--brand-ink)}
+.ver{margin-left:10px;font-size:11px;letter-spacing:.02em;font-weight:500;padding:1px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--surface);white-space:nowrap}
+/* v27：手機上版號可以換行，不再把畫面撐寬（以前手機會自動縮放） */
+@media (max-width:520px){ .ver{display:inline-block;white-space:normal;max-width:100%;line-height:1.5;margin:4px 0 0;border-radius:10px;letter-spacing:0} }
+details.how{align-self:start}
+.side{display:grid;gap:12px;align-self:start}
+.machine{font:inherit;border:none;background:none;padding:0;cursor:pointer;display:grid;justify-items:center;gap:4px;color:var(--ink)}
+.machine svg{width:100%;max-width:300px;height:auto;filter:drop-shadow(0 10px 18px rgba(58,46,53,.14));transition:transform .25s ease}
+.machine:hover svg{transform:translateY(-4px) rotate(-1deg)}
+.machine .lid{transition:transform .3s ease;transform-origin:160px 60px}
+.machine:hover .lid{transform:translateY(-6px)}
+.machine .trace{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 3.2s ease-in-out infinite}
+.machine .t2{animation-delay:.5s}
+@keyframes draw{0%{stroke-dashoffset:200}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+.mlabel{font-size:14px;font-weight:700;color:#fff;background:var(--brand);border-radius:999px;padding:6px 16px;box-shadow:var(--shadow);animation:nudge 2.4s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media (max-width:760px){.machine svg{max-width:220px}}
+details.how summary{cursor:pointer;list-style:none;font-family:var(--f-display);font-size:18px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"▼";color:var(--brand);font-size:12px;transition:transform .2s ease}
+details.how[open] summary::after{transform:rotate(180deg)}
+details.how[open] summary{margin-bottom:6px}
+.help{font:inherit;font-size:13px;font-weight:700;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--brand-ink);cursor:pointer}
+.help[aria-expanded="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.tip{background:var(--surface);border:1.5px dashed var(--mint);border-radius:14px;padding:10px 14px;font-size:14px;margin:-10px 0 18px;display:grid;gap:4px}
+.btn.cert{background:var(--lemon-soft);border-color:var(--lemon)}
+.btn.cert.done{background:var(--lemon);color:#3A2E35;font-weight:700}
+.box{white-space:pre-line}
+.paper{position:relative;background:var(--paper);border:3px double var(--brand);border-radius:16px;padding:22px 18px 18px;display:grid;gap:6px;text-align:center;overflow:hidden}
+.paper::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--grid) 1.5px,transparent 1.6px);background-size:18px 18px;opacity:.8;pointer-events:none}
+.paper>*{position:relative}
+.paper .ttl{font-family:var(--f-display);font-size:26px;color:var(--brand);margin:0;line-height:1.2}
+.paper .sub2{font-size:13px;letter-spacing:.2em;color:var(--muted);margin:0}
+.paper .who{font-family:var(--f-display);font-size:22px;margin:6px 0 0;border-bottom:2px dotted var(--line);padding-bottom:4px}
+.paper .line{font-size:14px;margin:0}
+.paper .big{font-size:18px;font-weight:700;color:var(--mint-ink);margin:2px 0}
+.stamp{position:absolute;right:46px;top:8px;width:78px;height:78px;border:3px solid var(--brand);border-radius:50%;color:var(--brand);transform:rotate(-14deg);display:grid;place-items:center;text-align:center;font-size:11px;font-weight:700;line-height:1.25;opacity:.85}
+.panel.wide{max-width:680px}
+.panel{position:relative;max-height:calc(100vh - 32px);overflow:auto}
+.xbtn{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:18px;line-height:1;cursor:pointer;z-index:3}
+.xbtn:hover{border-color:var(--brand);color:var(--brand)}
+.paper{grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:18px;text-align:left}
+.paper .info{display:grid;gap:4px}
+.paper .qr{margin:0;max-width:200px;font-size:13px}
+@media (max-width:560px){.paper{grid-template-columns:1fr;text-align:center}.paper .qr{margin:0 auto}}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.tabs{gap:10px;border-bottom:3px solid var(--ink);padding-bottom:0}
+.tab{font:inherit;border:2px solid var(--line);border-bottom:none;background:var(--surface);color:var(--ink);border-radius:16px 16px 0 0;padding:10px 18px 8px;cursor:pointer;display:grid;text-align:left;gap:0;margin-bottom:-3px;transition:transform .15s ease}
+.tab b{font-size:17px}
+.tab small{font-size:12px;color:var(--muted)}
+.tab:hover{transform:translateY(-3px);border-color:var(--brand)}
+.tab[aria-selected="false"]{border-style:dashed;border-color:var(--brand)}
+.tab[aria-selected="false"] b::after{content:"　點我切換 ›";font-size:12px;color:var(--brand-ink);font-weight:500}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink)}
+.tab[aria-selected="true"] b,.tab[aria-selected="true"] small{color:var(--paper)}
+.box .golab{margin-top:6px}
+/* 判讀練習機 */
+.lab{margin-top:18px;display:grid;gap:16px}
+.labhead{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.labhead h2{font-family:var(--f-display);font-weight:400;font-size:24px;margin:0}
+.score{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-size:13px;padding:3px 12px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line);font-variant-numeric:tabular-nums}
+.wellsRow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.wellsRow{grid-template-columns:1fr}.wellCard svg{max-height:150px}}
+.wellCard{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:10px 12px;box-shadow:var(--shadow);min-width:0}
+.wellCard.target{border-color:var(--brand);border-width:2.5px}
+.wellCard h3{margin:0 0 4px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.wellCard h3 span{font-size:12px;font-weight:500;color:var(--muted)}
+.wellCard svg{width:100%;height:auto;display:block}
+.ctrow{display:flex;gap:10px;font-size:13px;font-variant-numeric:tabular-nums;margin-top:4px;flex-wrap:wrap}
+.ctrow b{font-weight:700}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.ask{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;gap:10px}
+.ask p{margin:0;font-weight:700}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts .btn{font-size:14px}
+.opts .btn.right{background:var(--mint);border-color:var(--mint);color:#fff}
+.opts .btn.wrong{background:var(--peach);border-color:var(--peach);color:#fff}
+.fb{border-radius:12px;padding:10px 14px;font-size:15px;white-space:pre-line}
+.fb.good{background:var(--mint-soft)} .fb.bad{background:var(--peach-soft)}
+.legend2{font-size:13px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
+.howto{margin:0 0 10px;font-size:15px}
+#labPlay{display:grid;gap:14px}
+.wellCard.target h3{color:var(--brand-ink)}
+.pill.hot{background:linear-gradient(90deg,#F59E6B,#E2558A);color:#fff;border-color:transparent;animation:hot .6s ease 3}
+@keyframes hot{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.result{background:var(--surface);border:2px solid var(--brand);border-radius:20px;padding:22px;text-align:center;display:grid;gap:6px;justify-items:center}
+.result p{margin:0}
+.result h3{font-family:var(--f-display);font-weight:400;font-size:28px;margin:0;color:var(--brand)}
+.result .stars{font-size:36px;letter-spacing:.1em}
+.result ul{text-align:left;margin:0;padding-left:20px;font-size:14px}
+.misslist{list-style:none;padding:0 !important;display:grid;gap:8px;width:100%;max-width:640px}
+.misslist li{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.misslist li span:first-child{flex:1 1 260px;min-width:0}
+.btn.mini{font-size:13px;padding:4px 12px}
+.btn.handout{margin-top:12px;background:var(--lemon-soft);border-color:var(--lemon);color:var(--ink);font-weight:700;text-decoration:none}
+.btn.note{background:var(--lemon-soft);border-color:var(--lemon);color:var(--ink);font-weight:700;text-decoration:none}
+.sopnote{font-size:13px;color:var(--muted);white-space:nowrap}
+.card.spot{animation:spot 1.6s ease 1}
+@keyframes spot{0%,100%{box-shadow:var(--shadow)}20%,60%{box-shadow:0 0 0 5px var(--brand),var(--shadow)}}
+.qzcard{background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:22px 20px;box-shadow:var(--shadow);display:grid;gap:14px}
+.qztype{justify-self:start;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--lemon-soft);color:var(--lemon-ink)}
+.qztype.c{background:var(--mint-soft);color:var(--mint-ink)}
+.qzq{font-family:var(--f-display);font-size:24px;line-height:1.45;margin:0;text-wrap:balance}
+.qzopts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.qzopts{grid-template-columns:1fr}.qzq{font-size:20px}}
+.qzopt{font:inherit;font-size:17px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:14px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;min-width:0}
+.qzopt:hover:not(:disabled){border-color:var(--brand);transform:translateY(-1px)}
+.qzopt .lt{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--lav-soft);color:var(--lav-ink)}
+.qzopt.right{background:var(--mint-soft);border-color:var(--mint)} .qzopt.right .lt{background:var(--mint);color:#fff}
+.qzopt.wrong{background:var(--peach-soft);border-color:var(--peach)} .qzopt.wrong .lt{background:var(--peach);color:#fff}
+.qzopt:disabled{cursor:default}
+#idInput,#certId{text-transform:none;letter-spacing:.04em}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,7vw,64px);line-height:1.05;margin:0;text-wrap:balance}
+h1 .why{color:var(--brand);position:relative;white-space:nowrap}
+h1 .why svg{position:absolute;left:0;right:0;bottom:-10px;width:100%;height:14px}
+.sub{color:var(--muted);margin:14px 0 0;max-width:46ch}
+.how{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);font-size:14px;display:grid;gap:8px}
+.how h2{font-family:var(--f-display);font-weight:400;font-size:18px;margin:0}
+.how ol{margin:0;padding-left:20px;display:grid;gap:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+
+/* 路線（v23）：照操作流程的 9 站，點一站，下面先說這一步在做什麼，再放這一站的卡 */
+.routeWrap{margin:22px 0 6px;overflow-x:auto;padding:12px 2px 6px}
+.route{display:flex;align-items:flex-start;min-width:max-content;padding:0 4px}
+.stop{position:relative;background:none;border:none;font:inherit;color:var(--ink);cursor:pointer;display:grid;justify-items:center;gap:5px;width:86px;padding:0}
+.stop+.stop::before{content:"";position:absolute;top:22px;right:50%;width:100%;border-top:3px dotted var(--line);z-index:0}
+.stop .dot{position:relative;z-index:1;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:21px;background:var(--surface);border:3px solid var(--c);transition:transform .2s ease, box-shadow .2s ease}
+.stop .no{position:absolute;top:-9px;right:-12px;min-width:20px;font-size:11px;font-weight:700;line-height:18px;background:var(--c);color:#fff;border-radius:999px;padding:0 5px;white-space:nowrap}
+.stop .lb{font-size:12.5px;font-weight:600;text-align:center;line-height:1.3;max-width:82px}
+.stop .ct{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stop:hover .dot{transform:translateY(-3px)}
+.stop[aria-pressed="true"] .dot{transform:scale(1.16);box-shadow:0 0 0 5px var(--cs),0 0 20px var(--c)}
+.stop[aria-pressed="true"] .lb{font-weight:800}
+.stop[aria-pressed="true"]::after{content:"📍 你在這裡";font-size:11px;font-weight:700;background:var(--lemon);color:#3A2E35;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.stop.done .dot::after{content:"✓";position:absolute;bottom:-6px;right:-8px;width:18px;height:18px;border-radius:50%;background:var(--mint);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+/* v24：起點和補充站（試劑配製、原理）是圓角方形，跟中間的操作步驟（圓形）分開 */
+.stop.side .dot{border-radius:14px;transform:rotate(-4deg)}
+.stop.side:hover .dot{transform:rotate(-4deg) translateY(-3px)}
+.stop.side[aria-pressed="true"] .dot{transform:rotate(-4deg) scale(1.16)}
+.stop.gap{margin-left:22px}
+.stop.gap::before{display:none}
+.station.side .big{border-radius:16px}
+.stop.all{margin-left:18px}
+.stop.all::before{display:none}
+.stop.all .dot{border-style:dashed}
+
+/* v26（阿澈）：路線改成「一條工作流程」——分段底色（前處理／PCR／結果）、連接線照目前位置填色、
+   試管 🧪 標出現在這一站、走過的站填底色、還沒到的站淡一點；補充站變成旁邊的「需要時再來」小岔路。
+   分段的名稱和顏色在資料檔 MYCO_CONFIG.phases，每站的 phase 決定放哪一段。手機（≤560px）改成直的時間軸。 */
+.route{align-items:flex-start}
+.route .stop{width:80px}
+.route .stop+.stop::before{display:none}
+.phase,.branch{position:relative;display:flex;align-items:flex-start;padding:40px 10px 10px;border-radius:20px;background:var(--cs);border:2px solid var(--c)}
+.phase>.phlb,.branch>.phlb{position:absolute;top:6px;left:12px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--c);border-radius:999px;padding:1px 10px;white-space:nowrap}
+.branch{border-style:dashed;background:transparent;margin-left:4px}
+.branch>.phlb{background:var(--surface);color:var(--ci);border:2px dashed var(--c)}
+.link{flex:none;width:16px;margin-top:21px;border-top:4px dotted var(--line)}
+.link.on{border-top:4px solid var(--brand)}
+.link.between{margin-top:61px;width:14px}
+.link.tobranch{margin-top:61px;width:18px;border-top:3px dashed var(--line)}
+.stop.passed .dot{background:var(--cs)}
+.stop.ahead .dot{opacity:.72}
+.stop .tube{position:absolute;top:8px;left:-26px;z-index:2;font-size:19px;transform:rotate(-18deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.25));animation:tubeBob 1.6s ease-in-out infinite}
+@keyframes tubeBob{0%,100%{transform:rotate(-18deg) translateY(0)}50%{transform:rotate(-18deg) translateY(-4px)}}
+body.still .stop .tube{animation:none}
+.route>.stop.all{margin-left:14px;margin-top:40px}
+body[data-scene] .phase{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.35)}
+body[data-scene] .phase>.phlb{box-shadow:0 2px 8px rgba(0,0,0,.25)}
+body[data-scene] .branch{border-color:rgba(255,255,255,.45)}
+body[data-scene] .link{border-top-color:rgba(255,255,255,.45)}
+body[data-scene] .link.on{border-top-color:#FFB3CF}
+@media (max-width:560px){
+  .routeWrap{overflow:visible;padding:8px 0 4px}
+  .route{flex-direction:column;align-items:stretch;min-width:0;padding:0}
+  .phase,.branch{flex-direction:column;align-items:stretch;padding:40px 12px 10px}
+  .branch{margin:0}
+  .route .stop{width:auto;align-self:stretch;display:grid;grid-template-columns:46px 1fr auto;justify-items:start;align-items:center;gap:2px 12px;text-align:left}
+  .route .stop .lb{max-width:none;text-align:left;font-size:14.5px}
+  .route .stop .ct{grid-column:3;grid-row:1;justify-self:end}
+  .route .stop[aria-pressed="true"]::after{grid-column:2;grid-row:2}
+  .link{width:0;height:14px;margin:2px 0 2px 21px;border-top:none;border-left:4px dotted var(--line)}
+  .link.on{border-left:4px solid var(--brand)}
+  .link.between,.link.tobranch{margin:2px 0 2px 33px;width:0;height:16px}
+  .link.tobranch{border-left:3px dashed var(--line)}
+  body[data-scene] .link{border-left-color:rgba(255,255,255,.45)}
+  body[data-scene] .link.on{border-left-color:#FFB3CF}
+  .stop .tube{top:-8px;left:-18px}
+  .route>.stop.all{margin:12px 0 0 12px}
+}
+
+/* 這一站在做什麼 */
+.station{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:2px solid var(--c);border-radius:22px;padding:14px 18px;margin:8px 0 14px;box-shadow:var(--shadow)}
+.station .big{flex:none;width:58px;height:58px;border-radius:50%;background:var(--cs);display:grid;place-items:center;font-size:28px;position:relative}
+.station .big b{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:11px;background:var(--c);color:#fff;border-radius:999px;padding:0 7px;white-space:nowrap}
+.station h2{font-family:var(--f-display);font-size:19px;margin:2px 0 4px;color:var(--ci)}
+.station p{margin:0;font-size:15px;line-height:1.6}
+.station .doing{display:inline-block;font-size:12px;font-weight:700;color:var(--ci);background:var(--cs);border-radius:999px;padding:1px 9px;margin-right:6px}
+.stationNav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin:20px 0 4px}
+.stationNav .btn{font-weight:700}
+.stationNav .next{margin-left:auto;background:var(--brand);border-color:var(--brand);color:#fff}
+@media (max-width:520px){ .station{padding:12px 14px;gap:10px} .station .big{width:46px;height:46px;font-size:22px} .station p{font-size:14px} }
+
+/* 工具列 */
+.tools{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:10px 0 22px}
+.tools .grp{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;background:var(--surface);color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--brand)}
+.btn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.key{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:700}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);padding:2px}
+.seg button{font:inherit;font-size:13px;border:none;background:none;color:var(--muted);padding:5px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--mint-soft);color:var(--mint-ink);font-weight:700}
+
+/* 進度：像一片孔盤 */
+.plate{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:6px 12px}
+.wells{display:grid;grid-template-columns:repeat(11,12px);gap:4px}
+.well{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper)}
+.well.ok{background:var(--mint);border-color:var(--mint)}
+.well.no{background:var(--peach);border-color:var(--peach)}
+.plate span{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.notice{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--lemon-soft);color:var(--ink);border-radius:14px;padding:8px 14px;font-size:14px;margin:0 0 16px}
+
+/* 卡片 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.card{--c:var(--rose);--cs:var(--rose-soft);--ci:var(--rose-ink);
+  position:relative;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;box-shadow:var(--shadow);cursor:pointer;min-width:0;overflow:hidden;transition:transform .18s ease}
+.card:hover{transform:translateY(-3px)}
+.card.flipping{animation:flip .32s ease}
+@keyframes flip{0%{transform:rotateY(0)}50%{transform:rotateY(90deg)}100%{transform:rotateY(0)}}
+.cap{height:10px;background:var(--c)}
+.inner{padding:14px 18px 14px}
+.card.back .inner{background:linear-gradient(var(--cs),var(--surface) 70%)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.stage{font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--cs);color:var(--ci)}
+.num{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;gap:6px;align-items:center}
+.state{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.state.ok{background:var(--mint)} .state.no{background:var(--peach)}
+.sopline{font-size:13px;color:var(--muted);background:var(--paper);border-radius:10px;padding:5px 10px;margin:0 0 12px}
+.q{font-family:var(--f-display);font-size:21px;line-height:1.45;margin:0 0 12px;text-wrap:balance}
+.hint{font-size:13px;color:var(--ci)}
+.ans{font-weight:700;color:var(--ci);margin:0 0 8px;font-size:17px;line-height:1.55}
+.whyt{margin:0 0 10px;font-size:15px}
+.box{border-radius:12px;padding:8px 12px;font-size:14px;margin:0 0 8px;background:var(--paper);border:1px dashed var(--line)}
+.box b{display:block;font-size:12px;letter-spacing:.06em;margin-bottom:2px}
+.box.exam b{color:var(--lemon-ink)} .box.alt{background:var(--mint-soft);border-color:var(--mint)} .box.alt b{color:var(--mint-ink)} .box.trap b{color:var(--peach-ink)}
+.tbl{overflow-x:auto;margin:0 0 10px;border-radius:10px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:13px;background:var(--surface)}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{color:var(--ci);font-weight:700;background:var(--cs)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:11px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.tag.check{border-color:var(--peach);color:var(--peach-ink)}
+.tag.sop{border-color:var(--brand);color:var(--brand-ink)}
+.tag.pi{border-color:var(--mint);color:var(--mint-ink)}
+.marks{display:flex;gap:8px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+.marks .btn{font-size:13px;padding:4px 12px}
+.marks .ok.on{background:var(--mint);border-color:var(--mint);color:#fff}
+.marks .no.on{background:var(--peach);border-color:var(--peach);color:#fff}
+.empty{padding:40px 16px;text-align:center;color:var(--muted);grid-column:1/-1}
+.c-peach{--c:var(--peach);--cs:var(--peach-soft);--ci:var(--peach-ink)}
+.c-lemon{--c:var(--lemon);--cs:var(--lemon-soft);--ci:var(--lemon-ink)}
+.c-mint{--c:var(--mint);--cs:var(--mint-soft);--ci:var(--mint-ink)}
+.c-rose{--c:var(--rose);--cs:var(--rose-soft);--ci:var(--rose-ink)}
+.c-lav{--c:var(--lav);--cs:var(--lav-soft);--ci:var(--lav-ink)}
+.c-lime{--c:var(--lime);--cs:var(--lime-soft);--ci:var(--lime-ink)}
+.c-berry{--c:var(--berry);--cs:var(--berry-soft);--ci:var(--berry-ink)}
+
+/* 浮動按鈕 */
+.fab{position:fixed;display:flex;flex-direction:column;gap:10px;align-items:flex-end;z-index:30;
+  right:calc(14px + env(safe-area-inset-right, 0px));bottom:calc(14px + env(safe-area-inset-bottom, 0px))}
+.fab a,.fab button{font:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer;text-decoration:none;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:6px}
+.fab img{height:28px;width:auto;display:block}
+.fab .duck{background:linear-gradient(90deg,#E2558A,#F59E6B,#F2C12E,#3FB79A,#A98BD9);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* v26.1 小C：彩球快捷功能。只修改呈現，不動原 QR 與首頁動作。 */
+.fab .fab-actions{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.fab .fab-toggle{display:none}
+.fab .candy-action{position:relative;display:inline-flex;align-items:center;gap:9px;min-height:56px;padding:4px 12px 4px 4px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;box-shadow:var(--shadow);font-size:14px;font-weight:800;color:var(--ink);text-decoration:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.fab .candy-action:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(58,46,53,.16)}
+.fab .candy-action:focus-visible,.fab .fab-toggle:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.fab .candy-orb{position:relative;display:grid;place-items:center;width:48px;height:48px;flex:none;padding:0;border:2px solid rgba(255,255,255,.8);border-radius:50%;font-size:25px;line-height:1;box-sizing:border-box;background:radial-gradient(circle at 30% 23%,#ffe7f0,#ff76ad 55%,#dc4984);box-shadow:inset -3px -5px 8px rgba(124,39,77,.13),0 3px 10px rgba(226,85,138,.22)}
+.fab .candy-home .candy-orb{background:radial-gradient(circle at 29% 22%,#fff8cd,#ffe066 53%,#ffad56);box-shadow:inset -3px -5px 8px rgba(151,105,24,.13),0 3px 10px rgba(242,193,46,.2)}
+.fab .candy-orb::before{content:"✦";position:absolute;top:-9px;right:0;font-size:13px;color:#f4a440;text-shadow:0 1px white}
+.fab .candy-label{white-space:nowrap}
+.fab .candy-qr .candy-label{color:var(--brand-ink)}
+.fab .candy-home .candy-label .duck{background:linear-gradient(90deg,#e2558a,#f59e6b,#c69b13,#268d78,#9772cc);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* v27（小狐狸）：平常只有球；滑鼠移過去，字才從球的左邊跳出來（透明底，白色光暈讓字在深色場景也看得清楚）。
+   鴨子換成 PinkDuckLab logo 的臉，字寫「回 PinkDuckLab」 */
+.fab .candy-action{flex-direction:row-reverse;background:transparent;border-color:transparent;box-shadow:none;padding:4px;gap:8px}
+.fab .candy-action:hover{box-shadow:none}
+.fab .candy-label{display:inline-block;max-width:0;opacity:0;overflow:hidden;transform:translateX(8px);transition:max-width .25s ease,opacity .2s ease,transform .25s ease;filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px #fff) drop-shadow(0 1px 4px rgba(255,255,255,.9))}
+.fab .candy-action:hover .candy-label,.fab .candy-action:focus-visible .candy-label{max-width:180px;opacity:1;transform:none}
+.fab .candy-qr .candy-label{color:#B8336A}
+.fab .candy-orb img.logo-face{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.fab .candy-home .candy-orb{overflow:visible;padding:0;background:#fff}
+@media (max-width:700px){
+ .fab{right:calc(10px + env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));gap:0}
+ .fab .fab-toggle{display:grid;place-items:center;min-width:48px;min-height:48px;padding:0;align-self:flex-end;background:radial-gradient(circle at 32% 22%,#fff6d2,#ffe066 50%,#ffb347);font-size:22px;border:2px solid white;border-radius:50%;box-shadow:0 4px 17px rgba(58,46,53,.19)}
+ .fab .fab-actions{display:none;position:absolute;right:0;bottom:56px;padding:4px 0 8px;gap:9px}
+ .fab.is-open .fab-actions{display:flex}
+ .fab .candy-action{padding:3px;min-width:46px;min-height:46px;background:var(--surface);border-radius:999px}
+ .fab .candy-orb{width:42px;height:42px;font-size:22px}
+ .fab .candy-label{display:none}
+ /* v27：手機沒有滑鼠，展開 ✨ 時字直接出現在球的左邊 */
+ .fab .candy-action{padding:3px;background:transparent}
+ .fab.is-open .candy-label{display:inline-block;max-width:180px;opacity:1;transform:none}
+}
+
+/* 右上角開關：場景動態、水果特效 */
+.fx{position:fixed;z-index:30;top:calc(12px + env(safe-area-inset-top, 0px));right:calc(12px + env(safe-area-inset-right, 0px));display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;max-width:calc(100vw - 24px)}
+.fx button{font:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;box-shadow:var(--shadow)}
+.fx button[aria-pressed="false"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* 對話框 */
+.modal{position:fixed;inset:0;background:rgba(31,26,29,.5);display:grid;place-items:center;z-index:50;padding:16px}
+.panel{background:var(--surface);border-radius:20px;padding:20px;max-width:360px;width:100%;display:grid;gap:10px;text-align:center}
+.panel h3{font-family:var(--f-display);font-weight:400;font-size:22px;margin:0;color:var(--brand-ink)}
+.qr{display:grid;place-items:center;background:#fff;padding:12px;border-radius:12px;margin:0 auto;width:max-content;min-height:60px}
+.code{font-family:Consolas,"Courier New",monospace;font-size:28px;letter-spacing:.12em;font-weight:700;background:var(--paper);border:1.5px dashed var(--brand);border-radius:12px;padding:8px;user-select:all;color:var(--ink)}
+.small{font-size:12px;color:var(--muted);word-break:break-all;margin:0}
+.panel input{font:inherit;font-family:Consolas,monospace;font-size:18px;text-align:center;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--line);border-radius:12px;padding:8px;background:var(--paper);color:var(--ink);width:100%}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.msg{font-size:13px;min-height:1.2em;margin:0;color:var(--mint-ink)}
+.msg.err{color:var(--peach-ink)}
+hr{border:none;border-top:1px dashed var(--line);margin:4px 0;width:100%}
+
+#trail{position:fixed;inset:0;pointer-events:none;z-index:40}
+footer{margin-top:40px;font-size:13px;color:var(--muted);display:grid;gap:4px}
+footer a{color:var(--brand-ink)}
+/* 頁尾小狐狸（v21，原本 v20 是小章魚）：老師用的入口，學生只會覺得是裝飾 */
+.octo{justify-self:start;width:64px;height:64px;padding:0;border:none;background:none;cursor:pointer;opacity:.85;transition:opacity .2s ease}
+.octo img{width:100%;height:100%;display:block;transform-origin:50% 90%}
+.octo:hover,.octo:focus-visible{opacity:1}
+.octo:hover img{animation:octo 1.1s ease-in-out infinite}
+@keyframes octo{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg) translateY(-2px)}75%{transform:rotate(8deg) translateY(-2px)}}
+body.still .octo:hover img{animation:none}   /* 跟著右上角「動態」開關（v22）；不再看電腦的減少動態設定 */
+.octotxt{margin:0;font-size:15px;line-height:1.7;text-align:left}
+#octoModal .row a{text-decoration:none}
+@media (max-width:480px){.q{font-size:19px}.wells{--well:9px}.well{width:9px;height:9px}}
+
+/* ================= v14：場景背景（翻卡＝深海、DOPS＝太空） ================= */
+.scene{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;display:none}
+body[data-scene="sea"],body[data-scene="space"]{background-image:none;background-color:#081a33}
+body[data-scene="sea"] .scene.sea,body[data-scene="space"] .scene.space{display:block}
+.scene.sea{background:linear-gradient(180deg,#2A8CB5 0%,#126089 28%,#0B3A63 60%,#061A36 100%)}
+.ray{position:absolute;top:-10%;width:18vw;min-width:90px;height:75%;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0));transform-origin:top center;filter:blur(6px);animation:sway 9s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(var(--r)) translateX(0)}to{transform:rotate(calc(var(--r) + 4deg)) translateX(2vw)}}
+.bub{position:absolute;bottom:-30px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.55),rgba(255,255,255,.06) 60%);animation:rise linear infinite}
+@keyframes rise{0%{transform:translate(0,0)}25%{transform:translate(8px,-28vh)}50%{transform:translate(-6px,-56vh)}75%{transform:translate(7px,-84vh)}100%{transform:translate(0,-115vh)}}
+.jelly{position:absolute;animation:bob 7s ease-in-out infinite}
+.jelly.j2{animation-duration:9s;animation-delay:-3s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
+.jelly .tent{animation:wig 2.4s ease-in-out infinite alternate;transform-origin:top center}
+@keyframes wig{from{transform:skewX(-6deg)}to{transform:skewX(6deg)}}
+/* 虎鯨（v22）：固定在左下角，輕輕上下晃，用鰭指著卡片（v21 是游過去） */
+.orca{position:absolute;left:3vw;bottom:7vh;width:clamp(80px,10vw,130px);height:auto;opacity:.95;transform-origin:50% 80%;animation:orcabob 5s ease-in-out infinite}
+@keyframes orcabob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.weed{position:absolute;bottom:-6px;transform-origin:bottom center;animation:weed 5s ease-in-out infinite alternate}
+@keyframes weed{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.scene.space{background:radial-gradient(ellipse at 85% 10%,rgba(226,85,138,.38),transparent 45%),radial-gradient(ellipse at 10% 75%,rgba(169,139,217,.35),transparent 50%),radial-gradient(ellipse at 55% 55%,rgba(63,183,154,.12),transparent 55%),linear-gradient(180deg,#120D2E 0%,#0B0A22 60%,#07061A 100%)}
+.star{position:absolute;border-radius:50%;background:#fff;animation:tw ease-in-out infinite alternate}
+@keyframes tw{from{opacity:.25}to{opacity:1}}
+.planet{position:absolute;right:4vw;top:90px;width:clamp(110px,16vw,190px);animation:bob 12s ease-in-out infinite}
+.moon{position:absolute;left:5vw;bottom:14vh;width:clamp(50px,6vw,70px);animation:bob 10s ease-in-out infinite;animation-delay:-4s}
+.shoot{position:absolute;top:18%;left:-20%;width:160px;height:2px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff);border-radius:2px;transform:rotate(18deg);opacity:0;animation:shoot 7s ease-in 2s infinite}
+.shoot.s2{top:48%;animation-delay:5.5s;animation-duration:9s}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(18deg)}3%{opacity:1}12%{opacity:0;transform:translate(70vw,23vw) rotate(18deg)}100%{opacity:0;transform:translate(70vw,23vw) rotate(18deg)}}
+/* 天空（綜合測驗，v16）：雲、ABCD 熱氣球、紙飛機 */
+body[data-scene="sky"] .scene.sky{display:block}
+.scene.sky{background:linear-gradient(180deg,#3E8FCB 0%,#6CB4E2 45%,#A7D3EE 78%,#E7A6C3 100%)}
+.sun{position:absolute;right:18vw;top:60px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,#FFF4C2 0 34%,rgba(255,236,150,.55) 46%,rgba(255,236,150,0) 70%);animation:glow 6s ease-in-out infinite alternate}
+@keyframes glow{from{transform:scale(1)}to{transform:scale(1.12)}}
+.cloud{position:absolute;left:0;opacity:.92;animation:drift linear infinite}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(120vw)}}
+.balloon{position:absolute;animation:float 8s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-22px) rotate(3deg)}}
+.plane{position:absolute;top:30%;left:-10%;width:54px;opacity:0;animation:fly 16s ease-in-out 3s infinite}
+@keyframes fly{0%{opacity:0;transform:translate(0,0) rotate(-8deg)}4%{opacity:1}30%{opacity:1;transform:translate(60vw,-10vh) rotate(4deg)}42%{opacity:0;transform:translate(120vw,-4vh) rotate(-6deg)}100%{opacity:0;transform:translate(120vw,-4vh)}}
+body[data-scene] .labhead h2{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+body[data-scene] .qzcard,body[data-scene] .result{box-shadow:0 18px 40px -16px rgba(0,0,0,.45);border-color:transparent}
+
+/* 綜合測驗開始畫面（v16）：題數像貼紙、兩種模式像兩張票 */
+.qzmenu{display:grid;gap:18px;max-width:860px}
+.qzbank{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;background:var(--surface);border-radius:22px;padding:18px 22px;box-shadow:var(--shadow)}
+.qzbig{width:118px;height:118px;flex:none;border-radius:50%;background:var(--lemon);color:#3A2E35;display:grid;place-content:center;justify-items:center;transform:rotate(-8deg);box-shadow:inset 0 0 0 4px rgba(255,255,255,.7),0 8px 18px -8px rgba(143,107,0,.6)}
+.qzbig b{font-family:var(--f-display);font-weight:400;font-size:52px;line-height:1}
+.qzbig span{font-size:14px;font-weight:700;margin-top:-2px}
+.qzbanktxt{display:grid;gap:8px;min-width:0}
+.qzbankttl{margin:0;font-family:var(--f-display);font-size:22px}
+.qzsplit{margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.qzsplit .qztype{font-size:14px;padding:3px 12px}
+.qzmodes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:640px){.qzmodes{grid-template-columns:1fr}}
+.qzmode{position:relative;background:var(--surface);border-radius:22px;padding:18px 20px 16px;box-shadow:var(--shadow);display:grid;gap:10px;align-content:start}
+.qzmode::after{content:"";position:absolute;left:18px;right:18px;bottom:62px;border-top:2px dashed var(--line)}
+.qzmode h3{margin:0;font-family:var(--f-display);font-weight:400;font-size:24px}
+.qzmode.exam h3{color:var(--lav-ink)} .qzmode.prac h3{color:var(--mint-ink)}
+.qzmode p{margin:0;font-size:15px}
+.qzmode .btn.key{justify-self:start;margin-top:14px}
+.qzmode.prac .btn.key{background:var(--mint);border-color:var(--mint)}
+.qzmode.exam .btn.key{background:var(--lav);border-color:var(--lav)}
+.qzpick{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;font-weight:700}
+.qzpick .seg button[aria-pressed="true"]{background:var(--lav-soft);color:var(--lav-ink)}
+#qzPills{align-items:center}
+
+/* 考卷（v18）：像一張改好的紙本考卷，右上角紅色分數章，底下有驗證碼和 QR */
+.qzidrow{display:grid;gap:4px;font-size:13px;font-weight:700;color:var(--muted)}
+.qzidrow input{font:inherit;font-size:15px;font-weight:500;border:1.5px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--paper);color:var(--ink);width:100%;max-width:240px}
+.exampanel{max-width:640px;text-align:left;padding:16px}
+.exambanner{border-radius:12px;padding:10px 14px;font-weight:700;font-size:14px}
+.exambanner.good{background:var(--mint-soft);color:var(--mint-ink)} .exambanner.bad{background:var(--peach-soft);color:var(--peach-ink)}
+.examsheet{position:relative;background:#FFFEFB;color:#2E2A2C;border-radius:6px;padding:20px 18px 16px;box-shadow:0 1px 0 #E6DCD3,0 10px 26px -14px rgba(0,0,0,.4);
+  background-image:repeating-linear-gradient(180deg,transparent 0 27px,#EEF3F8 27px 28px);display:grid;gap:12px;font-size:14px;line-height:1.55}
+.es-head{display:grid;gap:2px;padding-right:96px}
+.es-kicker{margin:0;font-size:11px;letter-spacing:.18em;color:#8A7F84;font-weight:700}
+.es-title{margin:0;font-family:var(--f-display);font-weight:400;font-size:24px;line-height:1.2}
+.es-meta{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;margin:4px 0 0}
+.es-meta b{border-bottom:1.5px solid #2E2A2C;padding:0 6px;font-weight:700}
+.es-stamp{position:absolute;right:16px;top:14px;width:88px;height:88px;border:3px solid #D93A5E;border-radius:50%;color:#D93A5E;transform:rotate(-12deg);display:grid;place-content:center;text-align:center;line-height:1.1}
+.es-stamp b{font-family:var(--f-display);font-weight:400;font-size:30px}
+.es-stamp span{font-size:12px;font-weight:700}
+.es-list{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:q}
+.es-list li{counter-increment:q;display:grid;grid-template-columns:24px minmax(0,1fr) 24px;gap:8px;align-items:start;padding:6px 0;border-bottom:1px dashed #E3D9D1}
+.es-list li::before{content:counter(q);font-size:12px;font-weight:700;color:#8A7F84;padding-top:2px;text-align:right}
+.es-q{margin:0;font-weight:700}
+.es-q small{font-weight:500;font-size:11px;color:#8A7F84;margin-right:4px}
+.es-a{margin:2px 0 0;font-size:13px}
+.es-a.no{color:#B5602E;text-decoration:line-through;text-decoration-color:#F59E6B}
+.es-fix{margin:2px 0 0;font-size:13px;color:#1F7F68;font-weight:700}
+.es-mark{font-size:20px;font-weight:700;line-height:1;padding-top:2px;text-align:center}
+.es-mark.ok{color:#1F9E80} .es-mark.no{color:#D93A5E}
+.es-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:4px}
+.es-code{display:grid;gap:2px;font-size:12px;color:#8A7F84}
+.es-code b{font-family:Consolas,"Courier New",monospace;font-size:20px;letter-spacing:.12em;color:#2E2A2C}
+.es-qr{background:#fff;padding:4px;border-radius:6px;line-height:0}
+.es-qr img,.es-qr canvas{width:92px!important;height:92px!important}
+@media (max-width:480px){
+  .exampanel{padding:12px 10px}
+  .examsheet{padding:14px 10px 10px;gap:8px;font-size:13px;line-height:1.4}
+  .es-title{font-size:20px}.es-stamp{width:70px;height:70px;right:8px;top:10px}.es-stamp b{font-size:24px}.es-stamp span{font-size:11px}
+  .es-head{padding-right:74px}.es-meta{font-size:12px;gap:2px 10px}
+  .es-list{gap:2px}.es-list li{padding:4px 0;grid-template-columns:18px minmax(0,1fr) 20px;gap:6px}
+  .es-a,.es-fix{font-size:12px}.es-mark{font-size:17px}
+}
+
+/* 答錯視窗（v17）：答錯時跳出來，看完解釋再按下一題 */
+.wrongpanel{max-width:480px;text-align:left;gap:10px;animation:pop .28s ease}
+@keyframes pop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+.wrongpanel h3{text-align:center}
+.wrongface{justify-self:center;width:56px;height:56px;border-radius:50%;background:var(--peach-soft);display:grid;place-items:center;font-size:30px;animation:wob 1.2s ease-in-out 1}
+@keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+.wq{margin:0;font-family:var(--f-display);font-size:18px;line-height:1.5}
+.wrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;border-radius:12px;padding:8px 12px;font-size:15px}
+.wrow span{font-size:12px;font-weight:700;padding-top:3px;white-space:nowrap}
+.wrow.mine{background:var(--peach-soft)} .wrow.mine span{color:var(--peach-ink)} .wrow.mine b{font-weight:500;text-decoration:line-through;text-decoration-color:var(--peach)}
+.wrow.ok{background:var(--mint-soft)} .wrow.ok span{color:var(--mint-ink)}
+.wwhy{margin:0;font-size:15px;white-space:pre-line}
+.wrongpanel .row{justify-content:flex-end}
+.wrongface.good{background:var(--mint-soft)}
+
+/* 動態開關：關掉時場景停在原地 */
+body.still .scene *{animation-play-state:paused!important}
+body:not([data-scene]) .motion{display:none}
+/* 場景上的字：卡片外面的文字改淺色 */
+body[data-scene] h1,body[data-scene] .dp-lead h2{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+body[data-scene] .sub,body[data-scene] .eyebrow,body[data-scene] .stop .lb,body[data-scene] .stop .ct,body[data-scene] .empty,
+body[data-scene] footer,body[data-scene] footer a,body[data-scene] .dp-foot,body[data-scene] .dp-steps li+li::before{color:rgba(255,255,255,.85)}
+body[data-scene] .eyebrow b{color:#FFB3CF}
+body[data-scene] .tabs{border-bottom-color:rgba(255,255,255,.85)}
+body[data-scene] .tab[aria-selected="true"]{background:#fff;border-color:#fff}
+body[data-scene] .tab[aria-selected="true"] b,body[data-scene] .tab[aria-selected="true"] small{color:#3A2E35}
+body[data-scene] .card,body[data-scene] .dp-card{box-shadow:0 18px 40px -16px rgba(0,0,0,.6);border-color:transparent}
+body[data-scene] .machine svg{filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
+.newbadge{display:inline-block;font-size:11px;font-weight:700;background:var(--lemon);color:#3A2E35;border-radius:999px;padding:0 8px;margin-left:6px;vertical-align:2px}
+
+/* ================= v14：DOPS 口試小卡 ================= */
+.dp-lead{margin:20px 0 6px;display:grid;gap:10px}
+.dp-lead h2{font-family:var(--f-display);font-weight:400;font-size:24px;margin:0}
+.dp-steps{display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;font-size:14px;margin:0;padding:0;list-style:none}
+.dp-steps li{display:flex;align-items:center}
+.dp-steps li+li::before{content:"→";color:var(--muted);margin:0 6px}
+.dp-chip{font-size:13px;font-weight:700;border-radius:999px;padding:2px 10px}
+.dp-chip.q{background:var(--brand-soft);color:var(--brand-ink)}
+.dp-chip.h{background:var(--lemon-soft);color:var(--lemon-ink)}
+.dp-chip.a{background:var(--mint-soft);color:var(--mint-ink)}
+.dp-form{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 22px;padding:0;list-style:none}
+.dp-form button{font:inherit;font-size:13px;color:var(--ink);border:1.5px solid var(--brand);background:var(--surface);border-radius:999px;padding:3px 12px 3px 4px;display:flex;align-items:center;gap:6px;cursor:pointer}
+.dp-form button:hover{transform:translateY(-2px)}
+.dp-form b{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:var(--brand);color:#fff}
+.dp-form small{font-size:11px;color:var(--muted)}
+.dp-deck{display:grid;gap:22px;max-width:860px}
+.dp-card{position:relative;background:var(--surface);border:1.5px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;min-width:0;scroll-margin-top:70px}
+.dp-card.spot{animation:spot 1.6s ease 1}
+.dp-head{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;justify-content:space-between;padding:12px 20px 10px;border-bottom:1.5px dashed var(--line);background:var(--paper)}
+.dp-sec{font-size:13px;font-weight:700;color:var(--brand-ink)}
+.dp-item{font-size:13px;color:var(--muted)}
+.dp-body{padding:18px 20px;display:grid;gap:14px}
+.dp-ask{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start}
+.dp-mic{width:44px;height:44px;border-radius:50%;background:var(--brand-soft);display:grid;place-items:center;font-size:22px}
+.dp-say{font-family:var(--f-display);font-size:23px;line-height:1.45;margin:0;text-wrap:balance}
+.dp-say small{display:block;font-family:var(--f-body);font-size:13px;color:var(--muted);margin-top:2px}
+.dp-row{display:flex;flex-wrap:wrap;gap:8px}
+.btn.dp-hintbtn{background:var(--lemon-soft);border-color:var(--lemon);font-weight:700}
+.btn.dp-ansbtn{background:var(--mint-soft);border-color:var(--mint);font-weight:700}
+.btn.dp-hintbtn[aria-expanded="true"],.btn.dp-ansbtn[aria-expanded="true"]{opacity:.55}
+.dp-hint{background:var(--lemon-soft);border-radius:16px;padding:12px 14px;display:grid;gap:8px}
+.dp-hint p{margin:0;font-size:14px;color:var(--lemon-ink);font-weight:700}
+.dp-opts{display:grid;gap:8px}
+.dp-opt{font:inherit;font-size:16px;text-align:left;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:10px 12px;cursor:pointer;display:flex;gap:10px;align-items:center;min-width:0}
+.dp-opt:hover:not(:disabled){border-color:var(--brand)}
+.dp-opt .lt{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;background:var(--lav-soft);color:var(--lav-ink)}
+.dp-opt.right{background:var(--mint-soft);border-color:var(--mint)} .dp-opt.right .lt{background:var(--mint);color:#fff}
+.dp-opt.wrong{background:var(--peach-soft);border-color:var(--peach)} .dp-opt.wrong .lt{background:var(--peach);color:#fff}
+.dp-opt:disabled{cursor:default}
+.dp-ans{background:var(--mint-soft);border-radius:16px;padding:12px 14px;display:grid;gap:8px}
+.dp-ans .a{margin:0;font-weight:700;color:var(--mint-ink);font-size:17px;line-height:1.6}
+.dp-ans ul{margin:0;padding-left:20px;font-size:15px}
+.dp-ans .tbl{margin:0;background:var(--surface)}
+.dp-ans th{color:var(--mint-ink);background:var(--paper)}
+.dp-src{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.tag.work{border-color:var(--lemon);color:var(--lemon-ink)}
+.dp-note{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;padding-top:12px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
+.dp-note button{font:inherit;font-size:13px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:3px 10px;cursor:pointer}
+.dp-note button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+/* 排排看 */
+.dp-strip{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:s}
+.dp-step{counter-increment:s;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:8px 10px;cursor:grab;user-select:none;transition:transform .15s ease,border-color .15s ease}
+.dp-step::before{content:counter(s);width:30px;height:30px;border-radius:50%/40% 40% 60% 60%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--rack);color:var(--muted)}
+.dp-step .grip{color:var(--muted);font-size:18px;line-height:1}
+.dp-step.pick{border-color:var(--brand);transform:translateX(6px);background:var(--brand-soft)}
+.dp-step.drag{opacity:.4}
+.dp-step.over{border-style:dashed;border-color:var(--brand)}
+.dp-step.ok{border-color:var(--mint);background:var(--mint-soft);cursor:default}
+.dp-step.ok::before{background:var(--mint);color:#fff}
+.dp-step.no{border-color:var(--peach);background:var(--peach-soft)}
+.dp-step.no::before{background:var(--peach);color:#fff}
+.dp-whybtn{font:inherit;font-size:12px;border:1.5px solid var(--mint);background:var(--surface);color:var(--mint-ink);border-radius:999px;padding:2px 10px;cursor:pointer;white-space:nowrap}
+.dp-whytxt{grid-column:2 / -1;margin:0;font-size:14px;background:var(--surface);border-radius:10px;padding:6px 10px}
+.dp-howto{margin:0;font-size:14px;color:var(--muted)}
+.dp-msg{margin:0;font-weight:700;min-height:1.4em}
+.dp-msg.good{color:var(--mint-ink)} .dp-msg.bad{color:var(--peach-ink)}
+.dp-foot{margin:18px 0 0;font-size:13px;color:var(--muted)}
+@media (max-width:560px){
+  .dp-say{font-size:20px}
+  .dp-body,.dp-head{padding-left:14px;padding-right:14px}
+  .dp-mic{width:36px;height:36px;font-size:18px}
+}
+</style>
 </head>
-<body>
-<div role="note" style="padding:8px 16px;background:#fff0c7;color:#654b20;text-align:center;font-size:14px;border-bottom:1px solid #d9b66c">雲端驗收室 · BD MAX v0.10.2 候選版 · 供試用與回饋</div>
-<a class="skip" href="#main">跳到主要內容</a>
-<header class="travel-bar"><a class="mini-brand" href="https://pinkducklab.netlify.app/" target="_blank" rel="noopener" aria-label="回 PinkDuckLab 主站（另開分頁）"><img src="assets/logo-pdl.png" alt="PinkDuckLab"><span>↩ 回 PinkDuckLab<small>BD MAX 探索小徑・EVP</small></span></a><div class="save-spot" role="group" aria-label="學習進度存在哪裡"><span class="save-label">進度存在</span><span class="save-btns"><button data-save="session" aria-pressed="true">本次瀏覽</button><button data-save="local" aria-pressed="false">我的裝置</button></span><button class="save-help" id="saveHelp" aria-label="進度存在哪裡？看說明">?</button><button class="key-btn" id="keyBtn">🔑 帶走進度</button></div><nav class="travel-links" aria-label="旅行工具列"><a href="#home">⌂ 回大門</a><div class="passport-tabs" role="group" aria-label="三個世界的進度"><button id="walkStamp">① 檢體章</button><button id="kitStamp">② 試劑章</button><button id="aidStamp">③ 解題章</button></div><div class="panel-group" role="group" aria-label="試煉場"><span class="group-label">⚔️ 試煉場</span><a href="#exam">📝 綜合測驗</a><a href="#dops">🎤 DOPS 口試卡</a></div><a href="#library">📚 圖書館</a><button id="shareBtn" aria-haspopup="dialog">▦ 掃我帶走</button><button id="motionToggle" aria-pressed="true">✨ 動態開關：開</button></nav></header>
-<main id="main" tabindex="-1"></main>
-<footer class="site-foot"><button class="fox-editor" id="foxEditor" aria-label="維護小幫手"><img src="assets/fox-editor.png" alt="抱著平板的粉紅小狐狸（維護小幫手入口）"></button>PinkDuckLab · BD MAX 探索小徑・EVP · <span id="versionLabel"></span></footer>
-<div id="toast" role="status" aria-live="polite"></div>
-<dialog id="modal"><button class="close-modal" aria-label="關閉視窗">×</button><div id="modalBody"></div></dialog>
-<noscript><p>請啟用 JavaScript，以使用山路導覽與互動練習。</p></noscript>
-</body></html>
+<body data-scene="sea">
+
+<!-- 深海場景（翻卡練習） -->
+<div class="scene sea" aria-hidden="true">
+  <div class="ray" style="left:8%;--r:-12deg"></div>
+  <div class="ray" style="left:38%;--r:6deg;animation-delay:-3s;opacity:.7"></div>
+  <div class="ray" style="left:68%;--r:-4deg;animation-delay:-6s"></div>
+  <svg class="jelly" style="right:5vw;top:22vh;width:clamp(70px,9vw,110px)" viewBox="0 0 100 150">
+    <path d="M10 55 Q10 8 50 8 Q90 8 90 55 Q78 50 70 58 Q60 50 50 58 Q40 50 30 58 Q22 50 10 55Z" fill="#F7A8C8" opacity=".92"/>
+    <path d="M24 30 Q34 18 48 17" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+    <circle cx="38" cy="38" r="3" fill="#7A2E52"/><circle cx="62" cy="38" r="3" fill="#7A2E52"/>
+    <path d="M44 46 Q50 51 56 46" stroke="#7A2E52" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g class="tent" stroke="#F7A8C8" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8">
+      <path d="M25 58 Q20 85 28 110 Q34 130 26 145"/><path d="M42 60 Q38 90 46 115 Q50 132 44 146"/>
+      <path d="M58 60 Q62 90 54 115 Q50 132 56 146"/><path d="M75 58 Q80 85 72 110 Q66 130 74 145"/>
+    </g>
+  </svg>
+  <svg class="jelly j2" style="left:3vw;top:48vh;width:clamp(48px,6vw,74px)" viewBox="0 0 100 150">
+    <path d="M10 55 Q10 8 50 8 Q90 8 90 55 Q78 50 70 58 Q60 50 50 58 Q40 50 30 58 Q22 50 10 55Z" fill="#C9B3F0" opacity=".9"/>
+    <circle cx="38" cy="38" r="3" fill="#4A2E7A"/><circle cx="62" cy="38" r="3" fill="#4A2E7A"/>
+    <g class="tent" stroke="#C9B3F0" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8">
+      <path d="M28 58 Q22 90 32 120"/><path d="M50 60 Q46 92 54 124"/><path d="M72 58 Q78 90 68 120"/>
+    </g>
+  </svg>
+  <svg class="weed" style="left:2vw;width:70px" viewBox="0 0 70 200"><path d="M20 200 Q5 150 22 110 Q38 70 18 20 M45 200 Q60 160 44 120 Q30 85 50 45" stroke="#1F7F68" stroke-width="9" fill="none" stroke-linecap="round" opacity=".8"/></svg>
+  <svg class="weed" style="right:8vw;width:60px;animation-delay:-2s" viewBox="0 0 60 160"><path d="M30 160 Q12 120 30 85 Q46 50 26 10" stroke="#3FB79A" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/></svg>
+  <img class="orca" src="img/orca_v1_20261025.png" alt="">
+  <div id="bubbles"></div>
+</div>
+<!-- 天空場景（綜合測驗） -->
+<div class="scene sky" aria-hidden="true">
+  <div class="sun"></div>
+  <svg class="cloud" style="top:12vh;width:220px;animation-duration:70s;animation-delay:-10s" viewBox="0 0 220 90"><path d="M30 80 Q0 80 8 58 Q14 40 40 44 Q48 14 84 18 Q110 0 140 20 Q176 12 184 44 Q216 46 212 66 Q208 82 186 80Z" fill="#fff"/></svg>
+  <svg class="cloud" style="top:38vh;width:150px;animation-duration:55s;animation-delay:-38s;opacity:.8" viewBox="0 0 220 90"><path d="M30 80 Q0 80 8 58 Q14 40 40 44 Q48 14 84 18 Q110 0 140 20 Q176 12 184 44 Q216 46 212 66 Q208 82 186 80Z" fill="#fff"/></svg>
+  <svg class="cloud" style="top:62vh;width:260px;animation-duration:90s;animation-delay:-60s" viewBox="0 0 220 90"><path d="M30 80 Q0 80 8 58 Q14 40 40 44 Q48 14 84 18 Q110 0 140 20 Q176 12 184 44 Q216 46 212 66 Q208 82 186 80Z" fill="#fff"/></svg>
+  <svg class="cloud" style="top:24vh;width:120px;animation-duration:48s;animation-delay:-20s;opacity:.7" viewBox="0 0 220 90"><path d="M30 80 Q0 80 8 58 Q14 40 40 44 Q48 14 84 18 Q110 0 140 20 Q176 12 184 44 Q216 46 212 66 Q208 82 186 80Z" fill="#fff"/></svg>
+  <svg class="cloud" style="top:80vh;width:180px;animation-duration:64s;animation-delay:-5s;opacity:.85" viewBox="0 0 220 90"><path d="M30 80 Q0 80 8 58 Q14 40 40 44 Q48 14 84 18 Q110 0 140 20 Q176 12 184 44 Q216 46 212 66 Q208 82 186 80Z" fill="#fff"/></svg>
+  <svg class="balloon" style="right:4vw;top:16vh;width:clamp(58px,7vw,86px)" viewBox="0 0 80 120"><path d="M40 4 C16 4 4 22 4 40 C4 60 24 72 32 86 H48 C56 72 76 60 76 40 C76 22 64 4 40 4Z" fill="#E2558A"/><path d="M40 4 C30 18 28 60 34 86 M40 4 C50 18 52 60 46 86" stroke="#fff" stroke-width="3" fill="none" opacity=".5"/><text x="40" y="50" font-size="26" font-weight="700" text-anchor="middle" fill="#fff" font-family="sans-serif">A</text><path d="M33 86 L35 100 M47 86 L45 100" stroke="#7A6670" stroke-width="1.5"/><rect x="32" y="100" width="16" height="13" rx="3" fill="#B5602E"/></svg>
+  <svg class="balloon" style="left:3vw;top:30vh;width:clamp(50px,6vw,74px);animation-duration:10s;animation-delay:-3s" viewBox="0 0 80 120"><path d="M40 4 C16 4 4 22 4 40 C4 60 24 72 32 86 H48 C56 72 76 60 76 40 C76 22 64 4 40 4Z" fill="#F2C12E"/><path d="M40 4 C30 18 28 60 34 86 M40 4 C50 18 52 60 46 86" stroke="#fff" stroke-width="3" fill="none" opacity=".5"/><text x="40" y="50" font-size="26" font-weight="700" text-anchor="middle" fill="#8F6B00" font-family="sans-serif">B</text><path d="M33 86 L35 100 M47 86 L45 100" stroke="#7A6670" stroke-width="1.5"/><rect x="32" y="100" width="16" height="13" rx="3" fill="#B5602E"/></svg>
+  <svg class="balloon" style="right:9vw;top:58vh;width:clamp(44px,5vw,64px);animation-duration:9s;animation-delay:-5s" viewBox="0 0 80 120"><path d="M40 4 C16 4 4 22 4 40 C4 60 24 72 32 86 H48 C56 72 76 60 76 40 C76 22 64 4 40 4Z" fill="#3FB79A"/><path d="M40 4 C30 18 28 60 34 86 M40 4 C50 18 52 60 46 86" stroke="#fff" stroke-width="3" fill="none" opacity=".5"/><text x="40" y="50" font-size="26" font-weight="700" text-anchor="middle" fill="#fff" font-family="sans-serif">C</text><path d="M33 86 L35 100 M47 86 L45 100" stroke="#7A6670" stroke-width="1.5"/><rect x="32" y="100" width="16" height="13" rx="3" fill="#B5602E"/></svg>
+  <svg class="balloon" style="left:7vw;top:70vh;width:clamp(54px,6.5vw,80px);animation-duration:11s;animation-delay:-7s" viewBox="0 0 80 120"><path d="M40 4 C16 4 4 22 4 40 C4 60 24 72 32 86 H48 C56 72 76 60 76 40 C76 22 64 4 40 4Z" fill="#A98BD9"/><path d="M40 4 C30 18 28 60 34 86 M40 4 C50 18 52 60 46 86" stroke="#fff" stroke-width="3" fill="none" opacity=".5"/><text x="40" y="50" font-size="26" font-weight="700" text-anchor="middle" fill="#fff" font-family="sans-serif">D</text><path d="M33 86 L35 100 M47 86 L45 100" stroke="#7A6670" stroke-width="1.5"/><rect x="32" y="100" width="16" height="13" rx="3" fill="#B5602E"/></svg>
+  <svg class="plane" viewBox="0 0 60 40"><path d="M2 20 L58 4 L30 36 L26 24Z" fill="#fff"/><path d="M26 24 L58 4 L18 22Z" fill="#E8EEF5"/></svg>
+</div>
+<!-- 太空場景（DOPS 小卡） -->
+<div class="scene space" aria-hidden="true">
+  <div id="stars"></div>
+  <svg class="planet" viewBox="0 0 200 140">
+    <ellipse cx="100" cy="72" rx="95" ry="22" fill="none" stroke="#F2C12E" stroke-width="6" opacity=".55"/>
+    <circle cx="100" cy="70" r="46" fill="#F59E6B"/>
+    <path d="M58 58 Q100 48 142 60 M56 78 Q100 70 144 84" stroke="#F7C3A3" stroke-width="7" fill="none" stroke-linecap="round" opacity=".8"/>
+    <circle cx="84" cy="52" r="7" fill="#fff" opacity=".35"/>
+    <path d="M5 72 Q100 104 195 72" fill="none" stroke="#F2C12E" stroke-width="6" opacity=".9"/>
+  </svg>
+  <svg class="moon" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" fill="#FDECF3"/><circle cx="25" cy="27" r="6" fill="#F0D3DF"/><circle cx="44" cy="44" r="8" fill="#F0D3DF"/><circle cx="45" cy="22" r="3.5" fill="#F0D3DF"/></svg>
+  <div class="shoot"></div><div class="shoot s2"></div>
+</div>
+
+<canvas id="trail" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <p class="eyebrow"><b>PinkDuckLab</b><span class="ver" id="verChip"></span></p>
+      <h1><span id="titleMain">黴漿菌</span><span class="why">為什麼？<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 30 2, 50 14, 80 7 S 140 2, 198 8" fill="none" stroke="var(--lemon)" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
+      <p class="sub" id="subtitle">細胞培養黴漿菌 real-time PCR，每一步背後的原因</p>
+      <a class="btn handout" id="handoutBtn" href="#" target="_blank" rel="noopener" hidden>📖 完整講義 ↗</a>
+    </div>
+    <div class="side">
+    <details class="how" id="howBox">
+      <summary>📖 網頁使用說明</summary>
+      <ol>
+        <li>「🃏 翻卡練習」：照操作流程一站一站走，從「解凍細胞後的品管」開始，每站先看這一步在做什麼，再翻這一步的卡；也可以點最後的「全部一起」；「🔬 判讀練習機」：看擴增曲線練判讀，也可以點右上的 PCR 機器進入；「📝 綜合測驗」：四選一選擇題，可以選「考試」（隨機抽 5／10／15 題，數字題和原理題各一半）或「練習全部」（整個題庫做一次）；「🎤 DOPS 小卡」：照 DOPS 評核表順序的口試題，卡住可以翻提示。</li>
+        <li>右上角「✨ 動態」可以關掉背景的動畫；「🍓 水果特效」預設關，想玩可以打開。</li>
+        <li>「🔄 也可以這樣做」是除了 SOP 之外，有原廠說明書依據的其他做法。</li>
+        <li>延伸題：SOP 沒寫到的。</li>
+        <li>標「會了」或「還不熟」，按 🔑 帶走進度，下次換電腦也能接著練。</li>
+        <li>🏫 公用電腦模式：關掉網頁就清空，不會留給下一位同學。🏠 我的裝置：用自己的手機或電腦時選這個，會一直記住。</li>
+      </ol>
+      <div class="legend">
+        <span class="tag sop">SOP 有這步</span><span class="tag">原理</span><span class="tag pi">說明書確認</span><span class="tag">延伸</span><span class="tag check">待核對</span>
+      </div>
+    </details>
+    <button class="machine" type="button" id="machineBtn" aria-label="進入判讀練習機">
+      <svg viewBox="0 0 320 170" aria-hidden="true">
+        <defs><linearGradient id="mbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--surface)"/><stop offset="1" stop-color="var(--rack)"/></linearGradient></defs>
+        <rect x="18" y="58" width="284" height="104" rx="16" fill="url(#mbody)" stroke="var(--line)" stroke-width="2"/>
+        <g class="lid"><path d="M30 60 Q30 30 60 26 H260 Q290 30 290 60 Z" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+          <rect x="120" y="36" width="80" height="8" rx="4" fill="var(--rack)"/></g>
+        <rect x="34" y="74" width="150" height="74" rx="10" fill="#2E2329"/>
+        <line x1="44" y1="132" x2="176" y2="132" stroke="#5A4A52" stroke-width="1"/>
+        <line x1="44" y1="114" x2="176" y2="114" stroke="#F4E9EE" stroke-dasharray="3 3" stroke-width="1" opacity=".5"/>
+        <path class="trace t1" d="M44 132 C 90 132, 100 131, 112 120 S 130 86, 172 84" fill="none" stroke="#5FD0B3" stroke-width="3" stroke-linecap="round"/>
+        <path class="trace t2" d="M44 132 C 110 132, 125 131, 136 122 S 152 98, 172 96" fill="none" stroke="#F7B38A" stroke-width="3" stroke-linecap="round"/>
+        <text x="48" y="90" font-size="10" fill="#F4E9EE" opacity=".8" font-family="monospace">qPCR · 45 cycles</text>
+        <circle cx="210" cy="86" r="6" fill="var(--mint)"/><circle cx="230" cy="86" r="6" fill="var(--lemon)"/><circle cx="250" cy="86" r="6" fill="var(--peach)"/>
+        <g fill="var(--line)"><rect x="200" y="106" width="86" height="7" rx="3.5"/><rect x="200" y="120" width="86" height="7" rx="3.5"/><rect x="200" y="134" width="60" height="7" rx="3.5"/></g>
+      </svg>
+      <span class="mlabel" id="machineLabel">🔬 點我進入判讀練習機 →</span>
+    </button>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="練習模式">
+    <button class="tab" type="button" role="tab" id="tabCards" aria-selected="true" aria-controls="cardView"><b>🃏 翻卡練習</b><small>跟著流程，一站一站翻</small></button>
+    <button class="tab" type="button" role="tab" id="tabLab" aria-selected="false" aria-controls="labView"><b>🔬 判讀練習機</b><small>看擴增曲線判結果</small></button>
+    <button class="tab" type="button" role="tab" id="tabQuiz" aria-selected="false" aria-controls="quizView"><b>📝 綜合測驗</b><small>數字＋原理選擇題</small></button>
+    <button class="tab" type="button" role="tab" id="tabFlow" aria-selected="false" aria-controls="flowView"><b>🧫 細胞品管任務</b><small>一步一步闖關</small></button>
+    <button class="tab" type="button" role="tab" id="tabDops" aria-selected="false" aria-controls="dopsView"><b>🎤 DOPS 小卡<span class="newbadge">新</span></b><small>口試小卡＋排排看</small></button>
+  </div>
+
+  <div id="cardView" role="tabpanel" aria-labelledby="tabCards">
+  <div class="routeWrap"><nav class="route" id="route" aria-label="照操作流程選一站"></nav></div>
+  <div id="station"></div>
+
+  <div class="tools">
+    <div class="grp">
+      <button class="btn" id="shuffle" type="button">🔀 打亂</button>
+      <button class="btn" id="onlyWeak" type="button" aria-pressed="false">只看還沒會的</button>
+      <button class="btn" id="flipAll" type="button">全部翻面</button>
+      <button class="btn key" id="keyBtn" type="button">🔑 帶走進度</button>
+      <button class="btn cert" id="certBtn" type="button">🎓 通關證書</button>
+    </div>
+    <div class="grp">
+      <div class="seg" role="group" aria-label="這台裝置">
+        <button type="button" id="modePublic" aria-pressed="true">🏫 公用電腦</button>
+        <button type="button" id="modeMine" aria-pressed="false">🏠 我的裝置</button>
+      </div>
+      <button class="help" type="button" id="modeHelp" aria-expanded="false" aria-controls="modeTip" aria-label="公用電腦和我的裝置是什麼？">?</button>
+      <div class="plate" title="綠色：會了；橘色：還不熟"><div class="wells" id="wells"></div><span id="progText">0 / 0</span></div>
+    </div>
+  </div>
+
+  <div class="tip" id="modeTip" hidden>
+    <span>🏫 <b>公用電腦</b>：關掉網頁就清空，不會留給下一位同學。</span>
+    <span>🏠 <b>我的裝置</b>：用自己的手機或電腦時選這個，會一直記住。</span>
+  </div>
+
+  <div class="notice" id="notice" hidden></div>
+
+  <main class="grid" id="grid" aria-live="polite"></main>
+  <nav class="stationNav" id="stationNav" aria-label="上一站、下一站"></nav>
+  </div>
+
+  <section class="lab" id="labView" role="tabpanel" aria-labelledby="tabLab" hidden>
+    <div class="labhead">
+      <h2>判讀練習機：這一管要怎麼判？</h2>
+      <div class="score"><span class="pill" id="labRound">第 1 / 10 題</span><span class="pill" id="labScore">答對 0</span><span class="pill" id="labStreak">連續答對 0</span></div>
+    </div>
+    <div class="legend2">
+      <span><i class="dot" style="background:var(--mint)"></i>FAM：黴漿菌</span>
+      <span><i class="dot" style="background:var(--peach)"></i>HEX：Internal control</span>
+      <span>－－ 虛線：閾值（threshold）</span>
+      <span>N/A：沒有超過閾值</span>
+      <span>判讀標準：依本試劑（Venor GeM qEP）說明書</span>
+    </div>
+    <div id="labPlay">
+      <p class="howto">① 先看<b>粉紅框的檢體</b>　② 再看旁邊的 <b>PC、NC</b> 有沒有正常　③ 選出答案</p>
+      <div class="wellsRow" id="wellsRow"></div>
+      <div class="ask" id="askBox">
+        <p>這一管檢體要怎麼判讀？</p>
+        <div class="opts" id="labOpts">
+          <button class="btn" type="button" data-ans="pos">陽性</button>
+          <button class="btn" type="button" data-ans="neg">陰性</button>
+          <button class="btn" type="button" data-ans="inh">PCR 被抑制：這管無效</button>
+          <button class="btn" type="button" data-ans="contam">汙染：整批重做</button>
+          <button class="btn" type="button" data-ans="pcfail">檢測失效：整批重做</button>
+          <button class="btn key" type="button" id="labNext" hidden>下一題 →</button>
+        </div>
+        <div class="fb" id="labFb" hidden></div>
+      </div>
+    </div>
+    <div class="result" id="labResult" hidden></div>
+  </section>
+
+  <section class="lab" id="quizView" role="tabpanel" aria-labelledby="tabQuiz" hidden>
+    <div class="labhead">
+      <h2>綜合測驗：選出正確答案</h2>
+      <div class="score" id="qzPills" hidden><span class="pill" id="qzMode"></span><span class="pill" id="qzRound">第 1 / 10 題</span><span class="pill" id="qzScore">答對 0</span><span class="pill" id="qzStreak">連續答對 0</span><button class="btn mini" type="button" id="qzBack">↩ 換模式</button></div>
+    </div>
+    <div class="qzmenu" id="qzMenu">
+      <div class="qzbank">
+        <div class="qzbig"><b id="qzTotal">0</b><span>題</span></div>
+        <div class="qzbanktxt">
+          <p class="qzbankttl">題庫目前共有</p>
+          <p class="qzsplit"><span class="qztype">🔢 數字題 <b id="qzNum">0</b></span><span class="qztype c">🃏 原理題 <b id="qzCon">0</b></span></p>
+        </div>
+      </div>
+      <div class="qzmodes">
+        <div class="qzmode exam">
+          <h3>📝 考試</h3>
+          <p>從題庫隨機抽題，數字題、原理題各一半，每次抽到的都不一樣。</p>
+          <div class="qzpick"><span>抽幾題？</span><div class="seg" role="group" aria-label="抽幾題" id="qzCount"></div></div>
+          <label class="qzidrow" for="qzId"><span>名字或 ID（可以不填，會寫在考卷上）</span><input id="qzId" type="text" maxlength="16" autocomplete="off" placeholder="例如 fox07"></label>
+          <button class="btn key" type="button" id="qzGoExam">開始考試 →</button>
+        </div>
+        <div class="qzmode prac">
+          <h3>📚 練習全部</h3>
+          <p>整個題庫的 <b id="qzAllN">0</b> 題全部做一次，順序打亂；錯的題目最後會列出來。</p>
+          <button class="btn key" type="button" id="qzGoPrac">開始練習 →</button>
+        </div>
+      </div>
+    </div>
+    <div id="qzPlay" class="qzcard" hidden>
+      <span class="qztype" id="qzType"></span>
+      <p class="qzq" id="qzQ"></p>
+      <div class="qzopts" id="qzOpts"></div>
+      <div class="fb" id="qzFb" hidden></div>
+      <div class="row" style="justify-content:flex-start"><button class="btn key" type="button" id="qzNext" hidden>下一題 →</button></div>
+    </div>
+    <div class="result" id="qzResult" hidden></div>
+  </section>
+
+  <section id="dopsView" role="tabpanel" aria-labelledby="tabDops" hidden>
+    <div class="dp-lead">
+      <h2>DOPS 口試小卡</h2>
+      <ul class="dp-steps">
+        <li><span class="dp-chip q">🎤 先口頭回答</span></li>
+        <li><span class="dp-chip h">💡 卡住了才翻提示</span></li>
+        <li><span class="dp-chip a">✅ 最後看答案</span></li>
+      </ul>
+    </div>
+    <ol class="dp-form" id="dpForm" aria-label="DOPS 評核表的大項，點一下跳過去"></ol>
+    <div class="dp-deck" id="dpDeck"></div>
+  </section>
+
+  <section id="flowView" role="tabpanel" aria-labelledby="tabFlow" hidden>
+    <div class="qzcard"><strong>🔎 此流程關卡為候選版，待獨立查核後供教學使用。</strong></div>
+    <div class="qzcard" id="flowCard" aria-live="polite"></div>
+  </section>
+  <footer>
+    <!-- 老師用的維護小幫手入口：頁尾的小狐狸（抱著平板），點了先跳短說明（v21，原本是小章魚） -->
+    <button class="octo" type="button" id="octoBtn" aria-label="老師用的維護小幫手">
+      <img src="img/fox_editor_v1_20261025.png" alt="" width="64" height="64">
+    </button>
+  </footer>
+</div>
+
+<div class="fx"><button class="motion" type="button" id="motionBtn" aria-pressed="true">✨ 動態：開</button><button id="trailToggle" type="button" aria-pressed="false">🍓 水果特效：關</button></div>
+<div class="fab" id="candyFab" aria-label="快捷功能">
+  <button class="fab-toggle" id="fabToggle" type="button" aria-label="展開快捷功能" aria-expanded="false" aria-controls="fabActions"><span aria-hidden="true">✨</span></button>
+  <div class="fab-actions" id="fabActions">
+    <button class="candy-action candy-qr" id="qrBtn" type="button" aria-label="掃描帶走"><span class="candy-orb" aria-hidden="true">📱</span><span class="candy-label">掃描帶走</span></button>
+    <a class="candy-action candy-home" id="duckBtn" href="https://pinkducklab.netlify.app/" target="_blank" rel="noopener" aria-label="回 PinkDuckLab 入口網站"><span class="candy-orb" aria-hidden="true"><img class="logo-face" src="img/logo_pdl_face_v1_20261028.png" alt=""></span><span class="candy-label"><span class="duck">回 PinkDuckLab</span></span></a>
+  </div>
+</div>
+
+<div class="modal" id="octoModal" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="octoTitle">
+    <button class="xbtn" type="button" data-close aria-label="關閉">×</button>
+    <h3 id="octoTitle">🦊 維護小幫手</h3>
+    <p class="octotxt">這是老師用的維護小幫手。在這裡修改，網站不會變；改完要產生新檔、重新部署才會更新。</p>
+    <div class="row"><a class="btn key" href="myco_editor_v22_20261028.html">進入</a><button class="btn" type="button" data-close>算了</button></div>
+  </div>
+</div>
+
+<div class="modal" id="examModal" hidden>
+  <div class="panel exampanel" role="dialog" aria-modal="true" aria-labelledby="examTitle">
+    <button class="xbtn" type="button" data-close aria-label="關閉">×</button>
+    <div class="exambanner" id="examBanner" hidden></div>
+    <div class="examsheet" id="examSheet"></div>
+    <p class="small" id="examHint">請截圖或拍照上傳這張考卷。</p>
+    <div class="row"><button class="btn" type="button" data-close>關閉</button></div>
+  </div>
+</div>
+
+<div class="modal" id="qzWrongModal" hidden>
+  <div class="panel wrongpanel" role="dialog" aria-modal="true" aria-labelledby="qzWrongTitle">
+    <button class="xbtn" type="button" data-close aria-label="關閉">×</button>
+    <div class="wrongface" aria-hidden="true">🫧</div>
+    <h3 id="qzWrongTitle">這題答錯囉</h3>
+    <p class="wq" id="qzWrongQ"></p>
+    <div class="wrow mine"><span>你選的</span><b id="qzWrongMine"></b></div>
+    <div class="wrow ok"><span>正確答案</span><b id="qzWrongOk"></b></div>
+    <p class="wwhy" id="qzWrongWhy"></p>
+    <p class="small" id="qzWrongRev"></p>
+    <div class="row"><button class="btn key" type="button" id="qzWrongNext">下一題 →</button></div>
+  </div>
+</div>
+
+<!-- v25：判讀練習機答完跳出解說（答對答錯都跳）；關掉視窗，下面的解說和下一題按鈕還在原地 -->
+<div class="modal" id="labAnsModal" hidden>
+  <div class="panel wrongpanel" role="dialog" aria-modal="true" aria-labelledby="labAnsTitle">
+    <button class="xbtn" type="button" data-close aria-label="關閉">×</button>
+    <div class="wrongface" id="labAnsFace" aria-hidden="true">🫧</div>
+    <h3 id="labAnsTitle">這題判錯囉</h3>
+    <div class="wrow mine" id="labAnsMineRow"><span>你選的</span><b id="labAnsMine"></b></div>
+    <div class="wrow ok"><span>正確答案</span><b id="labAnsOk"></b></div>
+    <p class="wwhy" id="labAnsWhy"></p>
+    <div class="row"><button class="btn" type="button" data-close>↩ 回去看圖</button><button class="btn key" type="button" id="labAnsNext">下一題 →</button></div>
+  </div>
+</div>
+
+<div class="modal" id="qrModal" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+    <button class="xbtn" type="button" data-close aria-label="關閉">×</button>
+    <h3 id="qrTitle">掃描帶走 📱</h3>
+    <div class="qr" id="qrPage"></div>
+    <p class="small" id="qrPageUrl"></p>
+    <div class="row"><button class="btn" type="button" data-close>關閉</button></div>
+  </div>
+</div>
+
+<div class="modal" id="keyModal" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="keyTitle">
+    <button class="xbtn" type="button" data-close aria-label="關閉">×</button>
+    <h3 id="keyTitle">🔑 我的進度碼</h3>
+    <p class="small">拍照或抄下來。下次在任何電腦輸入，進度就回來了；用手機掃 QR，可以直接在手機上接著練。</p>
+    <label class="small" for="idInput">我的 ID（自己取，英文、數字、- 或 _，最多 16 字）</label>
+    <input id="idInput" type="text" autocomplete="off" maxlength="16" placeholder="例如 fox07">
+    <div class="code" id="codeText">—</div>
+    <div class="row"><button class="btn" type="button" id="copyCode">複製代碼</button></div>
+    <div class="qr" id="qrKey"></div>
+    <hr>
+    <label class="small" for="codeInput">有進度碼？輸入後按「讀取」</label>
+    <input id="codeInput" type="text" inputmode="text" autocomplete="off" placeholder="例如 7K2Q-M9A3" maxlength="24">
+    <div class="row"><button class="btn key" type="button" id="loadCode">讀取</button><button class="btn" type="button" data-close>關閉</button></div>
+    <p class="msg" id="keyMsg" aria-live="polite"></p>
+  </div>
+</div>
+
+<div class="modal" id="certModal" hidden>
+  <div class="panel wide" role="dialog" aria-modal="true" aria-labelledby="certTitle">
+    <button class="xbtn" type="button" data-close aria-label="關閉">×</button>
+    <div class="paper" id="paper">
+      <div class="stamp" aria-hidden="true">PinkDuckLab<br>通關<br>認證</div>
+      <div class="info">
+        <p class="sub2">CERTIFICATE</p>
+        <h3 class="ttl" id="certTitle">通關證書</h3>
+        <p class="line" id="certSub"></p>
+        <p class="who" id="certWho">—</p>
+        <p class="big" id="certCount"></p>
+        <p class="line" id="certDate"></p>
+        <p class="line">進度碼：<b id="certCode"></b></p>
+      </div>
+      <div class="qr" id="qrCert"></div>
+    </div>
+    <label class="small" for="certId">在證書上寫我的 ID（英文、數字、- 或 _）</label>
+    <input id="certId" type="text" autocomplete="off" maxlength="16" placeholder="例如 fox07">
+    <p class="small" id="certHint">請截圖保存，或用手機掃 QR，把證書和進度一起帶走。</p>
+    <div class="row"><button class="btn" type="button" data-close>關閉</button></div>
+  </div>
+</div>
+
+<script src="myco_cards_v15_20261028.js"></script>
+<script src="myco_dops_v3_20261023.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+  var CFG = window.MYCO_CONFIG || {}, STAGES = window.MYCO_STAGES || [], CARDS = window.MYCO_CARDS || [];
+  var MARK_KEY = "myco_why_marks", MODE_KEY = "myco_device_mode", ID_KEY = "myco_why_id";
+  var PAGE_VERSION = "v28_20261031";
+  var stageById = {}, stageIdx = {}; STAGES.forEach(function(s, i){ stageById[s.id] = s; stageIdx[s.id] = i; });
+  function stopLabel(s){ return /^\d+$/.test(s.no||"") ? "第 "+s.no+" 步" : (s.no||""); }
+
+  /* ---------- 儲存：公用電腦用 session（關掉就清空），我的裝置用 local ---------- */
+  function get(store, k){ try{ return window[store].getItem(k); }catch(e){ return null; } }
+  function set(store, k, v){ try{ window[store].setItem(k, v); }catch(e){} }
+  function del(store, k){ try{ window[store].removeItem(k); }catch(e){} }
+  var mode = get("localStorage", MODE_KEY) === "mine" ? "mine" : "public";
+  function storeName(){ return mode === "mine" ? "localStorage" : "sessionStorage"; }
+  var marks = {}; try{ marks = JSON.parse(get(storeName(), MARK_KEY) || "{}") || {}; }catch(e){ marks = {}; }
+  var myId = get(storeName(), ID_KEY) || "";
+  function cleanId(v){ return String(v||"").replace(/[^A-Za-z0-9_-]/g, "").slice(0,16); }
+  function save(){ set(storeName(), MARK_KEY, JSON.stringify(marks)); set(storeName(), ID_KEY, myId); }
+
+  /* ---------- 進度碼：每張卡 2 個位元（0 沒標、1 會了、2 還不熟），轉成 36 進位＋1 碼檢查 ---------- */
+  var DIG = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  function encode(){
+    var n = 0n;
+    CARDS.forEach(function(c, i){ var v = marks[c.id]==="ok" ? 1n : (marks[c.id]==="no" ? 2n : 0n); n |= (v << BigInt(2*i)); });
+    var s = n.toString(36).toUpperCase();
+    var sum = 0; for(var i=0;i<s.length;i++){ sum += DIG.indexOf(s[i]) * (i+1); }
+    s += DIG[sum % 36];
+    return s.replace(/(.{4})(?=.)/g, "$1-");
+  }
+  function decode(raw){
+    var s = String(raw||"").toUpperCase().replace(/[^0-9A-Z]/g, "");
+    if(s.length < 2) return null;
+    var body = s.slice(0,-1), chk = s.slice(-1), sum = 0;
+    for(var i=0;i<body.length;i++){ sum += DIG.indexOf(body[i]) * (i+1); }
+    if(DIG[sum % 36] !== chk) return null;
+    var n = 0n; for(var j=0;j<body.length;j++){ n = n*36n + BigInt(DIG.indexOf(body[j])); }
+    var out = {};
+    CARDS.forEach(function(c, k){ var v = (n >> BigInt(2*k)) & 3n; if(v===1n) out[c.id]="ok"; else if(v===2n) out[c.id]="no"; });
+    return out;
+  }
+  function takeUrl(code){ return baseUrl() + "#p-" + code.replace(/-/g,"") + (myId ? "~" + myId : ""); }
+  function baseUrl(){ return CFG.shareUrl || location.href.split("#")[0]; }
+
+  /* 用 QR 帶進度過來時（網址後面有 #p-代碼） */
+  var hash = (location.hash || "").replace(/^#/, "");
+  var fromLink = false;
+  if(/^p-/.test(hash)){ var hp = hash.slice(2).split("~"); var got = decode(hp[0]); if(got){ marks = got; if(hp[1]) myId = cleanId(hp[1]); save(); fromLink = true; } }
+
+  /* ---------- 畫面 ---------- */
+  /* 一開始停在第一站；「全部」時照路線順序排 */
+  function routeOrder(){ return CARDS.slice().sort(function(a,b){ var d = (stageIdx[a.stage]==null?99:stageIdx[a.stage]) - (stageIdx[b.stage]==null?99:stageIdx[b.stage]); return d || CARDS.indexOf(a) - CARDS.indexOf(b); }).map(function(c){return c.id;}); }
+  var state = { stage:(STAGES[0]||{}).id || "all", weak:false, order:routeOrder(), flipped:{} };
+  document.getElementById("verChip").textContent = "網頁 " + PAGE_VERSION + "・題庫 " + (CFG.version || "未標示") + (window.MYCO_DOPS ? "・DOPS " + window.MYCO_DOPS.version : "");
+  if(CFG.title){ document.getElementById("titleMain").textContent = CFG.title.replace(/為什麼？?$/, ""); }
+  if(CFG.subtitle){ document.getElementById("subtitle").textContent = CFG.subtitle; }
+  function okUrl(u){ return typeof u==="string" && /^https?:\/\//i.test(u.trim()); }
+  if(okUrl(CFG.handoutUrl)){ var hb = document.getElementById("handoutBtn"); hb.href = CFG.handoutUrl.trim(); hb.hidden = false; }
+  var duck = document.getElementById("duckBtn");
+  if(CFG.portalUrl){ duck.href = CFG.portalUrl; }
+  if(CFG.logoImage){ duck.innerHTML = '<img alt="PinkDuckLab" src="'+CFG.logoImage+'">'; }
+
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+
+  function tubeSVG(color, fill){
+    /* fill: 0~1，管子裡的液體高度＝這一關「會了」的比例 */
+    var top = 26, bottom = 78, h = (bottom - top) * Math.max(.12, fill), y = bottom - h;
+    return '<svg viewBox="0 0 44 88" aria-hidden="true">'+
+      '<defs><clipPath id="cl'+color+'"><path d="M10 24 H34 V58 C34 70 28 84 22 84 C16 84 10 70 10 58 Z"/></clipPath></defs>'+
+      '<rect x="6" y="2" width="32" height="14" rx="5" fill="var(--'+color+')"/>'+
+      '<rect x="8" y="16" width="28" height="7" rx="2" fill="var(--'+color+')" opacity=".55"/>'+
+      '<path d="M10 24 H34 V58 C34 70 28 84 22 84 C16 84 10 70 10 58 Z" fill="var(--glass)" stroke="var(--line)" stroke-width="1.5"/>'+
+      '<rect clip-path="url(#cl'+color+')" x="8" y="'+y.toFixed(1)+'" width="28" height="'+(90-y).toFixed(1)+'" fill="var(--'+color+'-soft)"/>'+
+      '<rect clip-path="url(#cl'+color+')" x="8" y="'+y.toFixed(1)+'" width="28" height="3" fill="var(--'+color+')" opacity=".7"/>'+
+      '<rect x="14" y="28" width="3" height="24" rx="1.5" fill="#fff" opacity=".7"/>'+
+    '</svg>';
+  }
+  function renderRack(){
+    /* v26：路線。主流程照 MYCO_CONFIG.phases 分段，補充站（kind:"extra"）放旁邊的小岔路，最後一個「全部」 */
+    var el = document.getElementById("route");
+    var html = "", PH = CFG.phases || [], phById = {};
+    PH.forEach(function(p){ phById[p.id] = p; });
+    var mainS = STAGES.filter(function(s){ return s.kind !== "extra"; }), extraS = STAGES.filter(function(s){ return s.kind === "extra"; });
+    var cur = -1; mainS.forEach(function(s, i){ if(s.id === state.stage) cur = i; });
+    function stopHtml(s, pos){
+      var list = CARDS.filter(function(c){return c.stage===s.id;});
+      var ok = list.filter(function(c){return marks[c.id]==="ok";}).length;
+      var cls = (s.kind ? " side" : "") + (list.length && ok===list.length?" done":"");
+      if(pos != null && cur >= 0){ cls += pos < cur ? " passed" : (pos > cur ? " ahead" : ""); }
+      var here = state.stage===s.id;
+      return '<button class="stop c-'+(s.color||"rose")+cls+'" type="button" data-stage="'+s.id+'" aria-pressed="'+here+'" aria-label="'+esc(stopLabel(s)+" "+s.name)+'，'+list.length+' 張，會了 '+ok+' 張">'+
+        '<span class="dot">'+esc(s.icon||"🧪")+'<span class="no">'+esc(s.no||"")+'</span>'+(here?'<span class="tube" aria-hidden="true">🧪</span>':'')+'</span><span class="lb">'+esc(s.name)+'</span><span class="ct">'+ok+'/'+list.length+'</span></button>';
+    }
+    var openPh = null;
+    mainS.forEach(function(s, i){
+      var ph = phById[s.phase] ? s.phase : "";
+      var lk = '<span class="link'+(cur >= 0 && i <= cur ? " on" : "")+'" aria-hidden="true"></span>';
+      if(i === 0 || ph !== openPh){
+        if(i > 0){ html += '</div>' + lk.replace('class="link','class="link between'); }
+        var p = phById[ph] || {name:"", color:"rose"};
+        html += '<div class="phase c-'+(p.color||"rose")+'" role="group" aria-label="'+esc(p.name||"流程")+'">'+(p.name?'<span class="phlb">'+esc(p.name)+'</span>':'');
+        openPh = ph;
+      } else { html += lk; }
+      html += stopHtml(s, i);
+    });
+    if(mainS.length) html += '</div>';
+    if(extraS.length){
+      var ex = extraS[0];
+      html += '<span class="link tobranch" aria-hidden="true"></span><div class="branch c-'+(ex.color||"mint")+'" role="group" aria-label="'+esc(CFG.branchLabel||"需要時再來")+'"><span class="phlb">🌿 '+esc(CFG.branchLabel||"需要時再來")+'</span>';
+      extraS.forEach(function(s){ html += stopHtml(s, null); });
+      html += '</div>';
+    }
+    var okAll = CARDS.filter(function(c){return marks[c.id]==="ok";}).length;
+    html += '<button class="stop all c-rose'+(CARDS.length && okAll===CARDS.length?" done":"")+'" type="button" data-stage="all" aria-pressed="'+(state.stage==="all")+'"><span class="dot">🗂️</span><span class="lb">全部一起</span><span class="ct">'+okAll+'/'+CARDS.length+'</span></button>';
+    el.innerHTML = html;
+    /* 手機上路線比畫面寬：把目前這站捲到中間 */
+    var on = el.querySelector('[aria-pressed="true"]'), w = el.parentNode;
+    if(on && w.scrollWidth > w.clientWidth){ var a = on.getBoundingClientRect(), b = w.getBoundingClientRect(); w.scrollLeft += (a.left + a.width/2) - (b.left + b.width/2); }
+    renderStation();
+  }
+  function renderStation(){
+    var box = document.getElementById("station"), nav = document.getElementById("stationNav");
+    var s = stageById[state.stage], i = s ? stageIdx[s.id] : -1;
+    if(!s){
+      box.innerHTML = '<section class="station c-rose"><div class="big">🗂️</div><div><h2>全部一起</h2><p>21 張卡照流程排好：從起點一路到判讀，最後是試劑配製和原理。</p></div></section>';
+      nav.innerHTML = '<button class="btn next" type="button" data-go="'+((STAGES[0]||{}).id||"")+'">回到起點 →</button>';
+      return;
+    }
+    box.innerHTML = '<section class="station c-'+(s.color||"rose")+(s.kind?" side":"")+'" aria-live="polite"><div class="big">'+esc(s.icon||"🧪")+'<b>'+esc(stopLabel(s))+'</b></div>'+
+      '<div><h2>'+esc(s.name)+'</h2><p><span class="doing">這一站</span>'+esc(s.do||"")+'</p></div></section>';
+    var prev = STAGES[i-1], next = STAGES[i+1], h = "";
+    if(prev){ h += '<button class="btn" type="button" data-go="'+prev.id+'">← 上一站：'+esc(prev.name)+'</button>'; }
+    if(next && next.kind==="extra" && s.kind!=="extra"){
+      /* 操作步驟走完了：可以去練習機，也可以看補充站 */
+      h += '<span style="margin-left:auto;display:flex;flex-wrap:wrap;gap:10px"><button class="btn" type="button" data-go="'+next.id+'">補充：'+esc(next.name)+' →</button>'+
+        '<button class="btn next" type="button" data-golab>走完了！去判讀練習機看曲線 →</button></span>';
+    }
+    else if(next){ h += '<button class="btn next" type="button" data-go="'+next.id+'">'+(next.kind==="extra"?"補充：":"下一站：")+esc(next.name)+' →</button>'; }
+    else { h += '<button class="btn next" type="button" data-golab>去判讀練習機看曲線 →</button>'; }
+    nav.innerHTML = h;
+  }
+
+  function front(c){
+    return (c.sop ? '<p class="sopline">SOP：'+esc(c.sop)+'</p>' : '')+'<p class="q">'+esc(c.q)+'</p><div class="hint">想好答案了嗎？點卡片翻面 ↻</div>';
+  }
+  function back(c){
+    var h = '<p class="ans">'+esc(c.a)+'</p><p class="whyt">'+esc(c.why)+'</p>';
+    if(c.table && c.table.length){
+      h += '<div class="tbl"><table><thead><tr>'+c.table[0].map(function(x){return '<th>'+esc(x)+'</th>';}).join("")+'</tr></thead><tbody>'+
+        c.table.slice(1).map(function(r){return '<tr>'+r.map(function(x){return '<td>'+esc(x)+'</td>';}).join("")+'</tr>';}).join("")+'</tbody></table></div>';
+    }
+    if(c.exam){ h += '<div class="box exam"><b>📝 考點延伸</b>'+esc(c.exam)+'</div>'; }
+    if(c.trap){ h += '<div class="box trap"><b>⚠️ 常見迷思</b>'+esc(c.trap)+'</div>'; }
+    if(c.alt){ h += '<div class="box alt"><b>🔄 也可以這樣做</b>'+esc(c.alt)+'</div>'; }
+    if(c.lab || okUrl(c.noteUrl)){ h += '<div class="row" style="justify-content:flex-start;margin:4px 0 6px;gap:8px">'
+      + (c.lab ? '<button class="btn key golab" type="button" data-golab>🔬 去判讀練習機試試</button>' : '')
+      + (okUrl(c.noteUrl) ? '<a class="btn note" href="'+esc(c.noteUrl.trim())+'" target="_blank" rel="noopener">📖 看講義 ↗</a>' : '')
+      + '</div>'; }
+    if(false){ h += '<div class="row" style="justify-content:flex-start;margin:4px 0 6px"><button class="btn key golab" type="button" data-golab>🔬 去判讀練習機試試</button></div>'; }
+    h += '<div class="tags">'+(c.tags||[]).map(function(t){ var cls = t==="待核對"?"tag check":(t==="SOP"?"tag sop":(t==="說明書"?"tag pi":"tag")); return '<span class="'+cls+'">'+esc(t)+'</span>'; }).join("")+'</div>';
+    return h;
+  }
+  function renderGrid(){
+    var grid = document.getElementById("grid");
+    var list = state.order.map(function(id){ return CARDS.find(function(c){return c.id===id;}); }).filter(Boolean)
+      .filter(function(c){ return state.stage==="all" || c.stage===state.stage; })
+      .filter(function(c){ return !state.weak || marks[c.id]!=="ok"; });
+    if(!list.length){ grid.innerHTML = '<div class="empty">這一站都會了 🎉 往下一站走，或關掉「只看還沒會的」。</div>'; }
+    else grid.innerHTML = list.map(function(c){
+      var s = stageById[c.stage] || {name:c.stage, color:"rose"}, f = !!state.flipped[c.id], m = marks[c.id]||"";
+      return '<article class="card c-'+(s.color||"rose")+(f?" back":"")+'" tabindex="0" role="button" aria-label="'+esc(c.q)+'，按一下翻面" data-id="'+c.id+'">'+
+        '<div class="cap"></div><div class="inner">'+
+        '<div class="top"><span class="stage">'+esc(s.name)+'</span><span class="num"><span class="state '+m+'"></span>#'+String(CARDS.indexOf(c)+1).padStart(2,"0")+(f?" 背面":" 正面")+'</span></div>'+
+        (f?back(c):front(c))+
+        '<div class="marks"><button type="button" class="btn ok'+(m==="ok"?" on":"")+'" data-mark="ok">✓ 會了</button><button type="button" class="btn no'+(m==="no"?" on":"")+'" data-mark="no">還不熟</button></div>'+
+        '</div></article>';
+    }).join("");
+    renderProgress();
+  }
+  var wasComplete = null;
+  function renderProgress(){
+    var ok = 0;
+    document.getElementById("wells").style.gridTemplateColumns = "repeat("+Math.max(1,Math.ceil(CARDS.length/2))+", var(--well, 12px))";
+    document.getElementById("wells").innerHTML = CARDS.map(function(c){ var m = marks[c.id]||""; if(m==="ok") ok++; return '<i class="well '+m+'"></i>'; }).join("");
+    document.getElementById("progText").textContent = "會了 "+ok+" / "+CARDS.length;
+    var all = CARDS.length && ok===CARDS.length, cb = document.getElementById("certBtn");
+    cb.classList.toggle("done", !!all);
+    cb.textContent = all ? "🎓 通關證書" : "🎓 證書（還差 "+(CARDS.length-ok)+" 張）";
+    if(all && wasComplete===false){ celebrate(); }
+    wasComplete = !!all;
+    renderRack();
+  }
+  function renderMode(){
+    document.getElementById("modePublic").setAttribute("aria-pressed", mode==="public");
+    document.getElementById("modeMine").setAttribute("aria-pressed", mode==="mine");
+    var n = document.getElementById("notice"), cnt = Object.keys(marks).length;
+    if(fromLink){ n.hidden = false; n.innerHTML = '<span>🔑 已經從進度碼讀回 '+cnt+' 張卡的標記。</span>'; fromLink = false; return; }
+    if(mode==="mine" && cnt){ n.hidden = false;
+      n.innerHTML = '<span>🏠 這台裝置記得 '+cnt+' 張卡的標記。如果不是你的進度，可以清掉重來。</span><button class="btn" type="button" id="clearMine">清除這台的進度</button>';
+    } else { n.hidden = true; n.innerHTML = ""; }
+  }
+
+  function flip(card){
+    var id = card.getAttribute("data-id");
+    card.classList.remove("flipping"); void card.offsetWidth; card.classList.add("flipping");
+    setTimeout(function(){ state.flipped[id] = !state.flipped[id]; renderGrid();
+      var again = document.querySelector('.card[data-id="'+id+'"]'); if(again){ again.focus({preventScroll:true}); } }, 160);
+  }
+
+  /* ---------- 事件 ---------- */
+  document.getElementById("route").addEventListener("click", function(e){
+    var b = e.target.closest("[data-stage]"); if(!b) return; state.stage = b.getAttribute("data-stage"); renderGrid();
+  });
+  document.getElementById("stationNav").addEventListener("click", function(e){
+    if(e.target.closest("[data-golab]")){ showTab("lab"); return; }
+    var b = e.target.closest("[data-go]"); if(!b) return;
+    state.stage = b.getAttribute("data-go") || "all"; renderGrid();
+    var r = document.querySelector(".routeWrap"); if(r){ r.scrollIntoView({behavior:"smooth", block:"start"}); }
+  });
+  var grid = document.getElementById("grid");
+  grid.addEventListener("click", function(e){
+    if(e.target.closest("a")) return;
+    var card = e.target.closest(".card"); if(!card) return;
+    if(e.target.closest("[data-golab]")){ showTab("lab"); return; }
+    var m = e.target.closest("[data-mark]");
+    if(m){ var id = card.getAttribute("data-id"), v = m.getAttribute("data-mark");
+      if(marks[id]===v) delete marks[id]; else marks[id] = v; save(); renderGrid(); renderMode(); return; }
+    flip(card);
+  });
+  grid.addEventListener("keydown", function(e){
+    if((e.key==="Enter"||e.key===" ") && e.target.classList.contains("card")){ e.preventDefault(); flip(e.target); }
+  });
+  document.getElementById("shuffle").addEventListener("click", function(){
+    var a = state.order.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    state.order = a; state.flipped = {}; renderGrid();
+  });
+  var weakBtn = document.getElementById("onlyWeak");
+  weakBtn.addEventListener("click", function(){ state.weak = !state.weak; weakBtn.classList.toggle("on", state.weak); weakBtn.setAttribute("aria-pressed", state.weak); renderGrid(); });
+  var flipAllBtn = document.getElementById("flipAll");
+  flipAllBtn.addEventListener("click", function(){
+    var anyFront = CARDS.some(function(c){ return !state.flipped[c.id]; });
+    CARDS.forEach(function(c){ state.flipped[c.id] = anyFront; });
+    flipAllBtn.textContent = anyFront ? "全部翻回正面" : "全部翻面"; renderGrid();
+  });
+  document.getElementById("modePublic").addEventListener("click", function(){
+    if(mode==="public") return;
+    del("localStorage", MARK_KEY); del("localStorage", ID_KEY); mode = "public"; set("localStorage", MODE_KEY, "public"); save(); renderMode();
+  });
+  document.getElementById("modeMine").addEventListener("click", function(){
+    if(mode==="mine") return;
+    mode = "mine"; set("localStorage", MODE_KEY, "mine"); save(); del("sessionStorage", MARK_KEY); del("sessionStorage", ID_KEY); renderMode();
+  });
+  document.getElementById("notice").addEventListener("click", function(e){
+    if(e.target.id==="clearMine"){ marks = {}; save(); renderGrid(); renderMode(); }
+  });
+
+  /* ---------- 對話框 ---------- */
+  function openModal(id){ var m = document.getElementById(id); m.hidden = false; var f = m.querySelector("button"); if(f) f.focus(); }
+  document.querySelectorAll(".modal").forEach(function(m){
+    m.addEventListener("click", function(e){ if(e.target===m || e.target.hasAttribute("data-close")) m.hidden = true; });
+  });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") document.querySelectorAll(".modal").forEach(function(m){ m.hidden = true; }); });
+  function drawQR(el, text, px){
+    el.innerHTML = ""; px = px || 180;
+    if(window.QRCode){ new QRCode(el, {text:text, width:px, height:px, colorDark:"#3A2E35", colorLight:"#ffffff"}); }
+    else { el.textContent = "QR 產生器沒有載入，請直接用下面的網址或代碼。"; }
+  }
+  document.getElementById("qrBtn").addEventListener("click", function(){
+    var u = baseUrl(); document.getElementById("qrPageUrl").textContent = u; drawQR(document.getElementById("qrPage"), u); openModal("qrModal");
+  });
+  document.getElementById("keyBtn").addEventListener("click", function(){
+    var code = encode(); document.getElementById("codeText").textContent = code;
+    document.getElementById("idInput").value = myId;
+    drawQR(document.getElementById("qrKey"), takeUrl(code));
+    document.getElementById("keyMsg").textContent = ""; openModal("keyModal");
+  });
+  document.getElementById("copyCode").addEventListener("click", function(){
+    var t = document.getElementById("codeText").textContent, msg = document.getElementById("keyMsg");
+    try{ navigator.clipboard.writeText(t).then(function(){ msg.className="msg"; msg.textContent = "已複製 ✓"; }, function(){ msg.className="msg"; msg.textContent = "請直接選取代碼，用 Ctrl+C 複製。"; }); }
+    catch(e){ msg.textContent = "請直接選取代碼，用 Ctrl+C 複製。"; }
+  });
+  document.getElementById("loadCode").addEventListener("click", function(){
+    var msg = document.getElementById("keyMsg"), got = decode(document.getElementById("codeInput").value);
+    if(!got){ msg.className = "msg err"; msg.textContent = "這組代碼對不起來，檢查一下有沒有抄錯（0 和 O、1 和 I 很像）。"; return; }
+    marks = got; save(); renderGrid(); renderMode();
+    msg.className = "msg"; msg.textContent = "讀取完成，" + Object.keys(got).length + " 張卡的標記回來了 ✓";
+    document.getElementById("codeText").textContent = encode();
+  });
+
+  /* ---------- ID 與通關證書 ---------- */
+  document.getElementById("idInput").addEventListener("input", function(e){
+    var v = cleanId(e.target.value); if(v!==e.target.value) e.target.value = v; myId = v; save();
+    drawQR(document.getElementById("qrKey"), takeUrl(encode()));
+  });
+  function today(){ var d = new Date(); return d.getFullYear()+"/"+String(d.getMonth()+1).padStart(2,"0")+"/"+String(d.getDate()).padStart(2,"0"); }
+  function fillCert(){
+    var ok = CARDS.filter(function(c){return marks[c.id]==="ok";}).length, all = ok===CARDS.length;
+    document.getElementById("certTitle").textContent = all ? "通關證書" : "還沒通關喔";
+    document.getElementById("certSub").textContent = (CFG.title||"") + "　全部關卡";
+    document.getElementById("certWho").textContent = myId || "（寫上你的 ID）";
+    document.getElementById("certCount").textContent = all ? "🎉 "+CARDS.length+" / "+CARDS.length+" 張全部會了！" : "目前會了 "+ok+" / "+CARDS.length+" 張，還差 "+(CARDS.length-ok)+" 張";
+    document.getElementById("certDate").textContent = "日期：" + today() + "　題庫 " + (CFG.version||"");
+    var code = encode(); document.getElementById("certCode").textContent = code;
+    document.querySelector("#paper .stamp").hidden = !all;
+    document.getElementById("certId").value = myId;
+    document.getElementById("certHint").textContent = all ? "請截圖保存，或用手機掃 QR，把證書和進度一起帶走。" : "把每一張卡都標成「會了」，就能拿到通關證書。";
+    drawQR(document.getElementById("qrCert"), takeUrl(code), 150);
+  }
+  document.getElementById("certBtn").addEventListener("click", function(){ fillCert(); openModal("certModal"); });
+  document.getElementById("certId").addEventListener("input", function(e){
+    var v = cleanId(e.target.value); if(v!==e.target.value) e.target.value = v; myId = v; save();
+    document.getElementById("certWho").textContent = myId || "（寫上你的 ID）";
+    drawQR(document.getElementById("qrCert"), takeUrl(encode()), 150);
+  });
+  var helpBtn = document.getElementById("modeHelp"), tip = document.getElementById("modeTip");
+  helpBtn.addEventListener("click", function(){ tip.hidden = !tip.hidden; helpBtn.setAttribute("aria-expanded", !tip.hidden); });
+
+  /* ---------- 糖果機水果特效（預設開，按左下角可以關） ---------- */
+  var cv = document.getElementById("trail"), ctx = cv.getContext("2d"), parts = [], last = 0, running = false;
+  var FRUITS = ["🍓","🍊","🍋","🍇","🍑","🍒","🍉","🍏"];
+  /* v16 起水果特效預設關（才看得到背景），按右上角打開 */
+  var on = get("localStorage","myco_trail")==="on";
+  function size(){ var d = window.devicePixelRatio||1; cv.width = innerWidth*d; cv.height = innerHeight*d; ctx.setTransform(d,0,0,d,0,0); }
+  size(); addEventListener("resize", size);
+  /* 先把每個表情符號畫成小圖片存起來，之後直接貼圖，比每次重畫文字順很多 */
+  var sprites = {};
+  function sprite(f){
+    if(sprites[f]) return sprites[f];
+    var c = document.createElement("canvas"); c.width = c.height = 64;
+    var x = c.getContext("2d"); x.font = "48px serif"; x.textAlign = "center"; x.textBaseline = "middle"; x.fillText(f, 32, 36);
+    return (sprites[f] = c);
+  }
+  var tBtn = document.getElementById("trailToggle");
+  function setBtn(){ tBtn.textContent = on ? "🍓 水果特效：開" : "🍓 水果特效：關"; tBtn.setAttribute("aria-pressed", on); }
+  setBtn();
+  tBtn.addEventListener("click", function(){ on = !on; if(!on) parts = []; setBtn(); set("localStorage","myco_trail", on?"on":"off"); kick(); });
+  addEventListener("pointermove", function(e){
+    if(!on) return; var now = performance.now(); if(now - last < 60) return; last = now;
+    parts.push({x:e.clientX, y:e.clientY, vx:(Math.random()-.5)*2.2, vy:-1.5-Math.random()*1.5, r:(Math.random()-.5)*.2, a:0, life:1, s:16+Math.random()*10, f:FRUITS[(Math.random()*FRUITS.length)|0]});
+    if(parts.length > 160) parts.shift();
+    kick();
+  });
+  function kick(){ if(!running){ running = true; requestAnimationFrame(loop); } }
+  function loop(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    for(var i=parts.length-1;i>=0;i--){ var p = parts[i];
+      p.vy += .12; p.x += p.vx; p.y += p.vy; p.a += p.r; p.life -= .016;
+      if(p.life <= 0 || p.y > innerHeight + 40){ parts.splice(i,1); continue; }
+      ctx.save(); ctx.globalAlpha = Math.min(1, Math.max(0,p.life)); ctx.translate(p.x,p.y); ctx.rotate(p.a);
+      ctx.drawImage(sprite(p.f), -p.s/2, -p.s/2, p.s, p.s); ctx.restore(); }
+    if(parts.length){ requestAnimationFrame(loop); } else { running = false; }
+  }
+
+  /* ---------- 分頁 ---------- */
+  /* 每個頁籤的場景：翻卡＝深海、DOPS＝太空，其他維持方格紙 */
+  var SCENE = {cards:"sea", quiz:"sky", dops:"space"};
+  function showTab(which){
+    var views = {cards:"cardView", lab:"labView", quiz:"quizView", dops:"dopsView", flow:"flowView"}, tabs = {cards:"tabCards", lab:"tabLab", quiz:"tabQuiz", dops:"tabDops", flow:"tabFlow"};
+    Object.keys(views).forEach(function(k){
+      document.getElementById(views[k]).hidden = k!==which;
+      document.getElementById(tabs[k]).setAttribute("aria-selected", k===which);
+    });
+    if(SCENE[which]) document.body.setAttribute("data-scene", SCENE[which]); else document.body.removeAttribute("data-scene");
+    if(which==="dops" && !DP.ready) dpRender();
+    if(which==="lab" && !Q) startRound();
+    var lab = which==="lab";
+    document.getElementById("machineLabel").textContent = lab ? "🃏 回到翻卡練習 →" : "🔬 點我進入判讀練習機 →";
+    document.getElementById("machineBtn").setAttribute("aria-label", lab ? "回到翻卡練習" : "進入判讀練習機");
+    window.scrollTo({top: document.querySelector(".tabs").offsetTop - 10, behavior: "smooth"});
+  }
+  document.getElementById("tabCards").addEventListener("click", function(){ showTab("cards"); });
+  document.getElementById("tabLab").addEventListener("click", function(){ showTab("lab"); });
+  document.getElementById("machineBtn").addEventListener("click", function(){ showTab(document.getElementById("labView").hidden ? "lab" : "cards"); });
+  document.getElementById("tabQuiz").addEventListener("click", function(){ showTab("quiz"); });
+  document.getElementById("tabDops").addEventListener("click", function(){ showTab("dops"); });
+  document.getElementById("tabFlow").addEventListener("click", function(){ showTab("flow"); });
+  document.getElementById("octoBtn").addEventListener("click", function(){ openModal("octoModal"); });
+
+  /* ---------- 場景：泡泡、星星（位置大小隨機）＋右上角動態開關 ---------- */
+  (function(){
+    var bw = document.getElementById("bubbles"), sw = document.getElementById("stars"), i, s, d;
+    for(i=0;i<18;i++){ s = document.createElement("span"); s.className = "bub"; d = rnd(6,22);
+      s.style.cssText = "left:"+rnd(2,98)+"%;width:"+d+"px;height:"+d+"px;animation-duration:"+rnd(9,20)+"s;animation-delay:"+(-rnd(0,20))+"s"; bw.appendChild(s); }
+    var tint = ["#FFB3CF","#F5D35E","#86DEC7"];
+    for(i=0;i<110;i++){ s = document.createElement("span"); s.className = "star"; d = Math.random()<.85 ? rnd(1,2.2) : rnd(2.5,3.5);
+      s.style.cssText = "left:"+rnd(0,100)+"%;top:"+rnd(0,100)+"%;width:"+d+"px;height:"+d+"px;animation-duration:"+rnd(1.5,4)+"s;animation-delay:"+(-rnd(0,4))+"s";
+      if(Math.random()<.12) s.style.background = tint[i%3]; sw.appendChild(s); }
+  })();
+  var motionBtn = document.getElementById("motionBtn"), motionOn = get("localStorage","myco_scene_motion")!=="off";
+  function setMotion(){ document.body.classList.toggle("still", !motionOn); motionBtn.setAttribute("aria-pressed", motionOn); motionBtn.textContent = motionOn ? "✨ 動態：開" : "⏸ 動態：關"; }
+  setMotion();
+  motionBtn.addEventListener("click", function(){ motionOn = !motionOn; setMotion(); set("localStorage","myco_scene_motion", motionOn?"on":"off"); });
+
+  /* ---------- DOPS 口試小卡（內容在 myco_dops_v…js） ---------- */
+  var DOPS = window.MYCO_DOPS || {sections:[], cards:[]};
+  var DP = {ready:false, order:[], picked:null, solved:false};
+  var SRC_CLASS = {sop:"tag sop", pi:"tag pi", work:"tag work"};
+  function dpSecName(n){ var s = DOPS.sections.filter(function(x){ return x.n===n; })[0]; return s ? s.name : ""; }
+  function dpTable(t){
+    return '<div class="tbl"><table><thead><tr>'+t[0].map(function(x){return '<th>'+esc(x)+'</th>';}).join("")+'</tr></thead><tbody>'+
+      t.slice(1).map(function(r){return '<tr>'+r.map(function(x){return '<td>'+esc(x)+'</td>';}).join("")+'</tr>';}).join("")+'</tbody></table></div>';
+  }
+  function dpSrc(c){ return '<div class="dp-src">依據：'+(c.src||[]).map(function(s){ return '<span class="'+(SRC_CLASS[s[1]]||"tag")+'">'+esc(s[0])+'</span>'; }).join("")+'</div>'; }
+  var NOTE = '<div class="dp-note"><span>📝 這題學生：</span><button type="button" aria-pressed="false">自己答出</button><button type="button" aria-pressed="false">看提示才答出</button><button type="button" aria-pressed="false">再教一次</button></div>';
+  function dpCard(c, k){
+    var head = '<div class="dp-head"><span class="dp-sec">'+c.sec+'　'+esc(dpSecName(c.sec))+'</span><span class="dp-item">'+esc(c.item)+'</span></div>';
+    if(c.also && c.also.length){ head += '<div class="dp-head" style="border-top:none;padding-top:0"><span class="dp-sec">'+c.also.map(function(n){ return n+'　'+esc(dpSecName(n)); }).join("、")+'</span><span class="dp-item">'+esc(c.alsoItem||"")+'</span></div>'; }
+    var b;
+    if(c.type==="order"){
+      b = '<div class="dp-ask"><div class="dp-mic" aria-hidden="true">🧪</div><p class="dp-say">'+esc(c.q)+'<small>排對以後，點「為什麼？」看每一步的原因</small></p></div>'+
+        '<p class="dp-howto">拖曳排順序；用手機或平板時，先點一張、再點另一張，兩張就會換位置。</p>'+
+        '<ol class="dp-strip" id="dpStrip"></ol>'+
+        '<div class="dp-row"><button class="btn key" type="button" data-dp="check">對答案</button><button class="btn" type="button" data-dp="show">直接看正確順序</button><button class="btn" type="button" data-dp="shuffle">🔀 重新打亂</button></div>'+
+        '<p class="dp-msg" id="dpMsg" aria-live="polite"></p>';
+    } else {
+      var h = c.hint || {opts:[]};
+      b = '<div class="dp-ask"><div class="dp-mic" aria-hidden="true">🎤</div><p class="dp-say">'+esc(c.q)+'</p></div>'+
+        '<div class="dp-row"><button class="btn dp-hintbtn" type="button" data-dp="hint" aria-expanded="false">💡 卡住了？給提示</button><button class="btn dp-ansbtn" type="button" data-dp="ans" aria-expanded="false">✅ 看答案</button></div>'+
+        '<div class="dp-hint" hidden><p>'+esc(h.ask||"選一個：")+'</p><div class="dp-opts">'+h.opts.map(function(o, i){
+          return '<button class="dp-opt" type="button" data-right="'+(i===h.right)+'"><span class="lt">'+"ABC".charAt(i)+'</span><span>'+esc(o)+'</span></button>'; }).join("")+'</div></div>'+
+        '<div class="dp-ans" hidden><p class="a">'+esc(c.a)+'</p>'+(c.table ? dpTable(c.table) : "")+
+          (c.list && c.list.length ? '<ul>'+c.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join("")+'</ul>' : "")+
+          (c.lab ? '<div class="dp-row"><button class="btn key golab" type="button" data-golab>🔬 去判讀練習機試試</button></div>' : "")+
+        '</div>';
+    }
+    return '<article class="dp-card" id="dp'+k+'" data-k="'+k+'">'+head+'<div class="dp-body">'+b+dpSrc(c)+NOTE+'</div></article>';
+  }
+  function dpRender(){
+    DP.ready = true;
+    var first = {};
+    DOPS.cards.forEach(function(c, k){ [c.sec].concat(c.also||[]).forEach(function(n){ if(!(n in first)) first[n] = k; }); });
+    document.getElementById("dpForm").innerHTML = DOPS.sections.filter(function(s){ return s.n in first; }).map(function(s){
+      var cnt = DOPS.cards.filter(function(c){ return c.sec===s.n || (c.also||[]).indexOf(s.n)>=0; }).length;
+      return '<li><button type="button" data-jump="'+first[s.n]+'"><b>'+s.n+'</b>'+esc(s.name)+' <small>'+cnt+'</small></button></li>';
+    }).join("");
+    document.getElementById("dpDeck").innerHTML = DOPS.cards.map(dpCard).join("") + '<p class="dp-foot">共 '+DOPS.cards.length+' 張・DOPS '+esc(DOPS.version||"")+'</p>';
+    dpShuffle();
+  }
+  function dpSteps(){ var o = DOPS.cards.filter(function(c){ return c.type==="order"; })[0]; return o ? o.steps : []; }
+  function dpShuffle(){
+    var n = dpSteps().length; if(!n) return;
+    do { DP.order = shuffle(dpSteps().map(function(_, i){ return i; })); } while(n>1 && DP.order.every(function(v, i){ return v===i; }));
+    DP.solved = false; DP.picked = null; var m = document.getElementById("dpMsg"); m.textContent = ""; m.className = "dp-msg";
+    dpStrip();
+  }
+  function dpStrip(marks){
+    var st = dpSteps(), el = document.getElementById("dpStrip"); if(!el) return;
+    el.innerHTML = DP.order.map(function(idx, pos){
+      var s = st[idx], cls = "dp-step" + (marks ? (marks[pos] ? " ok" : " no") : "") + (DP.picked===pos ? " pick" : "");
+      var tail = DP.solved ? (s.why ? '<button class="dp-whybtn" type="button" data-why>為什麼？</button><p class="dp-whytxt" hidden>'+esc(s.why)+'</p>' : '<span></span>')
+        : '<span class="grip" aria-hidden="true">⠿</span>';
+      return '<li class="'+cls+'" data-pos="'+pos+'"'+(DP.solved?'':' draggable="true"')+'><span>'+esc(s.t)+'</span>'+tail+'</li>';
+    }).join("");
+  }
+  var dpDeck = document.getElementById("dpDeck"), dpFrom = null;
+  dpDeck.addEventListener("click", function(e){
+    if(e.target.closest("[data-golab]")){ showTab("lab"); return; }
+    var card = e.target.closest(".dp-card"); if(!card) return;
+    var act = e.target.closest("[data-dp]");
+    if(act){
+      var a = act.getAttribute("data-dp");
+      if(a==="hint" || a==="ans"){ var box = card.querySelector(a==="hint" ? ".dp-hint" : ".dp-ans"); box.hidden = !box.hidden; act.setAttribute("aria-expanded", !box.hidden); return; }
+      var msg = document.getElementById("dpMsg"), n = dpSteps().length;
+      if(a==="shuffle"){ dpShuffle(); return; }
+      if(a==="show"){ DP.order = dpSteps().map(function(_, i){ return i; }); DP.solved = true; DP.picked = null; dpStrip(DP.order.map(function(){ return true; }));
+        msg.textContent = "這是正確順序，點「為什麼？」可以看每一步的原因。"; msg.className = "dp-msg good"; return; }
+      if(a==="check"){ DP.picked = null; var marks = DP.order.map(function(v, i){ return v===i; }), ok = marks.filter(Boolean).length;
+        if(ok===n){ DP.solved = true; dpStrip(marks); msg.textContent = "🎉 全部排對了！點「為什麼？」可以看每一步的原因。"; msg.className = "dp-msg good";
+          var rc = msg.getBoundingClientRect(); burstAt(rc.left+60, rc.top, ["⭐","🚀","✨","🪐"], 22, true); }
+        else { dpStrip(marks); msg.textContent = "排對 "+ok+" / "+n+" 步，橘色的再調整看看。"; msg.className = "dp-msg bad"; }
+        return; }
+    }
+    var opt = e.target.closest(".dp-opt");
+    if(opt && !opt.disabled){ var right = opt.getAttribute("data-right")==="true"; opt.classList.add(right ? "right" : "wrong");
+      if(right) card.querySelectorAll(".dp-opt").forEach(function(x){ x.disabled = true; }); return; }
+    var wb = e.target.closest("[data-why]");
+    if(wb){ var p = wb.nextElementSibling; p.hidden = !p.hidden; return; }
+    var nb = e.target.closest(".dp-note button");
+    if(nb){ var was = nb.getAttribute("aria-pressed")==="true"; nb.parentNode.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed","false"); }); nb.setAttribute("aria-pressed", !was); return; }
+    var li = e.target.closest(".dp-step");
+    if(li && !DP.solved){ var pos = +li.getAttribute("data-pos");
+      if(DP.picked===null){ DP.picked = pos; dpStrip(); }
+      else if(DP.picked===pos){ DP.picked = null; dpStrip(); }
+      else { var t = DP.order[DP.picked]; DP.order[DP.picked] = DP.order[pos]; DP.order[pos] = t; DP.picked = null; dpStrip(); } }
+  });
+  dpDeck.addEventListener("dragstart", function(e){ var li = e.target.closest && e.target.closest(".dp-step"); if(!li) return; dpFrom = +li.getAttribute("data-pos"); li.classList.add("drag"); try{ e.dataTransfer.setData("text/plain",""); }catch(x){} });
+  dpDeck.addEventListener("dragend", function(e){ var li = e.target.closest && e.target.closest(".dp-step"); if(li) li.classList.remove("drag"); });
+  dpDeck.addEventListener("dragover", function(e){ var li = e.target.closest && e.target.closest(".dp-step"); if(!li || dpFrom===null) return; e.preventDefault();
+    dpDeck.querySelectorAll(".dp-step.over").forEach(function(x){ x.classList.remove("over"); }); li.classList.add("over"); });
+  dpDeck.addEventListener("drop", function(e){ var li = e.target.closest && e.target.closest(".dp-step"); if(!li || dpFrom===null) return; e.preventDefault();
+    var to = +li.getAttribute("data-pos"), item = DP.order.splice(dpFrom, 1)[0]; DP.order.splice(to, 0, item); dpFrom = null; DP.picked = null; dpStrip(); });
+  document.getElementById("dpForm").addEventListener("click", function(e){
+    var b = e.target.closest("[data-jump]"); if(!b) return;
+    var el = document.getElementById("dp"+b.getAttribute("data-jump")); if(!el) return;
+    el.scrollIntoView({behavior:"smooth", block:"start"}); el.classList.remove("spot"); void el.offsetWidth; el.classList.add("spot");
+  });
+
+  /* ---------- 綜合測驗（題目在題庫檔的 MYCO_QUIZ：數字題＋原理題） ---------- */
+  var QUIZ = window.MYCO_QUIZ || [];
+  /* v16：先選模式。考試＝隨機抽 N 題（數字、原理各一半）；練習＝整個題庫全部做一次 */
+  var QZ = {started:false, mode:"exam", n:10, pick:10, list:[], i:0, right:0, streak:0, misses:[], cur:null, answered:false, round:1};
+  var QZ_NUMS = [], QZ_CONS = [];
+  QUIZ.forEach(function(x,k){ (x.type==="原理" ? QZ_CONS : QZ_NUMS).push(k); });
+  var QZ_PICKS = [5,10,15].filter(function(n){ return n < QUIZ.length; });
+  if(!QZ_PICKS.length) QZ_PICKS = [QUIZ.length];
+  QZ.pick = QZ_PICKS.indexOf(10)>=0 ? 10 : QZ_PICKS[0];
+  document.getElementById("qzTotal").textContent = QUIZ.length;
+  document.getElementById("qzNum").textContent = QZ_NUMS.length;
+  document.getElementById("qzCon").textContent = QZ_CONS.length;
+  document.getElementById("qzAllN").textContent = QUIZ.length;
+  function qzCountBtns(){
+    document.getElementById("qzCount").innerHTML = QZ_PICKS.map(function(n){ return '<button type="button" data-n="'+n+'" aria-pressed="'+(n===QZ.pick)+'">'+n+' 題</button>'; }).join("");
+  }
+  qzCountBtns();
+  document.getElementById("qzCount").addEventListener("click", function(e){ var b = e.target.closest("[data-n]"); if(!b) return; QZ.pick = +b.getAttribute("data-n"); qzCountBtns(); });
+  function qzMenu(){
+    document.getElementById("qzMenu").hidden = false; document.getElementById("qzPlay").hidden = true;
+    document.getElementById("qzResult").hidden = true; document.getElementById("qzPills").hidden = true;
+  }
+  document.getElementById("qzGoExam").addEventListener("click", function(){ qzStart("exam"); });
+  document.getElementById("qzGoPrac").addEventListener("click", function(){ qzStart("prac"); });
+  document.getElementById("qzBack").addEventListener("click", qzMenu);
+  function qzPills(){
+    document.getElementById("qzMode").textContent = QZ.mode==="prac" ? "📚 練習全部" : "📝 考試";
+    document.getElementById("qzRound").textContent = "第 "+Math.min(QZ.i+1,QZ.n)+" / "+QZ.n+" 題";
+    document.getElementById("qzScore").textContent = "答對 "+QZ.right;
+    document.getElementById("qzStreak").textContent = "連續答對 "+QZ.streak+(QZ.streak>=5?" 🔥":"");
+  }
+  function qzStart(mode){
+    QZ.started = true; QZ.mode = mode || QZ.mode; QZ.i = 0; QZ.right = 0; QZ.streak = 0; QZ.misses = []; QZ.log = [];
+    if(QZ.mode==="prac"){
+      QZ.list = shuffle(QUIZ.map(function(_,k){ return k; }));
+    } else {
+      var want = Math.min(QZ.pick, QUIZ.length), half = Math.floor(want/2);
+      var a = shuffle(QZ_NUMS.slice()).slice(0, half), b = shuffle(QZ_CONS.slice()).slice(0, want - a.length);
+      if(a.length + b.length < want){ a = a.concat(shuffle(QZ_NUMS.filter(function(k){ return a.indexOf(k)<0; })).slice(0, want - a.length - b.length)); }
+      QZ.list = shuffle(a.concat(b));
+    }
+    QZ.n = QZ.list.length;
+    document.getElementById("qzMenu").hidden = true; document.getElementById("qzPills").hidden = false;
+    document.getElementById("qzResult").hidden = true; document.getElementById("qzPlay").hidden = false;
+    qzShow();
+  }
+  function qzShow(){
+    var item = QUIZ[QZ.list[QZ.i]], order = shuffle(item.opts.map(function(_,k){ return k; }));
+    QZ.cur = {item:item, order:order}; QZ.answered = false;
+    document.getElementById("qzQ").textContent = item.q;
+    var tp = document.getElementById("qzType"); tp.textContent = item.type==="原理" ? "🃏 原理題" : "🔢 數字題"; tp.className = "qztype" + (item.type==="原理" ? " c" : "");
+    document.getElementById("qzOpts").innerHTML = order.map(function(k, n){
+      return '<button class="qzopt" type="button" data-k="'+k+'"><span class="lt">'+"ABCD".charAt(n)+'</span><span>'+esc(item.opts[k])+'</span></button>';
+    }).join("");
+    document.getElementById("qzFb").hidden = true; document.getElementById("qzNext").hidden = true;
+    document.getElementById("qzStreak").classList.remove("hot");
+    qzPills();
+  }
+  document.getElementById("qzOpts").addEventListener("click", function(e){
+    var b = e.target.closest(".qzopt"); if(!b || QZ.answered) return; QZ.answered = true;
+    var item = QZ.cur.item, ok = +b.getAttribute("data-k")===item.ans;
+    if(ok){ QZ.right++; QZ.streak++; } else { QZ.streak = 0; QZ.misses.push({q:item.q, card:item.card||0}); }
+    QZ.log.push({k:QZ.list[QZ.i], c:+b.getAttribute("data-k")});
+    document.querySelectorAll("#qzOpts .qzopt").forEach(function(x){
+      if(+x.getAttribute("data-k")===item.ans) x.classList.add("right"); else if(x===b) x.classList.add("wrong");
+      x.disabled = true;
+    });
+    var fb = document.getElementById("qzFb"); fb.hidden = false; fb.className = "fb "+(ok?"good":"bad");
+    fb.textContent = (ok ? "✅ 答對了！\n" : "答案是「"+item.opts[item.ans]+"」。\n") + "💡 " + item.why + (item.card ? "\n🃏 想複習：翻卡 #"+String(item.card).padStart(2,"0") : "\n📄 想複習：請看 SOP");
+    var nx = document.getElementById("qzNext"); nx.hidden = false; nx.textContent = QZ.i+1>=QZ.n ? "看結果 →" : "下一題 →";
+    qzPills();
+    if(ok && QZ.streak%5===0){
+      var pill = document.getElementById("qzStreak"); pill.classList.add("hot");
+      var rc = pill.getBoundingClientRect(); burstAt(rc.left+rc.width/2, rc.top+rc.height/2, ["🔥","⭐","🔥","✨"], 26, true);
+    }
+    /* v17：答錯時跳出視窗，看完解釋再按下一題（關掉視窗也看得到下面的解說） */
+    if(!ok){
+      document.getElementById("qzWrongQ").textContent = item.q;
+      document.getElementById("qzWrongMine").textContent = item.opts[+b.getAttribute("data-k")];
+      document.getElementById("qzWrongOk").textContent = item.opts[item.ans];
+      document.getElementById("qzWrongWhy").textContent = "💡 " + item.why;
+      document.getElementById("qzWrongRev").textContent = item.card ? "🃏 想複習：翻卡 #"+String(item.card).padStart(2,"0") : "📄 想複習：請看 SOP";
+      document.getElementById("qzWrongNext").textContent = nx.textContent;
+      var atQ = QZ.i;
+      setTimeout(function(){
+        /* 已經換到下一題或考完了就不跳（點很快時才不會疊在考卷上） */
+        if(QZ.i !== atQ || document.getElementById("qzPlay").hidden) return;
+        openModal("qzWrongModal"); document.getElementById("qzWrongNext").focus();
+      }, 350);
+    }
+  });
+  document.getElementById("qzWrongNext").addEventListener("click", function(){
+    document.getElementById("qzWrongModal").hidden = true;
+    document.getElementById("qzNext").click();
+  });
+  document.getElementById("qzNext").addEventListener("click", function(){
+    QZ.i++;
+    if(QZ.i < QZ.n){ qzShow(); document.getElementById("quizView").scrollIntoView({behavior:"smooth", block:"start"}); return; }
+    document.getElementById("qzPlay").hidden = true;
+    var r = document.getElementById("qzResult"), n = QZ.right, pct = QZ.n ? n/QZ.n : 0;
+    var stars = pct>=.9?"🌟🌟🌟":pct>=.7?"🌟🌟":pct>=.5?"🌟":"💪";
+    var msg = n===QZ.n?"全對！太厲害了 🎉":pct>=.7?"很棒！再挑戰一次拿滿分？":pct>=.5?"不錯喔，看一下錯在哪幾題":"多玩幾回合就記得了";
+    var ul = QZ.misses.length ? '<p>答錯的題目：</p><ul class="misslist">'+QZ.misses.map(function(m){
+      return '<li><span>'+esc(m.q)+'</span>'+(m.card ? '<button class="btn key mini" type="button" data-gocard="'+m.card+'">🃏 看翻卡 #'+String(m.card).padStart(2,"0")+'</button>' : '<span class="sopnote">📄 請複習 SOP</span>')+'</li>';
+    }).join("")+'</ul>' : '<p>沒有答錯的題目 👏</p>';
+    var again = QZ.mode==="prac" ? "再練一次全部 →" : "再考一次（"+QZ.pick+" 題）→";
+    r.innerHTML = '<h3>'+(QZ.mode==="prac" ? "全部練完了！" : "第 "+QZ.round+" 回合結束！")+'</h3><div class="stars">'+stars+'</div><p><b>答對 '+n+' / '+QZ.n+'</b>　'+msg+'</p>'+ul+
+      '<div class="row">'+(QZ.mode==="exam" ? '<button class="btn key" type="button" id="qzPaperBtn">📄 看考卷</button>' : '')+
+      '<button class="btn'+(QZ.mode==="exam" ? '' : ' key')+'" type="button" id="qzAgain">'+again+'</button><button class="btn" type="button" id="qzMenuBtn">↩ 換模式</button></div>';
+    r.hidden = false; QZ.round++;
+    document.getElementById("qzRound").textContent = "回合結束";
+    if(pct>=.8){ burstAt(innerWidth/2, 120, ["🎉","⭐","📝","🍓","🦆"], 60); }
+    r.scrollIntoView({behavior:"smooth", block:"center"});
+    /* v18：考試考完跳出考卷（練習不跳） */
+    if(QZ.mode==="exam"){
+      QZ.paper = {bank:String(CFG.version||""), t:Math.floor(Date.now()/60000), id:cleanName(document.getElementById("qzId").value), log:QZ.log.slice()};
+      setTimeout(function(){ showPaper(QZ.paper, null); }, 900);
+    }
+  });
+
+  /* ---------- 考卷與驗證碼（v18） ----------
+     驗證碼＝把「題庫版次、時間、名字、每題題號和選的答案」串起來算出的檢查碼。
+     QR 帶著同樣的內容；掃了會打開網頁的「核對考卷」，重新算一次檢查碼，對得上就是原版。 */
+  var EXAM_SALT = "PinkDuckLab-myco-exam-v1";
+  function cleanName(v){ return String(v||"").replace(/[.~<>"'&\\\/#%]/g, "").trim().slice(0,16); }
+  function fnv(s){ var h = 0x811c9dc5; for(var i=0;i<s.length;i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
+  function paperBody(p){
+    return ["1", p.bank, p.t.toString(36), encodeURIComponent(p.id),
+      p.log.map(function(x){ return (x.k*4 + x.c).toString(36).padStart(2,"0"); }).join("")].join(".");
+  }
+  function paperCode(body){ return fnv(EXAM_SALT + "|" + body).toString(36).toUpperCase().padStart(7,"0"); }
+  function fmtCode(c){ return c.slice(0,4) + "-" + c.slice(4); }
+  function paperUrl(p){ var body = paperBody(p); return baseUrl() + "#exam-" + body + "." + paperCode(body); }
+  function readPaper(str){
+    var parts = String(str||"").split("."); if(parts.length !== 6 || parts[0] !== "1") return null;
+    var body = parts.slice(0,5).join("."), items = parts[4], log = [];
+    if(items.length % 2) return null;
+    for(var i=0;i<items.length;i+=2){ var v = parseInt(items.substr(i,2), 36); if(isNaN(v)) return null; log.push({k:Math.floor(v/4), c:v%4}); }
+    var id = ""; try{ id = decodeURIComponent(parts[3]); }catch(e){ return null; }
+    return {p:{bank:parts[1], t:parseInt(parts[2],36), id:cleanName(id), log:log}, ok: paperCode(body) === parts[5].toUpperCase()};
+  }
+  function two(n){ return String(n).padStart(2,"0"); }
+  function fmtTime(min){ var d = new Date(min*60000); return d.getFullYear()+"/"+two(d.getMonth()+1)+"/"+two(d.getDate())+" "+two(d.getHours())+":"+two(d.getMinutes()); }
+  function showPaper(p, verify){
+    var right = 0, broken = false;
+    var rows = p.log.map(function(x){
+      var q = QUIZ[x.k]; if(!q || !q.opts[x.c]){ broken = true; return '<li><div><p class="es-q">（這一題在目前的題庫找不到）</p></div><span class="es-mark no">？</span></li>'; }
+      var ok = x.c === q.ans; if(ok) right++;
+      return '<li><div><p class="es-q"><small>'+(q.type==="原理"?"原理":"數字")+'</small>'+esc(q.q)+'</p>'+
+        '<p class="es-a'+(ok?'':' no')+'">作答：'+esc(q.opts[x.c])+'</p>'+
+        (ok ? '' : '<p class="es-fix">正確答案：'+esc(q.opts[q.ans])+'</p>')+'</div>'+
+        '<span class="es-mark '+(ok?'ok':'no')+'">'+(ok?'○':'✕')+'</span></li>';
+    }).join("");
+    var n = p.log.length, score = n ? Math.round(right/n*100) : 0;
+    var code = paperCode(paperBody(p));
+    document.getElementById("examSheet").innerHTML =
+      '<div class="es-stamp" aria-label="得分 '+score+' 分"><b>'+score+'</b><span>分　'+right+' / '+n+'</span></div>'+
+      '<div class="es-head"><p class="es-kicker">PinkDuckLab・綜合測驗考卷</p><h3 class="es-title" id="examTitle">'+esc(CFG.title||"黴漿菌為什麼？")+'</h3>'+
+      '<p class="es-meta"><span>姓名／ID <b>'+(p.id ? esc(p.id) : "　　　")+'</b></span><span>日期 <b>'+fmtTime(p.t)+'</b></span><span>題數 <b>'+n+'</b></span></p></div>'+
+      '<ol class="es-list">'+rows+'</ol>'+
+      '<div class="es-foot"><div class="es-code"><span>驗證碼</span><b>'+fmtCode(code)+'</b><span>題庫 '+esc(p.bank)+'・網頁 '+PAGE_VERSION+'</span></div>'+(verify ? '' : '<div class="es-qr" id="examQr"></div>')+'</div>';
+    var ban = document.getElementById("examBanner"), hint = document.getElementById("examHint");
+    if(verify){
+      var msgs = [];
+      if(verify.ok && !broken){ ban.className = "exambanner good"; msgs.push("✅ 驗證碼正確：這張考卷是網頁產生的原版。請和學生上傳的照片對一下分數、日期和名字。"); }
+      else { ban.className = "exambanner bad"; msgs.push("⚠️ 驗證碼對不上：這張考卷的內容可能被改過。"); }
+      if(p.bank !== String(CFG.version||"")) msgs.push("⚠️ 這張考卷用的是題庫 "+p.bank+"，現在的網頁是 "+(CFG.version||"")+"，題目可能對不上。");
+      ban.innerHTML = msgs.map(esc).join("<br>"); ban.hidden = false; hint.textContent = "這是從考卷 QR 打開的核對畫面。";
+    } else {
+      ban.hidden = true; hint.textContent = "請截圖或拍照上傳這張考卷（題目多的話可以分兩張拍）。老師掃考卷上的 QR，就能核對是不是原版。";
+      var qr = document.getElementById("examQr"); if(qr){ drawQR(qr, paperUrl(p), 92); }
+    }
+    openModal("examModal");
+  }
+  /* 從考卷 QR 打開（網址後面是 #exam-…）：直接顯示核對畫面 */
+  if(/^exam-/.test(hash)){
+    var got = readPaper(hash.slice(5));
+    if(got){ setTimeout(function(){ showTab("quiz"); showPaper(got.p, {ok:got.ok}); }, 300); }
+    else { setTimeout(function(){ alert("這個考卷網址讀不出來，可能沒有複製完整。"); }, 300); }
+  }
+
+  document.getElementById("qzResult").addEventListener("click", function(e){
+    if(e.target.id==="qzPaperBtn" && QZ.paper) showPaper(QZ.paper, null);
+    if(e.target.id==="qzAgain") qzStart();
+    if(e.target.id==="qzMenuBtn") qzMenu();
+    var g = e.target.closest("[data-gocard]"); if(g) goToCard(+g.getAttribute("data-gocard"));
+  });
+  /* 從錯題直接跳到那張卡：切到翻卡、顯示全部、翻到背面、捲過去並閃一下 */
+  function goToCard(n){
+    var c = CARDS[n-1]; if(!c) return;
+    showTab("cards");
+    state.stage = stageById[c.stage] ? c.stage : "all"; state.weak = false; weakBtn.classList.remove("on"); weakBtn.setAttribute("aria-pressed", false);
+    state.flipped[c.id] = true; renderGrid();
+    setTimeout(function(){
+      var el = document.querySelector('.card[data-id="'+c.id+'"]'); if(!el) return;
+      el.scrollIntoView({behavior:"smooth", block:"center"});
+      el.classList.remove("spot"); void el.offsetWidth; el.classList.add("spot");
+    }, 350);
+  }
+
+  /* ---------- 判讀練習機 ---------- */
+  var Q = null, answered = false, ROUND = 10, round = [], qi = 0, labRight = 0, streak = 0, misses = [], roundNo = 1;
+  var TH = 200, PLATEAU = 2000, K = 1.5;
+  var TYPES = ["strong","weak","late","neg","inh","contam","pcfail"];
+  var TYPE_NAME = {strong:"強陽性", weak:"弱陽性", late:"Ct ≥ 40 的晚訊號", neg:"陰性", inh:"PCR 被抑制", contam:"汙染（NC 有訊號）", pcfail:"檢測失效（PC 沒出來）"};
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+  function r1(x){ return Math.round(x*10)/10; }
+  function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=(Math.random()*(i+1))|0; var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  /* 一回合 10 題：7 種題型各出現一次，再補 3 題，而且不會連續出現同一種 */
+  function makeRound(){
+    var extra = shuffle(["strong","weak","late","neg","inh"]).slice(0,3), bag;
+    for(var tries=0; tries<200; tries++){
+      bag = shuffle(TYPES.concat(extra));
+      var ok = true; for(var i=1;i<bag.length;i++){ if(bag[i]===bag[i-1]){ ok=false; break; } }
+      if(ok) break;
+    }
+    return bag;
+  }
+  function curve(ct, seed){
+    var pts = [];
+    for(var c=1;c<=45;c++){
+      var y = 30 + Math.sin(c*1.7 + seed)*6 + Math.random()*6;
+      if(ct!=null){ var m = ct + K*Math.log(PLATEAU/TH - 1); y += PLATEAU/(1+Math.exp(-(c-m)/K)); }
+      pts.push([c,y]);
+    }
+    return pts;
+  }
+  function chart(fam, hex){
+    var W=300,H=170,L=34,R=8,T=10,B=24, maxY=2300;
+    function X(c){ return L + (c/45)*(W-L-R); } function Y(v){ return T + (1-Math.min(v,maxY)/maxY)*(H-T-B); }
+    function path(pts){ return pts.map(function(p,i){ return (i?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1); }).join(" "); }
+    var g = '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="擴增曲線圖">';
+    [0,10,20,30,40].forEach(function(c){ g += '<line x1="'+X(c)+'" y1="'+T+'" x2="'+X(c)+'" y2="'+(H-B)+'" stroke="var(--grid)" stroke-width="1"/><text x="'+X(c)+'" y="'+(H-8)+'" font-size="10" text-anchor="middle" fill="var(--muted)">'+c+'</text>'; });
+    g += '<line x1="'+X(40)+'" y1="'+T+'" x2="'+X(40)+'" y2="'+(H-B)+'" stroke="var(--brand)" stroke-width="1" opacity=".35"/>';
+    g += '<text x="'+(L-4)+'" y="'+(T+8)+'" font-size="9" text-anchor="end" fill="var(--muted)">RFU</text><text x="'+(W-R)+'" y="'+(H-8)+'" font-size="9" text-anchor="end" fill="var(--muted)">cycle</text>';
+    g += '<line x1="'+L+'" y1="'+Y(TH)+'" x2="'+(W-R)+'" y2="'+Y(TH)+'" stroke="var(--ink)" stroke-dasharray="4 3" stroke-width="1" opacity=".55"/>';
+    g += '<path d="'+path(hex)+'" fill="none" stroke="var(--peach)" stroke-width="2.2"/>';
+    g += '<path d="'+path(fam)+'" fill="none" stroke="var(--mint)" stroke-width="2.6"/>';
+    return g + '</svg>';
+  }
+  function ctTxt(ct){ return ct==null ? "N/A" : r1(ct).toFixed(1); }
+  var RULE = "（判讀標準依本試劑 Venor GeM qEP 說明書：Ct < 40 陽性，≥ 40 陰性）";
+  function makeQ(type){
+    var pc = {fam:rnd(23,28), hex:Math.random()<.5? rnd(29,33): null};
+    var nc = {fam:null, hex:rnd(27,31)};
+    var sm, ans, why;
+    if(type==="strong"){ sm = {fam:rnd(15,25), hex: Math.random()<.5 ? null : rnd(34,38)}; ans="pos";
+      why = "檢體 FAM Ct = "+ctTxt(sm.fam)+"，小於 40 → 陽性。Ct 很低，代表黴漿菌 DNA 很多，是強陽性。\n"+(sm.hex==null?"HEX 沒有出來也沒關係：":"HEX 很晚才出來也沒關係：")+"黴漿菌 DNA 很多時，會把 internal control 要用的材料搶光。FAM 陽性時，不用看 HEX。"; }
+    else if(type==="weak"){ sm = {fam:rnd(32,39.4), hex:rnd(28,32)}; ans="pos";
+      why = "檢體 FAM Ct = "+ctTxt(sm.fam)+"，雖然比較晚，但還是小於 40 → 陽性。Ct 比較高，代表 DNA 量比較少，是弱陽性，一樣要發陽性。"; }
+    else if(type==="late"){ sm = {fam:rnd(40.3,43), hex:rnd(27,31)}; ans="neg";
+      why = "檢體 FAM 到 Ct "+ctTxt(sm.fam)+" 才超過閾值。根據本試劑（Venor GeM qEP）的說明書，Ct 大於或等於 40 → 判陰性。HEX 有出來，代表 PCR 正常。\n注意：40 是這套試劑的標準，不是所有 PCR 都用 40。"; }
+    else if(type==="neg"){ sm = {fam:null, hex:rnd(27,31)}; ans="neg";
+      why = "檢體 FAM 沒有訊號，HEX（internal control）有出來，代表 PCR 有正常跑 → 陰性。"; }
+    else if(type==="inh"){ sm = {fam:null, hex:null}; ans="inh";
+      why = "檢體 FAM 和 HEX 都沒有訊號：連 internal control 都沒有擴增，代表 PCR 被抑制 → 結果無效，要重做。不能直接當成陰性！"; }
+    else if(type==="contam"){ nc = {fam:rnd(30,37), hex:rnd(27,31)}; sm = Math.random()<.5 ? {fam:rnd(18,30), hex:rnd(29,34)} : {fam:null, hex:rnd(27,31)}; ans="contam";
+      why = "汙染：NC 出現 FAM 訊號（Ct "+ctTxt(nc.fam)+"）。NC 應該什麼都沒有，有訊號代表有汙染。這一批的陽性結果都不可信 → 整批重做，並找出汙染來源。\n不管檢體看起來是陽性還是陰性，都不能發報告。"; }
+    else { pc = Math.random()<.5 ? {fam:null, hex:rnd(28,32)} : {fam:null, hex:null}; sm = Math.random()<.5 ? {fam:null, hex:rnd(27,31)} : {fam:rnd(26,34), hex:rnd(29,33)}; ans="pcfail";
+      why = "檢測失效：PC 的 FAM 沒有出來，應該陽性的都測不到，代表試劑、儀器或操作可能有問題。這一批的陰性結果都不可信 → 整批重做。\n不管檢體看起來怎樣，都不能發報告。"; }
+    return {type:type, pc:pc, nc:nc, sm:sm, ans:ans, why:why+"\n"+RULE, sid:"Cell-"+(100+((Math.random()*900)|0))};
+  }
+  function well(name, sub, d, target){
+    var seed = Math.random()*10;
+    return '<div class="wellCard'+(target?" target":"")+'"><h3>'+name+' <span>'+sub+'</span></h3>'+chart(curve(d.fam,seed), curve(d.hex,seed+3))+
+      '<div class="ctrow"><span><i class="dot" style="background:var(--mint)"></i>FAM Ct <b>'+ctTxt(d.fam)+'</b></span><span><i class="dot" style="background:var(--peach)"></i>HEX Ct <b>'+ctTxt(d.hex)+'</b></span></div></div>';
+  }
+  function updatePills(){
+    document.getElementById("labRound").textContent = "第 "+Math.min(qi+1,ROUND)+" / "+ROUND+" 題";
+    document.getElementById("labScore").textContent = "答對 "+labRight;
+    document.getElementById("labStreak").textContent = "連續答對 "+streak+(streak>=5?" 🔥":"");
+  }
+  function startRound(){
+    round = makeRound(); qi = 0; labRight = 0; streak = 0; misses = [];
+    document.getElementById("labResult").hidden = true; document.getElementById("labPlay").hidden = false;
+    nextQ(true);
+  }
+  function nextQ(first){
+    if(!first) qi++;
+    if(qi >= ROUND){ return showResult(); }
+    Q = makeQ(round[qi]); answered = false;
+    document.getElementById("wellsRow").innerHTML = well("檢體",Q.sid,Q.sm,true) + well("PC","陽性對照",Q.pc,false) + well("NC","陰性對照",Q.nc,false);
+    document.querySelectorAll("#labOpts [data-ans]").forEach(function(b){ b.classList.remove("right","wrong"); b.disabled = false; });
+    document.getElementById("labNext").hidden = true;
+    var fb = document.getElementById("labFb"); fb.hidden = true; fb.textContent = "";
+    document.getElementById("labStreak").classList.remove("hot");
+    updatePills();
+    if(!first) document.getElementById("labView").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  function showResult(){
+    document.getElementById("labPlay").hidden = true;
+    var r = document.getElementById("labResult"), stars = labRight>=9?"🌟🌟🌟":labRight>=7?"🌟🌟":labRight>=5?"🌟":"💪";
+    var msg = labRight===ROUND?"全對！判讀高手 🎉":labRight>=7?"很棒！再挑戰一次拿滿分？":labRight>=5?"不錯喔，看一下錯在哪種題型":"多練幾回合就會越來越順";
+    var cnt = {}; misses.forEach(function(m){ cnt[m] = (cnt[m]||0) + 1; });
+    var ul = misses.length ? '<p>答錯的題型（可以回翻卡複習）：</p><ul>'+Object.keys(cnt).map(function(m){ return '<li>'+TYPE_NAME[m]+(cnt[m]>1?' ×'+cnt[m]:'')+'</li>'; }).join("")+'</ul>' : '<p>沒有答錯的題型 👏</p>';
+    r.innerHTML = '<h3>第 '+roundNo+' 回合結束！</h3><div class="stars">'+stars+'</div><p><b>答對 '+labRight+' / '+ROUND+'</b>　'+msg+'</p>'+ul+'<button class="btn key" type="button" id="labAgain">再玩一回合 →</button>';
+    r.hidden = false; roundNo++;
+    document.getElementById("labRound").textContent = "回合結束";
+    if(labRight>=8){ burstAt(innerWidth/2, 120, ["🎉","⭐","🔬","🍓","🦆"], 60); }
+    r.scrollIntoView({behavior:"smooth", block:"center"});
+  }
+  document.getElementById("labResult").addEventListener("click", function(e){ if(e.target.id==="labAgain") startRound(); });
+  document.getElementById("labAnsNext").addEventListener("click", function(){
+    document.getElementById("labAnsModal").hidden = true;
+    nextQ(false);
+  });
+  document.getElementById("labOpts").addEventListener("click", function(e){
+    if(e.target.id==="labNext"){ nextQ(false); return; }
+    var b = e.target.closest("[data-ans]"); if(!b || answered) return; answered = true;
+    var ok = b.getAttribute("data-ans")===Q.ans;
+    if(ok){ labRight++; streak++; } else { streak = 0; misses.push(Q.type); }
+    document.querySelectorAll("#labOpts [data-ans]").forEach(function(x){ if(x.getAttribute("data-ans")===Q.ans) x.classList.add("right"); else if(x===b) x.classList.add("wrong"); x.disabled = true; });
+    var fb = document.getElementById("labFb"); fb.hidden = false; fb.className = "fb " + (ok?"good":"bad");
+    fb.textContent = (ok ? "✅ 答對了！\n" : "再想想～正確答案標成綠色了。\n") + Q.why;
+    var nx = document.getElementById("labNext"); nx.hidden = false; nx.textContent = qi+1>=ROUND ? "看結果 →" : "下一題 →";
+    updatePills();
+    /* v25：答完跳出解說視窗（同事說答案和下一題不明顯）。按 × 或「回去看圖」關掉，下面的解說和下一題按鈕都還在 */
+    var face = document.getElementById("labAnsFace");
+    face.textContent = ok ? "🎉" : "🫧"; face.classList.toggle("good", ok);
+    document.getElementById("labAnsTitle").textContent = ok ? "答對了！" : "這題判錯囉";
+    document.getElementById("labAnsMineRow").hidden = ok;
+    document.getElementById("labAnsMine").textContent = b.textContent;
+    var okBtn = document.querySelector('#labOpts [data-ans="'+Q.ans+'"]');
+    document.getElementById("labAnsOk").textContent = okBtn ? okBtn.textContent : "";
+    document.getElementById("labAnsWhy").textContent = "💡 " + Q.why;
+    document.getElementById("labAnsNext").textContent = nx.textContent;
+    var atQ = qi;
+    setTimeout(function(){
+      /* 已經換題或回合結束就不跳 */
+      if(qi !== atQ || document.getElementById("labPlay").hidden) return;
+      openModal("labAnsModal"); document.getElementById("labAnsNext").focus();
+    }, 350);
+    if(ok && streak>0 && streak%5===0){
+      var pill = document.getElementById("labStreak"); pill.classList.add("hot");
+      var rc = pill.getBoundingClientRect(); burstAt(rc.left+rc.width/2, rc.top+rc.height/2, ["🔥","⭐","🔥","✨"], 26, true);
+    }
+  });
+  function burstAt(x, y, set, n, up){
+    for(var i=0;i<n;i++){
+      parts.push({x:x+(Math.random()-.5)*(up?30:innerWidth*.6), y:y, vx:(Math.random()-.5)*(up?5:3), vy:up?-(3+Math.random()*4):Math.random()*2, r:(Math.random()-.5)*.2, a:0, life:1.6+Math.random(), s:18+Math.random()*14, f:set[(Math.random()*set.length)|0]});
+    }
+    kick();
+  }
+
+  function celebrate(){
+    var BURST = ["🎉","🧪","🍓","🦆","⭐","🍋","🍇","🎓"];
+    for(var i=0;i<90;i++){
+      parts.push({x:Math.random()*innerWidth, y:-20-Math.random()*120, vx:(Math.random()-.5)*3, vy:Math.random()*2, r:(Math.random()-.5)*.2, a:0, life:2.6+Math.random(), s:20+Math.random()*16, f:BURST[(Math.random()*BURST.length)|0]});
+    }
+    kick();
+    setTimeout(function(){ fillCert(); openModal("certModal"); }, 900);
+  }
+
+  renderGrid(); renderMode();
+})();
+</script>
+
+
+<script>
+/* v26.1 mobile candy launcher; QR click handler remains the original implementation. */
+(function(){
+  var wrap=document.getElementById('candyFab'),toggle=document.getElementById('fabToggle');
+  if(!wrap||!toggle)return;
+  function setOpen(open){wrap.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'收合快捷功能':'展開快捷功能');}
+  toggle.addEventListener('click',function(){setOpen(!wrap.classList.contains('is-open'));});
+  document.addEventListener('click',function(e){if(!wrap.contains(e.target))setOpen(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&wrap.classList.contains('is-open')){setOpen(false);toggle.focus();}});
+  document.getElementById('qrBtn').addEventListener('click',function(){setOpen(false);});
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var root=document.getElementById("flowCard"), step=0, answered=false, result="";
+  var stages=[
+    {q:"學姊解凍了一支細胞，要做什麼品管？",opts:["黴漿菌 PCR 檢測","細胞存活率確認","細菌與黴菌無菌培養","病毒污染 PCR 篩檢"],correct:0,why:"這個任務要確認細胞是否受到黴漿菌污染。"},
+    {q:"細胞培養管換液後培養 3–6 天，要怎麼準備檢體？",opts:["把細胞刮下，混入培養液","只取新鮮培養液","用無菌水沖洗後取水","直接把細胞培養管放上 PCR 儀"],correct:0,why:"刮下細胞，製成細胞懸浮液。"},
+    {q:"取多少細胞懸浮液到滅菌離心管？",opts:["100 µL，並蓋緊","10 µL，並蓋緊","1000 µL，不必蓋緊","2 µL，直接加反應液"],correct:0,why:"取 100 µL 細胞懸浮液，放入滅菌離心管並蓋緊。"},
+    {q:"接著如何加熱？",opts:["95°C，5 分鐘","95°C，3 分鐘","60°C，5 分鐘","55°C，30 秒"],correct:0,why:"95°C 加熱 5 分鐘。"},
+    {q:"加熱後如何處理？",opts:["高速離心 30 秒，取上清","高速離心 5 分鐘，取沉澱","低速離心 30 秒，取沉澱","不離心，直接取細胞碎片"],correct:0,why:"高速離心 30 秒（例如 10,000 × g），取上清進行檢測。"},
+    {q:"配好每管 23 µL PCR 反應液後，檢體管要加入什麼？",opts:["2 µL 處理後上清","2 µL 陽性品管 DNA","8 µL 處理後上清","23 µL 處理後上清"],correct:0,why:"每管反應液 23 µL，加 2 µL 處理後檢體；另設陽性與陰性品管。"},
+    {q:"加樣完成後，下一步是？",opts:["先短暫離心，再放入 PCR 儀","立即判讀結果","先加熱 95°C 5 分鐘再加樣","倒掉上清後取沉澱上機"],correct:0,why:"短暫離心後上機，依設定程式執行 PCR。"},
+    {q:"PCR 完成了，判讀細胞結果之前先確認什麼？",opts:["陽性與陰性品管結果符合預期","只要陽性品管有訊號即可","只要陰性品管無訊號即可","只看檢體有沒有訊號"],correct:0,why:"陽性品管與陰性品管都符合預期，才能接受這次結果。"}
+  ];
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function draw(){
+    answered=false;
+    if(step<stages.length){
+      var d=stages[step], order=[0,1,2,3].sort(function(){return Math.random()-.5});
+      root.innerHTML='<span class="qztype">🧫 細胞品管任務 '+(step+1)+' / '+(stages.length+1)+'</span><h2>'+esc(d.q)+'</h2><div class="qzopts">'+order.map(function(i){return '<button type="button" class="btn flow-opt" data-i="'+i+'">'+esc(d.opts[i])+'</button>'}).join("")+'</div><div class="fb" id="flowFeedback" hidden></div><button class="btn key" id="flowNext" type="button" hidden>下一關 →</button>';
+      root.querySelectorAll(".flow-opt").forEach(function(b){b.onclick=function(){if(answered)return;var i=+b.dataset.i, fb=document.getElementById("flowFeedback");fb.hidden=false;if(i!==d.correct){fb.textContent="再想想看，哪個選項最符合這一步？";return}answered=true;fb.textContent="答對了！"+d.why;document.getElementById("flowNext").hidden=false;};});
+      document.getElementById("flowNext").onclick=function(){step++;draw();root.scrollIntoView({behavior:"smooth",block:"start"})};
+    }else if(step===stages.length){
+      result=Math.random()<.5?"positive":"negative";
+      var sample=result==="positive"?"檢體 FAM Ct 32；內部品管 HEX Ct 30":"檢體 FAM 無擴增；內部品管 HEX Ct 30";
+      root.innerHTML='<span class="qztype">📈 最後一關</span><h2>品管正常，這支細胞的結果是？</h2><p>陽性品管：符合預期；陰性品管：符合預期。</p><p>'+sample+'</p><p>依 Venor GeM qEP 判讀：Ct &lt; 40 為陽性。</p><div class="qzopts"><button class="btn flow-result" data-value="positive">陽性</button><button class="btn flow-result" data-value="negative">陰性</button></div><div class="fb" id="flowFeedback" hidden></div>';
+      root.querySelectorAll(".flow-result").forEach(function(b){b.onclick=function(){var fb=document.getElementById("flowFeedback");fb.hidden=false;if(b.dataset.value!==result){fb.textContent="再看一次檢體 FAM 與內部品管的結果喔！";return}step++;draw()}});
+    }else{
+      var ending=result==="positive"?"啊！污染了，這個細胞不能用，趕快通知學姊解凍新的細胞！":"太好了！檢測通過，通知學姊可以開始養給病毒培養工作站使用了！";
+      root.innerHTML='<span class="qztype">🎉 任務完成</span><h2>'+esc(ending)+'</h2><p>記得填寫黴漿菌檢測結果紀錄表。</p><button class="btn key" type="button" id="flowRestart">再玩一次 →</button>';document.getElementById("flowRestart").onclick=function(){step=0;draw()};
+    }
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
